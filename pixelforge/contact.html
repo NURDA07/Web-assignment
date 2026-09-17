@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Author: Suinalin Azamat — Contact page -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PixelForge — Contact</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header id="main-header">
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="games.html">Top Games</a></li>
+        <li><a href="guides.html">Guides</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1>Contact Us</h1>
+    <img src="https://picsum.photos/seed/pixelforge-contact/800/300" alt="Gaming headset resting on a desk">
+
+    <p>Got a game we should review, or a guide you want written? Let us know.</p>
+
+    <ul>
+      <li>Email: contact@pixelforge-hub.example</li>
+      <li>Location: Astana, Kazakhstan</li>
+      <li>Response time: 1–2 business days</li>
+    </ul>
+
+    <form id="contact-form" action="#" method="post">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Your full name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
+      <label for="theme-color">Favorite In-Game Color</label>
+      <input type="color" id="theme-color" name="theme-color" value="#00e5ff">
+
+      <label for="reason">Reason for Contact</label>
+      <select id="reason" name="reason">
+        <option value="suggestion">Suggest a game to review</option>
+        <option value="guide">Request a guide</option>
+        <option value="feedback">General feedback</option>
+      </select>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Tell us what's on your mind..."></textarea>
+
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+  </main>
+
+  <footer id="site-footer">
+    <p>&copy; 2026 PixelForge — Front-End Assignment #1</p>
+    <p>Team members: Marat Nurdaulet, Kadyr Tlektes, Suinalin Azamat</p>
+  </footer>
+
+</body>
+</html>

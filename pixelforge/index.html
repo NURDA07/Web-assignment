@@ -8,12 +8,14 @@
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="page-layout">
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
   <header id="main-header">
-    <nav>
+    <a class="brand" href="index.html" aria-label="PixelForge home"><span class="brand-icon" aria-hidden="true">PF</span>Pixel<span>Forge</span></a>
+    <nav aria-label="Main navigation">
       <ul class="nav-menu">
-        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="index.html" class="active" aria-current="page">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="games.html">Top Games</a></li>
         <li><a href="guides.html">Guides</a></li>
@@ -23,13 +25,28 @@
     </nav>
   </header>
 
+
+
+  
+  <aside class="sidebar" aria-label="Explore PixelForge">
+    <p class="eyebrow">PLAYER HUB / SE-2501</p>
+    <h2>Find your next quest</h2>
+    <p>Discover a game, learn a new strategy, and meet the crew.</p>
+    <nav aria-label="Quick links" class="side-links">
+      <a href="games.html">01 / Game rankings <span aria-hidden="true">↗</span></a>
+      <a href="guides.html">02 / Player guides <span aria-hidden="true">↗</span></a>
+      <a href="games.html#gallery">03 / Community gallery <span aria-hidden="true">↗</span></a>
+      <a href="team.html">04 / Meet the crew <span aria-hidden="true">↗</span></a>
+    </nav>
+    <div class="sidebar-note"><span class="tag">PixelForge</span><p>Three players. One shared passion for games.</p><a href="contact.html">Suggest our next game →</a></div>
+  </aside>
+
+  <main id="main-content" class="container">
   <section id="hero-section">
     <h1>PixelForge</h1>
     <p>Reviews, rankings, and guides for gamers who play to win.</p>
     <a href="games.html" class="btn">See Top Games</a>
   </section>
-
-  <main class="container">
     <h2>Welcome to <span class="highlight">PixelForge</span></h2>
     <p>
       PixelForge is a student-run gaming hub built for our Front-End Basics
@@ -47,24 +64,30 @@
       <li>A way to reach out with feedback or requests</li>
     </ul>
 
-    <div class="grid">
+    <div class="card-row">
       <div class="card">
+        <img class="card-image" src="images/brawlstars.png" alt="Brawl Stars characters">
         <h3>Honest Reviews</h3>
         <p>We rank games by gameplay, story, and replay value — no sponsored bias.</p>
+        <a class="btn" href="games.html">Explore rankings</a>
       </div>
       <div class="card">
+        <img class="card-image" src="images/minecraft.png" alt="Minecraft landscape">
         <h3>Clear Guides</h3>
         <p>Walkthroughs written so a first-time player can actually follow them.</p>
+        <a class="btn" href="guides.html">Read guides</a>
       </div>
       <div class="card">
+        <img class="card-image" src="images/counterstrike2.png" alt="Counter-Strike 2 artwork">
         <h3>Built by Gamers</h3>
         <p>Three students who play as much as they code.</p>
+        <a class="btn" href="team.html">Meet the team</a>
       </div>
     </div>
   </main>
 
   <footer id="site-footer">
-    <p>&copy; 2026 PixelForge — Front-End Assignment #1</p>
+    <p>&copy; 2026 PixelForge — Advanced CSS · Assignment #2 · SE-2501</p>
     <p>Team members: Marat Nurdaulet, Kadyr Tlektes, Suinalin Azamat</p>
   </footer>
 

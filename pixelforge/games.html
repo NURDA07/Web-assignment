@@ -8,14 +8,16 @@
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="page-layout">
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
   <header id="main-header">
-    <nav>
+    <a class="brand" href="index.html" aria-label="PixelForge home"><span class="brand-icon" aria-hidden="true">PF</span>Pixel<span>Forge</span></a>
+    <nav aria-label="Main navigation">
       <ul class="nav-menu">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="games.html" class="active">Top Games</a></li>
+        <li><a href="games.html" class="active" aria-current="page">Top Games</a></li>
         <li><a href="guides.html">Guides</a></li>
         <li><a href="team.html">Team</a></li>
         <li><a href="contact.html">Contact</a></li>
@@ -23,7 +25,21 @@
     </nav>
   </header>
 
-  <main class="container">
+  
+  <aside class="sidebar" aria-label="Explore PixelForge">
+    <p class="eyebrow">PLAYER HUB / SE-2501</p>
+    <h2>Find your next quest</h2>
+    <p>Discover a game, learn a new strategy, and meet the crew.</p>
+    <nav aria-label="Quick links" class="side-links">
+      <a href="games.html">01 / Game rankings <span aria-hidden="true">↗</span></a>
+      <a href="guides.html">02 / Player guides <span aria-hidden="true">↗</span></a>
+      <a href="games.html#gallery">03 / Community gallery <span aria-hidden="true">↗</span></a>
+      <a href="team.html">04 / Meet the crew <span aria-hidden="true">↗</span></a>
+    </nav>
+    <div class="sidebar-note"><span class="tag">PixelForge</span><p>Three players. One shared passion for games.</p><a href="contact.html">Suggest our next game →</a></div>
+  </aside>
+
+  <main id="main-content" class="container">
     <h1>Top Rated Games</h1>
     <img src="images/topratedgameswallpaper.png" alt="Collage of our top rated video games">
 
@@ -36,6 +52,7 @@
     </ul>
 
     <h2>This Month's Rankings</h2>
+    <div class="table-scroll" role="region" aria-label="Game rankings" tabindex="0">
     <table>
       <thead>
         <tr>
@@ -66,10 +83,23 @@
         </tr>
       </tbody>
     </table>
+    </div>
+
+    <section id="gallery" aria-labelledby="gallery-title"><p class="eyebrow">THE WORLDS / THE PLAYERS</p><h2 id="gallery-title">PixelForge Gallery</h2><p>Nine snapshots of the games and people behind our hub. Hover or focus a tile to read its story.</p><div class="image-gallery">
+      <figure class="gallery-item" tabindex="0"><img src="images/brawlstars.png" alt="Brawl Stars characters" loading="lazy"><figcaption><strong>Brawl Stars</strong><span>Fast matches. Big teamwork.</span></figcaption></figure>
+      <figure class="gallery-item" tabindex="0"><img src="images/counterstrike2.png" alt="Counter-Strike 2 artwork" loading="lazy"><figcaption><strong>Counter-Strike 2</strong><span>Every round is a fresh strategy.</span></figcaption></figure>
+      <figure class="gallery-item" tabindex="0"><img src="images/minecraft.png" alt="Minecraft landscape" loading="lazy"><figcaption><strong>Minecraft</strong><span>Build a world of your own.</span></figcaption></figure>
+      <figure class="gallery-item" tabindex="0"><img src="images/topratedgameswallpaper.png" alt="Collage of video games" loading="lazy"><figcaption><strong>Our game collection</strong><span>New worlds to explore.</span></figcaption></figure>
+      <figure class="gallery-item" tabindex="0"><img src="images/welcome.png" alt="PixelForge welcome artwork" loading="lazy"><figcaption><strong>Welcome to PixelForge</strong><span>Your next adventure starts here.</span></figcaption></figure>
+      <figure class="gallery-item" tabindex="0"><img src="images/pixelforge.png" alt="PixelForge gaming artwork" loading="lazy"><figcaption><strong>Our creative corner</strong><span>Where games meet web design.</span></figcaption></figure>
+      <figure class="gallery-item" tabindex="0"><img src="images/nurda.png" alt="Marat Nurdaulet" loading="lazy"><figcaption><strong>Marat Nurdaulet</strong><span>Home and About creator.</span></figcaption></figure>
+      <figure class="gallery-item" tabindex="0"><img src="images/tlektes.png" alt="Kadyr Tlektes" loading="lazy"><figcaption><strong>Kadyr Tlektes</strong><span>Top Games and Guides creator.</span></figcaption></figure>
+      <figure class="gallery-item" tabindex="0"><img src="images/2026-09-17 09.28.01.jpg" alt="Suinalin Azamat" loading="lazy"><figcaption><strong>Suinalin Azamat</strong><span>Team and Contact creator.</span></figcaption></figure>
+    </div></section>
   </main>
 
   <footer id="site-footer">
-    <p>&copy; 2026 PixelForge — Front-End Assignment #1</p>
+    <p>&copy; 2026 PixelForge — Advanced CSS · Assignment #2 · SE-2501</p>
     <p>Team members: Marat Nurdaulet, Kadyr Tlektes, Suinalin Azamat</p>
   </footer>
 

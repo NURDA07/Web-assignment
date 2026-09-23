@@ -8,40 +8,59 @@
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="page-layout">
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
   <header id="main-header">
-    <nav>
+    <a class="brand" href="index.html" aria-label="PixelForge home"><span class="brand-icon" aria-hidden="true">PF</span>Pixel<span>Forge</span></a>
+    <nav aria-label="Main navigation">
       <ul class="nav-menu">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="games.html">Top Games</a></li>
         <li><a href="guides.html">Guides</a></li>
-        <li><a href="team.html" class="active">Team</a></li>
+        <li><a href="team.html" class="active" aria-current="page">Team</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <main class="container">
+  
+  <aside class="sidebar" aria-label="Explore PixelForge">
+    <p class="eyebrow">PLAYER HUB / SE-2501</p>
+    <h2>Find your next quest</h2>
+    <p>Discover a game, learn a new strategy, and meet the crew.</p>
+    <nav aria-label="Quick links" class="side-links">
+      <a href="games.html">01 / Game rankings <span aria-hidden="true">↗</span></a>
+      <a href="guides.html">02 / Player guides <span aria-hidden="true">↗</span></a>
+      <a href="games.html#gallery">03 / Community gallery <span aria-hidden="true">↗</span></a>
+      <a href="team.html">04 / Meet the crew <span aria-hidden="true">↗</span></a>
+    </nav>
+    <div class="sidebar-note"><span class="tag">PixelForge</span><p>Three players. One shared passion for games.</p><a href="contact.html">Suggest our next game →</a></div>
+  </aside>
+
+  <main id="main-content" class="container">
     <h1>Meet the Crew: SE-2501</h1>
     <p>The three students behind PixelForge.</p>
 
-    <div class="grid">
+    <div class="card-row">
       <div class="card team-card">
         <img class="profile-img" src="images/nurda.png" alt="Portrait of Marat Nurdaulet">
         <h3>Marat Nurdaulet</h3>
         <p>Built Home &amp; About pages. Favorite genre: RPG.</p>
+        <a class="btn" href="about.html">Explore my pages</a>
       </div>
       <div class="card team-card">
         <img class="profile-img" src="images/tlektes.png" alt="Portrait of Kadyr Tlektes">
         <h3>Kadyr Tlektes</h3>
         <p>Built Top Games &amp; Guides pages. Favorite genre: FPS.</p>
+        <a class="btn" href="guides.html">Explore my pages</a>
       </div>
       <div class="card team-card">
         <img class="profile-img" src="images/2026-09-17 09.28.01.jpg" alt="Portrait of Suinalin Azamat">
         <h3>Suinalin Azamat</h3>
         <p>Built Team &amp; Contact pages. Favorite genre: Indie &amp; Strategy.</p>
+        <a class="btn" href="contact.html">Explore my pages</a>
       </div>
     </div>
 
@@ -54,7 +73,7 @@
   </main>
 
   <footer id="site-footer">
-    <p>&copy; 2026 PixelForge — Front-End Assignment #1</p>
+    <p>&copy; 2026 PixelForge — Advanced CSS · Assignment #2 · SE-2501</p>
     <p>Team members: Marat Nurdaulet, Kadyr Tlektes, Suinalin Azamat</p>
   </footer>
 

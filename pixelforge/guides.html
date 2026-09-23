@@ -8,40 +8,59 @@
   <link rel="stylesheet" href="css/style.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="page-layout">
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
   <header id="main-header">
-    <nav>
+    <a class="brand" href="index.html" aria-label="PixelForge home"><span class="brand-icon" aria-hidden="true">PF</span>Pixel<span>Forge</span></a>
+    <nav aria-label="Main navigation">
       <ul class="nav-menu">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="games.html">Top Games</a></li>
-        <li><a href="guides.html" class="active">Guides</a></li>
+        <li><a href="guides.html" class="active" aria-current="page">Guides</a></li>
         <li><a href="team.html">Team</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <main class="container">
+  
+  <aside class="sidebar" aria-label="Explore PixelForge">
+    <p class="eyebrow">PLAYER HUB / SE-2501</p>
+    <h2>Find your next quest</h2>
+    <p>Discover a game, learn a new strategy, and meet the crew.</p>
+    <nav aria-label="Quick links" class="side-links">
+      <a href="games.html">01 / Game rankings <span aria-hidden="true">↗</span></a>
+      <a href="guides.html">02 / Player guides <span aria-hidden="true">↗</span></a>
+      <a href="games.html#gallery">03 / Community gallery <span aria-hidden="true">↗</span></a>
+      <a href="team.html">04 / Meet the crew <span aria-hidden="true">↗</span></a>
+    </nav>
+    <div class="sidebar-note"><span class="tag">PixelForge</span><p>Three players. One shared passion for games.</p><a href="contact.html">Suggest our next game →</a></div>
+  </aside>
+
+  <main id="main-content" class="container">
     <h1>Guides &amp; Walkthroughs</h1>
     <p>Step-by-step guides written so a first-time player can actually follow them.</p>
 
-    <div class="grid">
+    <div class="card-row">
       <div class="card">
         <img src="images/brawlstars.png" alt="Brawl Stars gameplay and characters">
         <h3>Brawl Stars: Best Brawlers Guide</h3>
         <p>Top strategies and best brawlers for every game mode to help you push trophies.</p>
+        <a class="btn" href="#brawl-guide">Read guide</a>
       </div>
       <div class="card">
         <img src="images/counterstrike2.png" alt="Counter-Strike 2 tactical gameplay">
         <h3>Counter-Strike 2: Utility Lineups</h3>
         <p>Essential smoke and flash lineups for competitive maps to give your team the edge.</p>
+        <a class="btn" href="#cs-guide">Read guide</a>
       </div>
       <div class="card">
         <img src="images/minecraft.png" alt="Minecraft survival base building">
         <h3>Minecraft: Survival Mechanics</h3>
         <p>Step-by-step guide to gathering resources and building a secure base on your first night.</p>
+        <a class="btn" href="#minecraft-guide">Read guide</a>
       </div>
     </div>
 
@@ -52,10 +71,14 @@
       <li>Write short, numbered steps instead of long paragraphs</li>
       <li>Add screenshots for anything hard to describe in words</li>
     </ol>
+
+    <section class="guide-detail" id="brawl-guide"><h2>Brawl Stars: Pick with a Plan</h2><ol><li>Check the mode and map before choosing a brawler.</li><li>Use cover and keep enough range to suit your character.</li><li>Save your super for a clear objective or a coordinated team push.</li></ol></section>
+    <section class="guide-detail" id="cs-guide"><h2>Counter-Strike 2: Practice Utility</h2><ol><li>Open a practice map and choose one entrance to defend.</li><li>Pick a repeatable standing position and aim at a fixed landmark.</li><li>Test your smoke or flash, check where it lands, and repeat before using it with your team.</li></ol></section>
+    <section class="guide-detail" id="minecraft-guide"><h2>Minecraft: Your First Night</h2><ol><li>Gather wood and craft a workbench and basic tools.</li><li>Collect stone and food before exploring far from spawn.</li><li>Build an enclosed shelter, add light, and save a safe exit for morning.</li></ol></section>
   </main>
 
   <footer id="site-footer">
-    <p>&copy; 2026 PixelForge — Front-End Assignment #1</p>
+    <p>&copy; 2026 PixelForge — Advanced CSS · Assignment #2 · SE-2501</p>
     <p>Team members: Marat Nurdaulet, Kadyr Tlektes, Suinalin Azamat</p>
   </footer>
 

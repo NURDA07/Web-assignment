@@ -34,3 +34,7 @@ Guide buttons jump to practical guide sections. The contact form validates input
 ## Validation
 
 All six pages were checked in a browser at desktop (1440px) and mobile (390px) widths for Grid placement and horizontal overflow. Desktop card heights match within each row. Gallery keyboard focus reveals its caption. Contact draft generation was exercised with sample input. Local links and image paths were checked separately.
+
+## Report
+
+The submission report is in `submission/PixelForge_Assignment_2_Report.pdf`. It includes the team details, step-by-step implementation of each task, desktop/mobile screenshots, validation results, live URL and defense preparation notes.

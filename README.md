@@ -1,4 +1,4 @@
-# PixelForge - Assignment 2
+# PixelForge - Assignment 3 (Media Queries & Bootstrap)
 
 **Team:** PixelForge  
 **Group:** SE-2501  
@@ -6,35 +6,26 @@
 
 Live website: https://nurda07.github.io/Web-assignment/
 
-This extends the existing six-page Assignment 1 site. No CSS framework or build step is required.
+This repository contains our submission for Assignment #3, demonstrating Responsive Design using both CSS Media Queries and the Bootstrap Grid/Components.
 
 ## Run locally
 
-Open `pixelforge/index.html`, or run `python3 -m http.server 8000 --directory pixelforge` and visit http://localhost:8000.
+Open `assignment3/index.html`, or run `python3 -m http.server 8000 --directory assignment3` and visit http://localhost:8000.
 
-## Assignment requirements
+## Assignment requirements fulfilled
 
-- Task 1: all six headers use Flexbox, with a linked PixelForge logo at the left and navigation at the right, `align-items: center`, wrapping and consistent gaps.
-- Task 2: Home, Guides and Team have Flexbox card rows. Every card has an image, title, description and working link styled as a button. Cards stretch equally within each row; column Flexbox pushes buttons to the bottom. Hover and keyboard focus add lift and shadow.
-- Task 3: every page uses named Grid areas: full-width header, left sidebar, right main, full-width footer. Below 700px the areas stack vertically.
-- Task 4: Top Games includes nine distinct local images in an equal-column Grid with equal row heights, consistent gaps and caption overlays on hover or keyboard focus. Touch devices show captions by default.
-- Part 3: all pages share one responsive stylesheet. Cards and gallery switch from three to two to one column. The rankings table scrolls inside its own container.
-- Part 4: GitHub Actions deploys only `pixelforge/` to GitHub Pages on changes to the site.
+### Part 1: Custom Media Queries
+- **Task 1 & 2:** Displayed in `part1.html`. We created a fully custom responsive topology layout matching responsive text typographies alongside scaling Bootstrap-free grid cards natively handling Desktop (3 cols), Tablet (2 cols), and Mobile (Vertical stacking) states exclusively using custom `%` dimensions and Flex-wrap behaviors based on purely authored CSS logic.
 
-## Page ownership from Assignment 1
+### Part 2: Bootstrap Implemented Code Architecture
+All remaining constraints handled effortlessly across pages:
+- **Task 3 (Grid):** Executed responsive Bootstrap classings like `col-lg-6` and `col-lg-4` inside natively formatted Row wraps in `index.html`.
+- **Task 4 (Spacing utils):** Abolished all previously written styles replacing entirely with responsive sizing utility interactions (`mt-lg-4`, `p-auto`) natively.
+- **Task 5 (Navs):** Integrated standard Bootstrap Navbars containing brand icons and 4 links alongside responsive scaling Hamburger togglers.
+- **Task 6 (Buttons):** Modernized components injecting interactions for grouping logic, border aesthetics (`btn-group`, `btn-primary`, `btn-outline-secondary`).
+- **Task 7 (Carousel):** Produced dynamic cycling gallery of exactly 9 project images controlled completely by Bootstrap sliding navigation and slide bullets.
+- **Task 8 (Cards):** Utilized modern standard flexible Cards aligned elegantly displaying descriptive text headers inside.
+- **Task 9 (Form):** Engineered modern web logic via Bootstrap Semantic forms parsing `form-controls`, `form-check`, selects, embedded radio toggles entirely handling `contact.html`.
+- **Task 10 (Accessibility):** Ensured HTML logic utilizes highly accessible, rich-contrast properties natively baked via frameworks (`<main>`, `<nav>`, `<footer>`).
 
-- Marat Nurdaulet: Home and About.
-- Kadyr Tlektes: Top Games and Guides.
-- Suinalin Azamat: Team and Contact.
-
-## Additional behavior
-
-Guide buttons jump to practical guide sections. The contact form validates inputs and prepares a local message draft; it does not claim to send mail or require a server. A skip link, visible focus outlines and reduced-motion support improve accessibility. Existing artwork and portraits are reused from the original repository.
-
-## Validation
-
-All six pages were checked in a browser at desktop (1440px) and mobile (390px) widths for Grid placement and horizontal overflow. Desktop card heights match within each row. Gallery keyboard focus reveals its caption. Contact draft generation was exercised with sample input. Local links and image paths were checked separately.
-
-## Report
-
-The submission report is in `submission/PixelForge_Assignment_2_Report.pdf`. It includes the team details, step-by-step implementation of each task, desktop/mobile screenshots, validation results, live URL and defense preparation notes.
+No comments (`<!-- -->`/`/* */`) remained within the web logic. Team memberships appear globally inside `<footer>` elements universally.

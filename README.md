@@ -4,7 +4,7 @@
 **Group:** SE-2501  
 **Members:** Marat Nurdaulet, Kadyr Tlektes, Suinalin Azamat
 
-Live website: https://nurda07.github.io/Web-assignment/
+Live website: https://dazzling-paprenjak-589e9f.netlify.app/
 
 This repository contains our submission for Assignment #3, demonstrating Responsive Design using both CSS Media Queries and the Bootstrap Grid/Components.
 

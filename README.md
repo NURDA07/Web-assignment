@@ -1,31 +1,102 @@
-# PixelForge - Assignment 3 (Media Queries & Bootstrap)
+# PixelForge
+
+A student-built gaming hub with reviews, rankings, and beginner-friendly guides. PixelForge is the project for the **Front-End Basics** course, built with plain HTML and CSS plus Bootstrap 5 for some pages.
 
 **Team:** PixelForge  
 **Group:** SE-2501  
-**Members:** Marat Nurdaulet, Kadyr Tlektes, Suinalin Azamat
+**Members:** Marat Nurdaulet · Kadyr Tlektes · Suinalin Azamat
 
-Live website: https://dazzling-paprenjak-589e9f.netlify.app/
-
-This repository contains our submission for Assignment #3, demonstrating Responsive Design using both CSS Media Queries and the Bootstrap Grid/Components.
+**Live website:** https://singular-klepon-a00276.netlify.app/
 
 ## Run locally
 
 Open `assignment3/index.html`, or run `python3 -m http.server 8000 --directory assignment3` and visit http://localhost:8000.
 
-## Assignment requirements fulfilled
+---
 
-### Part 1: Custom Media Queries
-- **Task 1 & 2:** Displayed in `part1.html`. We created a fully custom responsive topology layout matching responsive text typographies alongside scaling Bootstrap-free grid cards natively handling Desktop (3 cols), Tablet (2 cols), and Mobile (Vertical stacking) states exclusively using custom `%` dimensions and Flex-wrap behaviors based on purely authored CSS logic.
+## Features
 
-### Part 2: Bootstrap Implemented Code Architecture
-All remaining constraints handled effortlessly across pages:
-- **Task 3 (Grid):** Executed responsive Bootstrap classings like `col-lg-6` and `col-lg-4` inside natively formatted Row wraps in `index.html`.
-- **Task 4 (Spacing utils):** Abolished all previously written styles replacing entirely with responsive sizing utility interactions (`mt-lg-4`, `p-auto`) natively.
-- **Task 5 (Navs):** Integrated standard Bootstrap Navbars containing brand icons and 4 links alongside responsive scaling Hamburger togglers.
-- **Task 6 (Buttons):** Modernized components injecting interactions for grouping logic, border aesthetics (`btn-group`, `btn-primary`, `btn-outline-secondary`).
-- **Task 7 (Carousel):** Produced dynamic cycling gallery of exactly 9 project images controlled completely by Bootstrap sliding navigation and slide bullets.
-- **Task 8 (Cards):** Utilized modern standard flexible Cards aligned elegantly displaying descriptive text headers inside.
-- **Task 9 (Form):** Engineered modern web logic via Bootstrap Semantic forms parsing `form-controls`, `form-check`, selects, embedded radio toggles entirely handling `contact.html`.
-- **Task 10 (Accessibility):** Ensured HTML logic utilizes highly accessible, rich-contrast properties natively baked via frameworks (`<main>`, `<nav>`, `<footer>`).
+- **Home page** with a 9-slide Bootstrap carousel, hero section, and highlight cards
+- **Top Games** page with genre tags, a rankings table, and a 9-tile hover/focus image gallery
+- **Guides** page with game walkthrough cards and short step-by-step guides (Brawl Stars, Counter-Strike 2, Minecraft)
+- **Team** page with profile cards for each member
+- **Contact** page with a form (text, email, select, radio buttons, checkbox, textarea)
+- **Media Queries demo** showing responsive typography and a 1 → 2 → 3 column card layout
+- Responsive layouts, a dark neon theme, a skip-to-content link, ARIA labels, and `alt` text on images
 
-No comments (`<!-- -->`/`/* */`) remained within the web logic. Team memberships appear globally inside `<footer>` elements universally.
+## Pages
+
+| Page | File | Styling |
+|------|------|---------|
+| Home | `index.html` | Bootstrap 5 |
+| About | `about.html` | Custom CSS |
+| Top Games | `games.html` | Custom CSS |
+| Guides | `guides.html` | Custom CSS |
+| Team | `team.html` | Custom CSS |
+| Contact | `contact.html` | Bootstrap 5 |
+| Media Queries (Part 1) | `part1.html` | Inline CSS |
+
+## Project Structure
+
+```
+assignment3/
+├── index.html
+├── about.html
+├── games.html
+├── guides.html
+├── team.html
+├── contact.html
+├── part1.html
+├── css/
+│   └── style.css        # shared dark-mode theme for About, Games, Guides, Team
+├── js/
+│   └── contact.js       # contact-form draft generator (see Known Issues)
+└── images/              # game artwork and team portraits
+```
+
+## Tech Stack
+
+- HTML5
+- CSS3 (custom properties, Flexbox, CSS Grid, media queries)
+- [Bootstrap 5.3.0](https://getbootstrap.com/) via CDN (Home and Contact pages)
+- [Orbitron](https://fonts.google.com/specimen/Orbitron) via Google Fonts
+- Vanilla JavaScript
+
+## Getting Started
+
+No build step or dependencies to install.
+
+1. Download or clone the project.
+2. Open `index.html` in a browser, or serve the folder locally:
+
+   ```bash
+   cd assignment3
+   python -m http.server 8000
+   ```
+
+   Then visit <http://localhost:8000>.
+
+An internet connection is needed to load Bootstrap and Google Fonts from their CDNs.
+
+## Design Notes
+
+- **Palette:** purple `#6c2bd9`, cyan `#00e5ff`, pink `#ff3d81` on a dark `#0f0f1a` background, defined as CSS variables in `css/style.css`.
+- **Layout:** the custom-styled pages use a CSS Grid shell (header, sidebar, main, footer). It collapses to a single column below 700px, with an intermediate layout at 1050px.
+
+## Work Split
+
+| Member | Pages |
+|--------|-------|
+| Marat Nurdaulet | Home, About |
+| Kadyr Tlektes | Top Games, Guides |
+| Suinalin Azamat | Team, Contact |
+
+## Known Issues
+
+- `team.html` references `images/azamat.png`, but the file is named `Azamat.png`. This will break on case-sensitive hosts such as GitHub Pages or Linux servers. Rename the file or fix the path.
+- `js/contact.js` expects a form with `id="contact-form"` and elements such as `#message-draft` and `#form-status`, but `contact.html` doesn't include them and doesn't load the script, so the script is currently unused.
+- The navigation differs between the Bootstrap pages (Home, Contact) and the custom-styled pages, and the Bootstrap navbar has no links to Top Games, Guides, or Team.
+
+## License
+
+Created for educational purposes as a university course assignment.

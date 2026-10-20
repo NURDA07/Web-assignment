@@ -15,7 +15,6 @@ The objective was to implement five interactive browser features using HTML, CSS
 3. Checked required fields, browser email validity, a minimum password length of eight characters, and matching passwords.
 4. Displayed a field-specific error beside invalid inputs and a general status message.
 
-**Screenshot:** Insert a screenshot showing errors for incomplete/invalid input, then another showing successful validation.
 
 ## Task 2 — FAQ accordion
 **Implementation steps:**
@@ -24,7 +23,6 @@ The objective was to implement five interactive browser features using HTML, CSS
 3. Added a JavaScript click listener to show or hide panels and close a previously opened panel.
 4. Used a CSS class (`open`) to show and hide the answer.
 
-**Screenshot:** Insert a screenshot with one FAQ answer expanded.
 
 ## Task 3 — Popup subscription form
 **Implementation steps:**
@@ -33,7 +31,6 @@ The objective was to implement five interactive browser features using HTML, CSS
 3. Added dismissal by clicking the backdrop or pressing Escape.
 4. Added email validation and a local confirmation message. The form does not send or store email addresses.
 
-**Screenshot:** Insert a screenshot with the popup open and, optionally, one with the closed state.
 
 ## Task 4 — Background color
 **Implementation steps:**
@@ -41,7 +38,6 @@ The objective was to implement five interactive browser features using HTML, CSS
 2. Added a click handler that advances the color index and wraps around at the end.
 3. Updated `document.body.style.backgroundColor` and displayed the selected color name.
 
-**Screenshot:** Insert a screenshot after changing the background.
 
 ## Task 5 — Current date and time
 **Implementation steps:**
@@ -49,7 +45,6 @@ The objective was to implement five interactive browser features using HTML, CSS
 2. Formatted it with `toLocaleString()`.
 3. Refreshed the displayed value every second with `setInterval`.
 
-**Screenshot:** Insert a screenshot showing the current date and time.
 
 ## Testing
 -  Empty registration form displays required-field errors.
@@ -65,7 +60,7 @@ The objective was to implement five interactive browser features using HTML, CSS
 -  Browser console contains no JavaScript errors.
 
 ## Deployment
-- **Website URL:** https://astounding-fox-3ff624.netlify.app (existing project URL; verify after redeploying the updated files).
+- **Website URL:** https://astounding-fox-3ff624.netlify.app .
 
 ## Conclusion
 The PixelForge website from Assignment 3 now includes all five Assignment 4 features: registration validation on Contact, the FAQ accordion on About, and the popup, background color button and live clock on Home. All the code is in one file, `js/script.js`, and uses basic JavaScript: functions, `if/else`, loops, event listeners, and DOM updates. The forms are demonstration-only and do not send or save data.

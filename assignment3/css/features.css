@@ -1,0 +1,112 @@
+/* Styles for the Assignment 4 features */
+
+/* ----- Home page: buttons, color and clock box ----- */
+.feature-box {
+  background-color: #1a1a2e;
+  color: #e6e6fa;
+  padding: 24px;
+  border-radius: 10px;
+  margin-top: 40px;
+}
+
+.feature-btn {
+  background-color: #6c2bd9;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+.feature-btn:hover {
+  background-color: #8449ee;
+}
+
+.clock {
+  font-size: 24px;
+  font-weight: bold;
+  color: #00e5ff;
+}
+
+/* ----- Messages (used on Home and Contact) ----- */
+.error {
+  color: #e63946;
+  font-size: 14px;
+}
+
+.success {
+  color: #2a9d5c;
+  font-weight: bold;
+}
+
+/* ----- Popup ----- */
+.popup-bg {
+  display: none;            /* hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-bg.show {
+  display: flex;            /* JS adds the "show" class */
+}
+
+.popup-box {
+  background-color: #1a1a2e;
+  color: #e6e6fa;
+  padding: 24px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+}
+
+.popup-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* ----- FAQ accordion (About page) ----- */
+.faq-item {
+  margin-bottom: 10px;
+}
+
+.faq-question {
+  width: 100%;
+  text-align: left;
+  padding: 12px;
+  background-color: #1a1a2e;
+  color: #e6e6fa;
+  border: 1px solid #2e2e4a;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.faq-question:hover {
+  background-color: #2e2e4a;
+}
+
+.faq-answer {
+  display: none;            /* hidden by default */
+  padding: 12px;
+  border: 1px solid #2e2e4a;
+  border-top: none;
+}
+
+.faq-answer.open {
+  display: block;           /* JS adds the "open" class */
+}

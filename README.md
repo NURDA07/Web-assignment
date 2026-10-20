@@ -52,20 +52,20 @@ The objective was to implement five interactive browser features using HTML, CSS
 **Screenshot:** Insert a screenshot showing the current date and time.
 
 ## Testing
-- [ ] Empty registration form displays required-field errors.
-- [ ] Invalid email is rejected.
-- [ ] Password shorter than 8 characters is rejected.
-- [ ] Different confirmation password is rejected.
-- [ ] Valid values show a success message.
-- [ ] FAQ answers open and close, with the initial state collapsed.
-- [ ] Popup opens, closes by the close button, backdrop, and Escape.
-- [ ] Background cycles through the predefined colors.
-- [ ] Date and time update every second.
-- [ ] Layout is checked on desktop and mobile widths.
-- [ ] Browser console contains no JavaScript errors.
+-  Empty registration form displays required-field errors.
+-  Invalid email is rejected.
+-  Password shorter than 8 characters is rejected.
+-  Different confirmation password is rejected.
+-  Valid values show a success message.
+-  FAQ answers open and close, with the initial state collapsed.
+-  Popup opens, closes by the close button, backdrop, and Escape.
+-  Background cycles through the predefined colors.
+-  Date and time update every second.
+-  Layout is checked on desktop and mobile widths.
+-  Browser console contains no JavaScript errors.
 
 ## Deployment
-- **Website URL:** https://singular-klepon-a00276.netlify.app/ (existing project URL; verify after redeploying the updated files).
+- **Website URL:** https://astounding-fox-3ff624.netlify.app (existing project URL; verify after redeploying the updated files).
 
 ## Conclusion
 The PixelForge website from Assignment 3 now includes all five Assignment 4 features: registration validation on Contact, the FAQ accordion on About, and the popup, background color button and live clock on Home. All the code is in one file, `js/script.js`, and uses basic JavaScript: functions, `if/else`, loops, event listeners, and DOM updates. The forms are demonstration-only and do not send or save data.

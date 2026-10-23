@@ -98,7 +98,8 @@ if (regForm) {
     formField("reg-name", "name-error", nameError, true),
     formField("reg-email", "email-error", emailError, true),
     formField("reg-password", "password-error", function (input) {
-      return input.value.trim() && input.value.length >= 8 ? "" : "Use a password with at least 8 characters.";
+      const characterCount = input.value.replace(/\s/g, "").length;
+      return characterCount >= 8 ? "" : "Use a password with at least 8 non-whitespace characters.";
     }),
     formField("reg-confirm", "confirm-error", function (input) {
       if (!input.value) return "Please confirm your password.";

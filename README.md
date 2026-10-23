@@ -12,7 +12,7 @@ The objective was to implement five interactive browser features using HTML, CSS
 **Implementation steps:**
 1. Added a registration form to the Contact page with name, email, password, and password-confirmation fields.
 2. Added a JavaScript `submit` event listener and called `preventDefault()` so the demo does not send form data.
-3. Checked required fields, browser email validity, a minimum password length of eight characters, and matching passwords.
+3. Checked required fields, browser email validity, at least eight non-whitespace password characters (ignoring spaces anywhere in the length check), and matching passwords.
 4. Displayed a field-specific error beside invalid inputs, linked errors with `aria-describedby`, and focused the first invalid field.
 5. Trimmed names and emails, rejected malformed email addresses, and cleared password fields after a valid demo submission.
 6. Validated the Contact form without navigation, including the phone number when Phone is selected.
@@ -53,7 +53,7 @@ The objective was to implement five interactive browser features using HTML, CSS
 ## Testing
 -  Empty registration form displays required-field errors.
 -  Invalid email is rejected.
--  Password shorter than 8 characters is rejected.
+-  Password with fewer than 8 non-whitespace characters is rejected, including when spaces appear at the start, middle, or end.
 -  Different confirmation password is rejected.
 -  Valid values show a success message.
 -  FAQ answers open and close, with the initial state collapsed.

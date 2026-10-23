@@ -13,7 +13,9 @@ The objective was to implement five interactive browser features using HTML, CSS
 1. Added a registration form to the Contact page with name, email, password, and password-confirmation fields.
 2. Added a JavaScript `submit` event listener and called `preventDefault()` so the demo does not send form data.
 3. Checked required fields, browser email validity, a minimum password length of eight characters, and matching passwords.
-4. Displayed a field-specific error beside invalid inputs and a general status message.
+4. Displayed a field-specific error beside invalid inputs, linked errors with `aria-describedby`, and focused the first invalid field.
+5. Trimmed names and emails, rejected malformed email addresses, and cleared password fields after a valid demo submission.
+6. Validated the Contact form without navigation, including the phone number when Phone is selected.
 
 
 ## Task 2 — FAQ accordion
@@ -29,14 +31,16 @@ The objective was to implement five interactive browser features using HTML, CSS
 1. Added a subscription dialog to the existing Home page, hidden by default.
 2. Added a button to open it and a close button to dismiss it.
 3. Added dismissal by clicking the backdrop or pressing Escape.
-4. Added email validation and a local confirmation message. The form does not send or store email addresses.
+4. Added required email validation and an explicit demo confirmation: no subscription is created and no address is sent or stored.
+5. Added dialog labels, keyboard focus management, focus restoration, and mobile scrolling.
 
 
 ## Task 4 — Background color
 **Implementation steps:**
-1. Defined four named background colors in a JavaScript array and integrated the control into the Home page.
-2. Added a click handler that advances the color index and wraps around at the end.
-3. Updated `document.body.style.backgroundColor` and displayed the selected color name.
+1. Shared the existing dark PixelForge palette across every page, including Bootstrap cards and form controls.
+2. Defined four dark background colors (Midnight, Deep purple, Navy, Forest) in a JavaScript array for the Home page.
+3. Added a click handler that advances the color index and wraps around at the end.
+4. Updated `document.body.style.backgroundColor` and displayed the selected color name.
 
 
 ## Task 5 — Current date and time
@@ -60,7 +64,9 @@ The objective was to implement five interactive browser features using HTML, CSS
 -  Browser console contains no JavaScript errors.
 
 ## Deployment
-- **Website URL:** https://astounding-fox-3ff624.netlify.app .
+- **Website URL:** https://nurda07.github.io/Web-assignment/
+- **Source folder:** `assignment3/`. GitHub Actions publishes this folder on changes to `main`.
+- The previous Netlify deployment is https://astounding-fox-3ff624.netlify.app; this repository contains no Netlify deployment configuration.
 
 ## Conclusion
 The PixelForge website from Assignment 3 now includes all five Assignment 4 features: registration validation on Contact, the FAQ accordion on About, and the popup, background color button and live clock on Home. All the code is in one file, `js/script.js`, and uses basic JavaScript: functions, `if/else`, loops, event listeners, and DOM updates. The forms are demonstration-only and do not send or save data.

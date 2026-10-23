@@ -1,0 +1,21 @@
+/* Shared PixelForge palette for every page, including Bootstrap layouts. */
+:root {
+  color-scheme: dark;
+  --color-primary: #6c2bd9;
+  --color-secondary: #00e5ff;
+  --color-accent: #ff3d81;
+  --color-bg: #0f0f1a;
+  --color-card-bg: #1a1a2e;
+  --color-text: #e6e6fa;
+  --color-text-light: #a5a5c9;
+  --color-border: #2e2e4a;
+  --font-heading: 'Orbitron', 'Poppins', Arial, sans-serif;
+  --font-body: 'Segoe UI', Tahoma, Verdana, sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}

@@ -1,0 +1,96 @@
+/* Keep Bootstrap's responsive layout and use the site's shared dark palette. */
+:root {
+  --bs-body-bg: var(--color-bg);
+  --bs-body-color: var(--color-text);
+  --bs-border-color: var(--color-border);
+  --bs-secondary-color: var(--color-text-light);
+  --bs-secondary-bg: var(--color-card-bg);
+  --bs-tertiary-bg: var(--color-bg);
+  --bs-heading-color: var(--color-secondary);
+  --bs-link-color: var(--color-secondary);
+  --bs-link-color-rgb: 0, 229, 255;
+  --bs-link-hover-color: var(--color-accent);
+  --bs-link-hover-color-rgb: 255, 61, 129;
+  --bs-dark-rgb: 20, 20, 43;
+}
+
+.card {
+  --bs-card-bg: var(--color-card-bg);
+  --bs-card-color: var(--color-text);
+  --bs-card-border-color: var(--color-border);
+}
+
+.card-text,
+.form-text {
+  color: var(--color-text-light);
+}
+
+.form-label {
+  color: var(--color-secondary);
+}
+
+legend.form-label {
+  font-size: 1rem;
+}
+
+.form-control,
+.form-select,
+.form-check-input {
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  border-color: var(--color-border);
+}
+
+.form-select {
+  --bs-form-select-bg-img: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23e6e6fa' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+}
+
+.form-control::placeholder {
+  color: var(--color-text-light);
+  opacity: 1;
+}
+
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 0.2rem rgba(0, 229, 255, 0.18);
+}
+
+.form-check-input:checked {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.form-control[aria-invalid="true"],
+.form-select[aria-invalid="true"] {
+  border-color: #ff8b9b;
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--color-primary);
+  --bs-btn-border-color: var(--color-primary);
+  --bs-btn-hover-bg: #8449ee;
+  --bs-btn-hover-border-color: #8449ee;
+  --bs-btn-active-bg: #5820b5;
+  --bs-btn-active-border-color: #5820b5;
+}
+
+.btn-outline-secondary,
+.btn-outline-dark {
+  --bs-btn-color: var(--color-text);
+  --bs-btn-border-color: var(--color-text-light);
+  --bs-btn-hover-color: var(--color-bg);
+  --bs-btn-hover-bg: var(--color-secondary);
+  --bs-btn-hover-border-color: var(--color-secondary);
+  --bs-btn-active-color: var(--color-bg);
+  --bs-btn-active-bg: var(--color-secondary);
+  --bs-btn-active-border-color: var(--color-secondary);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-secondary);
+  outline-offset: 3px;
+}

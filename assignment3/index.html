@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,9 +16,11 @@
       object-fit: cover;
     }
   </style>
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/bootstrap-theme.css">
   <link rel="stylesheet" href="css/features.css">
 </head>
-<body style="background-color: #f8f9fa;">
+<body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-sm-2 px-lg-5 py-3">
   <div class="container-fluid">
@@ -154,9 +156,9 @@
   <section class="feature-box">
     <h2>Interactive Features</h2>
     <p>Try the buttons below.</p>
-    <button type="button" id="open-popup" class="feature-btn">Subscribe to updates</button>
+    <button type="button" id="open-popup" class="feature-btn" aria-haspopup="dialog" aria-controls="newsletter-dialog" aria-expanded="false" disabled>Subscribe to updates</button>
     <button type="button" id="change-color" class="feature-btn">Change background color</button>
-    <p id="color-text">Background color: Light</p>
+    <p id="color-text" aria-live="polite">Background color: Midnight</p>
 
     <h3>Current date and time</h3>
     <p id="clock" class="clock">Loading...</p>
@@ -166,16 +168,17 @@
 
 
 <!-- Popup (hidden until the button is clicked) -->
-<div id="popup" class="popup-bg">
-  <div class="popup-box">
-    <button type="button" id="close-popup" class="popup-close">&times;</button>
-    <h2>Join the PixelForge newsletter</h2>
-    <p>Get updates about new game reviews and guides.</p>
-    <form id="popup-form" novalidate>
+<div id="popup" class="popup-bg" hidden>
+  <div id="newsletter-dialog" class="popup-box" role="dialog" aria-modal="true" aria-labelledby="newsletter-title" aria-describedby="newsletter-note" tabindex="-1">
+    <button type="button" id="close-popup" class="popup-close" aria-label="Close newsletter dialog">&times;</button>
+    <h2 id="newsletter-title">Join the PixelForge newsletter</h2>
+    <p id="newsletter-note">Check your email address for game reviews and guides. This is a demo: no subscription is created, and no emails are sent or saved.</p>
+    <form id="popup-form" method="post" aria-describedby="newsletter-note" novalidate>
       <label for="popup-email" class="form-label">Email address</label>
-      <input type="email" id="popup-email" class="form-control" placeholder="name@example.com">
-      <button type="submit" class="feature-btn mt-3">Subscribe</button>
-      <p id="popup-message"></p>
+      <input type="email" id="popup-email" name="email" class="form-control" autocomplete="email" maxlength="254" placeholder="name@example.com" aria-describedby="popup-email-error" required>
+      <span id="popup-email-error" class="error d-block"></span>
+      <button type="submit" class="feature-btn mt-3" disabled>Check email</button>
+      <p id="popup-message" role="status" aria-live="polite" aria-atomic="true"></p>
     </form>
   </div>
 </div>

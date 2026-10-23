@@ -1,72 +1,100 @@
-# Assignment #4: Introduction to JavaScript
+# PixelForge — Assignment 5
 
-## Team information
+Advanced JavaScript and DOM Manipulation. This assignment continues the PixelForge gaming website from Assignments 3 and 4, adding an interactive **Player Lab** and keyboard navigation while keeping the shared dark theme.
+
+## Team
+
 - **Team:** PixelForge
 - **Group:** SE-2501
 - **Members:** Marat Nurdaulet, Kadyr Tlektes, Suinalin Azamat
 
-## Objective
-The objective was to implement five interactive browser features using HTML, CSS, and vanilla JavaScript: form validation, an FAQ accordion, a popup subscription form, background color changes, and a live date/time display.
+## Open the project
 
-## Task 1 — Form validation
-**Implementation steps:**
-1. Added a registration form to the Contact page with name, email, password, and password-confirmation fields.
-2. Added a JavaScript `submit` event listener and called `preventDefault()` so the demo does not send form data.
-3. Checked required fields, browser email validity, at least eight non-whitespace password characters (ignoring spaces anywhere in the length check), and matching passwords.
-4. Displayed a field-specific error beside invalid inputs, linked errors with `aria-describedby`, and focused the first invalid field.
-5. Trimmed names and emails, rejected malformed email addresses, and cleared password fields after a valid demo submission.
-6. Validated the Contact form without navigation, including the phone number when Phone is selected.
+- **Deployed website:** https://nurda07.github.io/Web-assignment/
+- **Player Lab:** https://nurda07.github.io/Web-assignment/play.html
+- **Assignment report:** [reports/Assignment-5-Report.pdf](reports/Assignment-5-Report.pdf)
+- **Defense preparation:** [DEFENSE.md](DEFENSE.md)
 
+From the extracted project root, run:
 
-## Task 2 — FAQ accordion
-**Implementation steps:**
-1. Added FAQ questions to the existing About page as buttons.
-2. Used `nextElementSibling` to find the answer after each question button.
-3. Added a JavaScript click listener to show or hide panels and close a previously opened panel.
-4. Used a CSS class (`open`) to show and hide the answer.
+```sh
+python3 -m http.server 8000 --directory assignment3
+```
 
+Then open http://localhost:8000/ or http://localhost:8000/play.html. Stop the server with `Ctrl+C`. There is no build step or package installation. HTML, CSS, images, and JavaScript are in `assignment3/`.
 
-## Task 3 — Popup subscription form
-**Implementation steps:**
-1. Added a subscription dialog to the existing Home page, hidden by default.
-2. Added a button to open it and a close button to dismiss it.
-3. Added dismissal by clicking the backdrop or pressing Escape.
-4. Added required email validation and an explicit demo confirmation: no subscription is created and no address is sent or stored.
-5. Added dialog labels, keyboard focus management, focus restoration, and mobile scrolling.
+## What to demonstrate
 
+1. Open **Player Lab** from the site navigation.
+2. Choose different game categories. The cards and result count update without a page reload.
+3. Select a gallery thumbnail. The large image, alternative text, and caption change.
+4. Select a star rating. Selected stars and the feedback message update immediately.
+5. Press **Play victory sound**. The control is temporarily disabled while the chime plays, preventing overlapping playback.
+6. Press **Launch quest**. The badge animates and the session victory counter increases. Reduced-motion settings skip the animation.
+7. Complete the player profile one step at a time. Go Back to confirm values are preserved, check the review step, and submit the demo. Try Reset to clear the form and return to its first step.
+8. Focus a navigation link with `Tab`, then use arrow keys to move between links. `Home` and `End` move to the first and last links; `Enter` opens the focused link.
+9. On Contact, try a short password with spaces. Password length counts only non-whitespace characters: `player1 ` contains seven counted characters and is rejected. Matching confirmation still compares the complete entered passwords.
 
-## Task 4 — Background color
-**Implementation steps:**
-1. Shared the existing dark PixelForge palette across every page, including Bootstrap cards and form controls.
-2. Defined four dark background colors (Midnight, Deep purple, Navy, Forest) in a JavaScript array for the Home page.
-3. Added a click handler that advances the color index and wraps around at the end.
-4. Updated `document.body.style.backgroundColor` and displayed the selected color name.
+## Assignment 5 requirements
 
+The implementation choices below cover the required topics; the PDF report includes code and webpage screenshots with step-by-step explanations.
 
-## Task 5 — Current date and time
-**Implementation steps:**
-1. Created a `Date` object to obtain the current local time and displayed it on the Home page.
-2. Formatted it with `toLocaleString()`.
-3. Refreshed the displayed value every second with `setInterval`.
+| Requirement | Implementation |
+| --- | --- |
+| Select and update DOM elements | `assignment3/js/play.js` uses `getElementById` and `querySelectorAll`; `renderGames(category)` creates cards and updates result text. |
+| Dynamic styling | `selectRating(value)` in `assignment3/js/play.js` directly updates `star.style.color` and changes the `is-filled` class. The existing Home background control in `assignment3/js/script.js` updates `document.body.style.backgroundColor`. |
+| Manipulate attributes | The thumbnail click handler in `assignment3/js/play.js` updates `featuredImage.src`, `featuredImage.alt`, and button `aria-pressed` states. |
+| Button event listeners | `assignment3/js/play.js` handles category, thumbnail, rating, sound, and quest clicks. `assignment3/js/player-profile.js` handles Next, Back, and Reset. |
+| Keyboard event handling | `assignment3/js/navigation.js` listens for `keydown` in each `nav`, chooses the next link with `switch`, and moves focus. |
+| Callback-based interaction | In `assignment3/js/player-profile.js`, `changeStep(nextIndex, callback)` calls `onStepChange`; `profileState` preserves the user's input. |
+| `switch` statement | `renderGames(category)` in `assignment3/js/play.js` selects category labels with `switch`; the same file and `navigation.js` use `switch` for keyboard handling. |
+| Objects and methods | Each game in `assignment3/js/play.js` has a `getRating()` method. `profileState.reset()` and `profileState.summary()` in `assignment3/js/player-profile.js` manage player data and review output. |
+| Arrays and loops | `games` and `scenes` in `assignment3/js/play.js` store collections. A `for...of` loop appends generated cards; the profile script maps step and genre arrays into controls. |
+| Higher-order functions | `changeStep` accepts a function as an argument. In `assignment3/js/player-profile.js`, `map`, `filter`, and `forEach` also receive callbacks to build controls and collect checked genres. |
+| Sound effects | The `play-sound` click handler in `assignment3/js/play.js` creates a three-note Web Audio chime. The `soundPlaying` guard and disabled button prevent overlap; ended nodes are disconnected. |
+| Animations | `renderGames`, gallery selection, and the `start-quest` click handler in `assignment3/js/play.js` call `Element.animate()`. They check `prefers-reduced-motion` first. |
+| Separation of concerns | HTML defines structure; external CSS defines presentation; external JavaScript defines behavior. Home styles are in `assignment3/css/home.css`; the earlier layout uses `assignment3/css/media-queries.css`. |
+| Theme and user experience | The Player Lab uses PixelForge's gaming theme, responsive layout, keyboard controls, and form feedback. |
+| Deployment | GitHub Actions publishes `assignment3/` to GitHub Pages from `main`; see `.github/workflows/pages.yml`. |
 
+## Project structure
 
-## Testing
--  Empty registration form displays required-field errors.
--  Invalid email is rejected.
--  Password with fewer than 8 non-whitespace characters is rejected, including when spaces appear at the start, middle, or end.
--  Different confirmation password is rejected.
--  Valid values show a success message.
--  FAQ answers open and close, with the initial state collapsed.
--  Popup opens, closes by the close button, backdrop, and Escape.
--  Background cycles through the predefined colors.
--  Date and time update every second.
--  Layout is checked on desktop and mobile widths.
--  Browser console contains no JavaScript errors.
+```text
+assignment3/             Deployable website
+  index.html            Home: newsletter demo, background control, live clock
+  play.html             Assignment 5 Player Lab
+  contact.html          Contact and registration demos
+  about.html            About page and FAQ
+  games.html            Game content
+  guides.html           Guides
+  team.html             Team information
+  part1.html            Earlier project layout
+  css/                  External stylesheets, including play.css and player-profile.css
+  js/play.js            Catalog, gallery, rating, sound, and quest interactions
+  js/player-profile.js  Callback-driven profile form
+  js/navigation.js      Shared keyboard navigation
+  js/script.js          Earlier form, FAQ, newsletter, background, and clock features
+  images/               Local image assets
+reports/                Assignment PDF report
+DEFENSE.md              Feature explanations and defense questions
+.github/workflows/      GitHub Pages deployment
+```
 
-## Deployment
-- **Website URL:** https://nurda07.github.io/Web-assignment/
-- **Source folder:** `assignment3/`. GitHub Actions publishes this folder on changes to `main`.
-- The previous Netlify deployment is https://astounding-fox-3ff624.netlify.app; this repository contains no Netlify deployment configuration.
+## Demo data and validation
 
-## Conclusion
-The PixelForge website from Assignment 3 now includes all five Assignment 4 features: registration validation on Contact, the FAQ accordion on About, and the popup, background color button and live clock on Home. All the code is in one file, `js/script.js`, and uses basic JavaScript: functions, `if/else`, loops, event listeners, and DOM updates. The forms are demonstration-only and do not send or save data.
+This is a static educational project. Registration, contact, newsletter, and player profile forms demonstrate client-side validation and DOM updates. They do not create accounts, send email, post messages, or save submitted personal data. Profile values remain in the current page while moving between steps and disappear on reset or reload.
+
+Registration requires at least eight non-whitespace password characters. Spaces, tabs, and other whitespace do not increase the length count. Email inputs are checked before a demo succeeds. No real password or personal information is needed to demonstrate the assignment.
+
+## Verification
+
+Browser checks passed for all four catalog categories, gallery attributes, rating clicks and arrow keys, navigation ArrowRight and End, profile validation/Back/review/reset, and the sound/quest busy and completion states. Player Lab had no JavaScript console errors, and no horizontal overflow at the observed 1280px and 636px viewport widths.
+
+- `node --check` passed for all four JavaScript files in `assignment3/js/`.
+- All 161 local `href`/`src` references and 17 fragment targets across the eight HTML pages resolved, including exact filename casing for GitHub Pages.
+- All eight HTML pages were checked for duplicate IDs; none were found.
+- All eight HTML pages were checked for inline styles, event-handler attributes, style blocks, and inline scripts; none were found.
+
+## Submission and defense
+
+Submit the project ZIP and `reports/Assignment-5-Report.pdf` as required by the course. The report is also included in the project folder. Every team member must submit and defend the assignment; confirm the deadline in LMS. Review [DEFENSE.md](DEFENSE.md), run the project, and be ready to explain the source and modify a feature during the lesson.

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore PixelForge's interactive Player Lab: build a demo profile, browse games, rate the hub and try a tiny quest.">
+  <title>PixelForge — Player Lab</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/play.css">
+  <link rel="stylesheet" href="css/player-profile.css">
+  <script src="js/navigation.js" defer></script>
+  <script src="js/play.js" defer></script>
+  <script src="js/player-profile.js" defer></script>
+</head>
+<body class="page-layout player-lab">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header id="main-header">
+    <a class="brand" href="index.html" aria-label="PixelForge home"><span class="brand-icon" aria-hidden="true">PF</span>Pixel<span>Forge</span></a>
+    <nav aria-label="Main navigation">
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="games.html">Top Games</a></li>
+        <li><a href="guides.html">Guides</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="play.html" class="active" aria-current="page">Player Lab</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <aside class="sidebar" aria-label="Explore PixelForge">
+    <p class="eyebrow">PLAYER HUB / SE-2501</p>
+    <h2>Make your next move</h2>
+    <p>Your space to explore, experiment and play.</p>
+    <nav aria-label="Player Lab sections" class="side-links">
+      <a href="#player-profile">01 / Your player card <span aria-hidden="true">↘</span></a>
+      <a href="#discover-games">02 / Find a game <span aria-hidden="true">↘</span></a>
+      <a href="#lab-gallery">03 / Change the view <span aria-hidden="true">↘</span></a>
+      <a href="#lab-rating">04 / Leave a rating <span aria-hidden="true">↘</span></a>
+    </nav>
+    <div class="sidebar-note"><span class="tag">Assignment 5</span><p>A small playground powered by JavaScript and the DOM.</p><a href="contact.html">Meet the community →</a></div>
+  </aside>
+
+  <main id="main-content" class="container">
+    <section class="lab-hero" aria-labelledby="lab-title">
+      <div>
+        <p class="eyebrow">PIXELFORGE / INTERACTIVE PLAYGROUND</p>
+        <h1 id="lab-title">Player Lab<span aria-hidden="true">.</span></h1>
+        <p id="lab-welcome">Choose your games. Make it yours.</p>
+        <a href="#player-profile" class="btn">Build your player card <span aria-hidden="true">↘</span></a>
+      </div>
+      <div class="hero-emblem" aria-hidden="true"><span>PF</span><small>PRESS PLAY</small></div>
+    </section>
+
+    <noscript><p class="lab-panel">Please enable JavaScript to use the profile builder, game filters, gallery, rating and sound controls.</p></noscript>
+
+    <div class="lab-grid">
+      <section id="player-profile" class="lab-panel" aria-labelledby="profile-heading"></section>
+
+      <section id="discover-games" class="lab-panel catalog-panel" aria-labelledby="catalog-heading">
+        <div class="lab-section-heading">
+          <div><p class="eyebrow">01 / CHOOSE YOUR WORLD</p><h2 id="catalog-heading">Find your next game</h2></div>
+          <span class="lab-badge">3 crew favourites</span>
+        </div>
+        <p>Filter our collection by the way you like to play.</p>
+        <div id="game-filters" class="filter-buttons" role="group" aria-label="Filter games by category">
+          <button type="button" class="filter-button is-selected" data-category="all" aria-pressed="true">All games</button>
+          <button type="button" class="filter-button" data-category="fps" aria-pressed="false">Tactical FPS</button>
+          <button type="button" class="filter-button" data-category="sandbox" aria-pressed="false">Sandbox</button>
+          <button type="button" class="filter-button" data-category="arena" aria-pressed="false">Arena</button>
+        </div>
+        <p id="catalog-status" class="lab-status" role="status" aria-live="polite"></p>
+        <div id="game-catalog" class="game-catalog"></div>
+      </section>
+
+      <section id="lab-gallery" class="lab-panel gallery-panel" aria-labelledby="lab-gallery-heading">
+        <p class="eyebrow">02 / A DIFFERENT PERSPECTIVE</p>
+        <h2 id="lab-gallery-heading">Pick your world</h2>
+        <p>Select a thumbnail to change the featured scene.</p>
+        <figure class="featured-scene">
+          <img id="featured-image" src="images/minecraft.png" alt="Minecraft landscape with block-built terrain and scenery" width="900" height="506">
+          <figcaption><strong id="featured-title">Minecraft</strong><span id="featured-caption">One block. Endless possibilities.</span></figcaption>
+        </figure>
+        <div id="gallery-thumbnails" class="gallery-thumbnails" role="group" aria-label="Choose a featured game image">
+          <button type="button" class="thumbnail-button is-selected" data-image="0" aria-label="Show Minecraft" aria-pressed="true"><img src="images/minecraft.png" alt="" width="160" height="90"><span>Minecraft</span></button>
+          <button type="button" class="thumbnail-button" data-image="1" aria-label="Show Counter-Strike 2" aria-pressed="false"><img src="images/counterstrike2.png" alt="" width="160" height="90"><span>Counter-Strike 2</span></button>
+          <button type="button" class="thumbnail-button" data-image="2" aria-label="Show Brawl Stars" aria-pressed="false"><img src="images/brawlstars.png" alt="" width="160" height="90"><span>Brawl Stars</span></button>
+        </div>
+        <p id="gallery-status" class="sr-only" role="status" aria-live="polite"></p>
+      </section>
+
+      <div class="lab-side-stack">
+        <section id="lab-rating" class="lab-panel" aria-labelledby="rating-heading">
+          <p class="eyebrow">03 / YOUR CALL</p>
+          <h2 id="rating-heading">Rate the experience</h2>
+          <p>How is the Player Lab treating you?</p>
+          <div id="rating-stars" class="rating-stars" role="radiogroup" aria-label="Rate the Player Lab out of five stars" aria-describedby="rating-help">
+            <button type="button" role="radio" aria-checked="false" aria-label="1 star" data-rating="1" tabindex="0"><span aria-hidden="true">★</span></button>
+            <button type="button" role="radio" aria-checked="false" aria-label="2 stars" data-rating="2" tabindex="-1"><span aria-hidden="true">★</span></button>
+            <button type="button" role="radio" aria-checked="false" aria-label="3 stars" data-rating="3" tabindex="-1"><span aria-hidden="true">★</span></button>
+            <button type="button" role="radio" aria-checked="false" aria-label="4 stars" data-rating="4" tabindex="-1"><span aria-hidden="true">★</span></button>
+            <button type="button" role="radio" aria-checked="false" aria-label="5 stars" data-rating="5" tabindex="-1"><span aria-hidden="true">★</span></button>
+          </div>
+          <p id="rating-help" class="lab-hint">Choose a star. You can also use the arrow keys.</p>
+          <p id="rating-status" class="lab-status" role="status" aria-live="polite">No rating selected yet.</p>
+        </section>
+
+        <section class="lab-panel quest-panel" aria-labelledby="quest-heading">
+          <p class="eyebrow">04 / SMALL WINS</p>
+          <div id="quest-card" class="quest-card"><span class="quest-icon" aria-hidden="true">✦</span><h2 id="quest-heading">A tiny victory</h2><p id="quest-status" role="status" aria-live="polite">Launch a quest and watch your badge come alive.</p></div>
+          <div class="quest-actions"><button id="start-quest" class="btn" type="button">Launch quest</button><button id="play-sound" class="lab-button" type="button">Play victory sound <span aria-hidden="true">♫</span></button></div>
+          <p id="sound-status" class="lab-hint" role="status" aria-live="polite">Sound plays only when you press the button.</p>
+        </section>
+      </div>
+    </div>
+    <p class="lab-footnote">Made for practice. Player cards and ratings are temporary and stay in this page session.</p>
+  </main>
+
+  <footer id="site-footer"><p>Marat Nurdaulet | Kadyr Tlektes | Suinalin Azamat</p><p>PixelForge / Player Lab</p></footer>
+</body>
+</html>

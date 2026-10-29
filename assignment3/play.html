@@ -11,6 +11,9 @@
   <script src="js/navigation.js" defer></script>
   <script src="js/play.js" defer></script>
   <script src="js/player-profile.js" defer></script>
+  <link rel="stylesheet" href="css/extras.css">
+  <script src="js/theme.js" defer></script>
+  <script src="js/extras.js" defer></script>
 </head>
 <body class="page-layout player-lab">
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -115,7 +118,19 @@
         </section>
       </div>
     </div>
-    <p class="lab-footnote">Made for practice. Player cards and ratings are temporary and stay in this page session.</p>
+    <section id="extra-lab" class="lab-panel extras-panel" aria-labelledby="extras-title">
+<h2 id="extras-title" data-i18n="title">More ways to play</h2>
+<label for="language" data-i18n="language">Lab language</label>
+<select id="language"><option value="en">English</option><option value="ru">Русский</option><option value="kk">Қазақша</option></select>
+<p data-i18n="languageNote">This selector translates this extra lab. The original project pages stay in English.</p>
+<div class="extras-grid">
+<article><h3 data-i18n="story">Behind PixelForge</h3><p data-i18n="intro">We explore games together.</p><button id="read-more" type="button" class="lab-button" aria-expanded="false" aria-controls="more-story" data-i18n="read">Read more</button><p id="more-story" hidden data-i18n="detail">Our crew shares strategies, builds worlds and helps new players find their next adventure.</p></article>
+<article><h3 data-i18n="welcome">Your welcome</h3><form id="greeting-form"><label for="greeting-name" data-i18n="name">Player name</label><input id="greeting-name" required maxlength="40"><button class="lab-button" data-i18n="greet">Greet me</button></form><p id="personal-greeting" role="status"></p><button id="show-time" class="lab-button" type="button" data-i18n="clock">Show current time</button><p id="time-result" role="status"></p></article>
+<article><h3 data-i18n="facts">Game facts</h3><button id="fetch-fact" class="lab-button" type="button" data-i18n="fact">Fetch a random fact</button><p id="fact-result" role="status"></p></article>
+<article><h3 data-i18n="news">Crew news</h3><div id="news-filters" class="filter-buttons"><button class="lab-button" type="button" data-feed="all" aria-pressed="true">All</button><button class="lab-button" type="button" data-feed="games" aria-pressed="false">Games</button><button class="lab-button" type="button" data-feed="tech" aria-pressed="false">Technology</button></div><div id="news-feed"></div><button id="load-posts" class="lab-button" type="button" data-i18n="load">Load more posts</button><p id="news-status" role="status"></p></article>
+<article class="extras-contact"><h3 data-i18n="contact">Async contact demo</h3><p data-i18n="demo">Uses JSONPlaceholder, a public test API. Use invented details. This sends a demo POST; it does not deliver email or save a message.</p><form id="async-contact"><label for="async-name" data-i18n="name">Player name</label><input id="async-name" name="name" required maxlength="40"><label for="async-message" data-i18n="message">Message</label><textarea id="async-message" name="message" required minlength="5" maxlength="500"></textarea><button class="lab-button" data-i18n="send">Send demo</button><button class="lab-button" type="button" id="reset-contact" data-i18n="reset">Reset form</button></form><p id="contact-feedback" role="status"></p></article>
+</div></section>
+<p class="lab-footnote">Made for practice. Player cards and ratings are temporary and stay in this page session.</p>
   </main>
 
   <footer id="site-footer"><p>Marat Nurdaulet | Kadyr Tlektes | Suinalin Azamat</p><p>PixelForge / Player Lab</p></footer>

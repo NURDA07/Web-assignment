@@ -70,3 +70,8 @@ Use examples you can demonstrate: validating only the active form step, preservi
 ## Before the lesson
 
 Read the HTML, CSS, and JavaScript for each feature. Practice changing a category label, adding a game object, adjusting the number of required characters, and explaining a callback. Check the deployed URL and open the report. Confirm the LMS deadline and each member's submission.
+
+
+## Extended submission update
+
+Demonstrate the bottom-right theme button and extra lab on play.html. Explain localStorage, checked fetch responses, callback-based demo POST, switch-based news/language/time greeting and safe textContent rendering. The extra form sends test data to JSONPlaceholder; it does not deliver email. The extended package was published on 29 October 2026: https://nurda07.github.io/Web-assignment/play.html. See README.md for the successful deployment run.

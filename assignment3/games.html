@@ -10,8 +10,12 @@
   <script src="js/navigation.js" defer></script>
   <link rel="stylesheet" href="css/extras.css">
   <script src="js/theme.js" defer></script>
+  <link rel="stylesheet" href="css/jquery.css">
+  <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+  <script src="script.js"></script>
 </head>
 <body class="page-layout">
+  <div id="scroll-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
   <a class="skip-link" href="#main-content">Skip to content</a>
 
   <header id="main-header">
@@ -55,6 +59,12 @@
       <li><span class="tag">Sandbox</span> Limitless creativity, building, and open world survival</li>
     </ul>
 
+    <section class="jq-search" aria-label="Search games">
+      <label for="game-search">Search games, genres or platforms</label>
+      <input id="game-search" type="search" placeholder="Try Minecraft or FPS" autocomplete="off" aria-controls="search-suggestions" aria-expanded="false">
+      <ul id="search-suggestions" aria-label="Search suggestions" hidden></ul>
+      <p id="search-status" aria-live="polite">3 games found</p>
+    </section>
     <h2>This Month's Rankings</h2>
     <div class="table-scroll" role="region" aria-label="Game rankings" tabindex="0">
     <table>
@@ -66,7 +76,7 @@
           <th>Rating</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="game-results">
         <tr>
           <td>Brawl Stars</td>
           <td>MOBA / Hero Shooter</td>
@@ -89,21 +99,41 @@
     </table>
     </div>
 
+    <section class="jq-stats" aria-label="Community statistics">
+      <p><strong class="number-counter" data-count="1200">0</strong> players</p>
+      <p><strong class="number-counter" data-count="36">0</strong> guides</p>
+      <p><strong class="number-counter" data-count="3">0</strong> featured games</p>
+    </section>
+    <section class="jq-panel" aria-labelledby="share-title">
+      <h2 id="share-title">Share PixelForge</h2>
+      <p><code id="share-text">https://nurda07.github.io/Web-assignment/games.html</code></p>
+      <button id="copy-link" type="button" aria-describedby="copy-tooltip"><span class="copy-icon" aria-hidden="true">⧉</span> Copy</button>
+      <span id="copy-tooltip" role="status" hidden>Copied to clipboard!</span>
+    </section>
+    <section class="jq-panel" aria-labelledby="suggest-title">
+      <h2 id="suggest-title">Suggest a game</h2>
+      <form id="game-suggestion-form">
+        <label for="suggested-game">Game name</label>
+        <input id="suggested-game" name="game" required maxlength="100">
+        <button type="submit">Submit</button>
+      </form>
+    </section>
     <section id="gallery" aria-labelledby="gallery-title"><p class="eyebrow">THE WORLDS / THE PLAYERS</p><h2 id="gallery-title">PixelForge Gallery</h2><p>Nine snapshots of the games and people behind our hub. Hover or focus a tile to read its story.</p><div class="image-gallery">
-      <figure class="gallery-item" tabindex="0"><img src="images/brawlstars.png" alt="Brawl Stars characters" loading="lazy"><figcaption><strong>Brawl Stars</strong><span>Fast matches. Big teamwork.</span></figcaption></figure>
-      <figure class="gallery-item" tabindex="0"><img src="images/counterstrike2.png" alt="Counter-Strike 2 artwork" loading="lazy"><figcaption><strong>Counter-Strike 2</strong><span>Every round is a fresh strategy.</span></figcaption></figure>
-      <figure class="gallery-item" tabindex="0"><img src="images/minecraft.png" alt="Minecraft landscape" loading="lazy"><figcaption><strong>Minecraft</strong><span>Build a world of your own.</span></figcaption></figure>
-      <figure class="gallery-item" tabindex="0"><img src="images/topratedgameswallpaper.png" alt="Collage of video games" loading="lazy"><figcaption><strong>Our game collection</strong><span>New worlds to explore.</span></figcaption></figure>
-      <figure class="gallery-item" tabindex="0"><img src="images/welcome.png" alt="PixelForge welcome artwork" loading="lazy"><figcaption><strong>Welcome to PixelForge</strong><span>Your next adventure starts here.</span></figcaption></figure>
-      <figure class="gallery-item" tabindex="0"><img src="images/pixelforge.png" alt="PixelForge gaming artwork" loading="lazy"><figcaption><strong>Our creative corner</strong><span>Where games meet web design.</span></figcaption></figure>
-      <figure class="gallery-item" tabindex="0"><img src="images/nurda.png" alt="Marat Nurdaulet" loading="lazy"><figcaption><strong>Marat Nurdaulet</strong><span>Home and About creator.</span></figcaption></figure>
-      <figure class="gallery-item" tabindex="0"><img src="images/tlektes.png" alt="Kadyr Tlektes" loading="lazy"><figcaption><strong>Kadyr Tlektes</strong><span>Top Games and Guides creator.</span></figcaption></figure>
-      <figure class="gallery-item" tabindex="0"><img src="images/Azamat.png" alt="Suinalin Azamat" loading="lazy"><figcaption><strong>Suinalin Azamat</strong><span>Team and Contact creator.</span></figcaption></figure>
+      <figure class="gallery-item" tabindex="0"><img data-src="images/brawlstars.png" alt="Brawl Stars characters" width="600" height="400"><figcaption><strong>Brawl Stars</strong><span>Fast matches. Big teamwork.</span></figcaption></figure>
+      <figure class="gallery-item" tabindex="0"><img data-src="images/counterstrike2.png" alt="Counter-Strike 2 artwork" width="600" height="400"><figcaption><strong>Counter-Strike 2</strong><span>Every round is a fresh strategy.</span></figcaption></figure>
+      <figure class="gallery-item" tabindex="0"><img data-src="images/minecraft.png" alt="Minecraft landscape" width="600" height="400"><figcaption><strong>Minecraft</strong><span>Build a world of your own.</span></figcaption></figure>
+      <figure class="gallery-item" tabindex="0"><img data-src="images/topratedgameswallpaper.png" alt="Collage of video games" width="600" height="400"><figcaption><strong>Our game collection</strong><span>New worlds to explore.</span></figcaption></figure>
+      <figure class="gallery-item" tabindex="0"><img data-src="images/welcome.png" alt="PixelForge welcome artwork" width="600" height="400"><figcaption><strong>Welcome to PixelForge</strong><span>Your next adventure starts here.</span></figcaption></figure>
+      <figure class="gallery-item" tabindex="0"><img data-src="images/pixelforge.png" alt="PixelForge gaming artwork" width="600" height="400"><figcaption><strong>Our creative corner</strong><span>Where games meet web design.</span></figcaption></figure>
+      <figure class="gallery-item" tabindex="0"><img data-src="images/nurda.png" alt="Marat Nurdaulet" width="600" height="400"><figcaption><strong>Marat Nurdaulet</strong><span>Home and About creator.</span></figcaption></figure>
+      <figure class="gallery-item" tabindex="0"><img data-src="images/tlektes.png" alt="Kadyr Tlektes" width="600" height="400"><figcaption><strong>Kadyr Tlektes</strong><span>Top Games and Guides creator.</span></figcaption></figure>
+      <figure class="gallery-item" tabindex="0"><img data-src="images/Azamat.png" alt="Suinalin Azamat" width="600" height="400"><figcaption><strong>Suinalin Azamat</strong><span>Team and Contact creator.</span></figcaption></figure>
     </div></section>
   </main>
 
 <footer id="site-footer">
   <p>Marat Nurdaulet | Kadyr Tlektes | Suinalin Azamat</p>
 </footer>
+  <div id="notification" role="status" aria-live="polite" hidden></div>
 </body>
 </html>

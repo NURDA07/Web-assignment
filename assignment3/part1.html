@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Part 1 - Media Queries</title>
+<title>PixelForge — Media Queries</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/media-queries.css">
   <script src="js/navigation.js" defer></script>
@@ -11,24 +11,40 @@
   <script src="js/theme.js" defer></script>
 </head>
 <body>
-<nav aria-label="Main navigation"><ul class="nav-menu"><li><a href="index.html">Home</a></li><li><a href="play.html">Player Lab</a></li></ul></nav>
-<h1>Responsive Typography</h1>
-<p>This paragraph changes font size based on the screen size.</p>
+<header id="main-header">
+    <a class="brand" href="index.html" aria-label="PixelForge home"><span class="brand-icon" aria-hidden="true">PF</span>Pixel<span>Forge</span></a>
+    <nav aria-label="Main navigation">
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="games.html">Top Games</a></li>
+        <li><a href="guides.html">Guides</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="play.html">Player Lab</a></li>
+        <li><a href="part1.html" class="active" aria-current="page">Media Queries</a></li>
+      </ul>
+    </nav>
+  </header>
+<main class="responsive-demo">
+<h1>Media Queries</h1>
+<p>Resize the browser to see how the text and card layout adapt to the viewport.</p>
 
 <div class="card-container">
     <div class="card">
-        <h2>Card 1</h2>
-        <p>Description for card 1.</p>
+        <h2>Mobile</h2>
+        <p>Below 768 px, cards stack in one column and body text is 14 px.</p>
     </div>
     <div class="card">
-        <h2>Card 2</h2>
-        <p>Description for card 2.</p>
+        <h2>Tablet</h2>
+        <p>From 768 px, cards use two columns and body text grows to 18 px.</p>
     </div>
     <div class="card">
-        <h2>Card 3</h2>
-        <p>Description for card 3.</p>
+        <h2>Desktop</h2>
+        <p>From 1024 px, all three cards fit in a row and body text grows to 22 px.</p>
     </div>
 </div>
+</main>
 <footer>
     <p>Marat Nurdaulet | Kadyr Tlektes | Suinalin Azamat</p>
 </footer>

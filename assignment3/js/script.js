@@ -289,3 +289,18 @@ if (clock) {
   showTime();                  // show right away
   setInterval(showTime, 1000); // then update every second
 }
+
+const shareSiteButton = document.getElementById("share-site");
+
+if (shareSiteButton) {
+  const shareStatus = document.getElementById("share-status");
+  shareSiteButton.addEventListener("click", async function () {
+    const url = new URL("index.html", window.location.href).href;
+    try {
+      await navigator.clipboard.writeText(url);
+      shareStatus.textContent = "Link copied.";
+    } catch {
+      shareStatus.textContent = "Copy this link: " + url;
+    }
+  });
+}

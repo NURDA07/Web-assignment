@@ -23,19 +23,14 @@
     </button>
     <div class="collapse navbar-collapse" id="mainNav">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" href="index.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="about.html">About us</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contact.html">Contact</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="part1.html">Media Queries</a>
-        </li>
-        <li class="nav-item"><a class="nav-link" href="play.html">Player Lab</a></li>
+        <li class="nav-item"><a href="index.html" class="nav-link active" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="games.html" class="nav-link">Top Games</a></li>
+        <li class="nav-item"><a href="guides.html" class="nav-link">Guides</a></li>
+        <li class="nav-item"><a href="team.html" class="nav-link">Team</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        <li class="nav-item"><a href="play.html" class="nav-link">Player Lab</a></li>
+        <li class="nav-item"><a href="part1.html" class="nav-link">Media Queries</a></li>
       </ul>
     </div>
   </div>
@@ -103,8 +98,9 @@
       <div class="btn-group mt-3" role="group" aria-label="Action buttons">
         <a href="contact.html" class="btn btn-primary btn-lg">Join Us</a>
         <a href="about.html" class="btn btn-outline-secondary btn-lg">Learn More</a>
-        <button type="button" class="btn btn-outline-dark btn-lg">Share</button>
+        <button type="button" id="share-site" class="btn btn-outline-dark btn-lg">Share</button>
       </div>
+      <p id="share-status" class="small mb-0" role="status"></p>
     </div>
     <div class="col-12 col-lg-6 p-4 text-center">
       <img src="images/pixelforge.png" class="img-fluid rounded shadow" alt="Welcome Image">
@@ -130,7 +126,7 @@
           <div class="card-body">
             <h5 class="card-title">Clear Guides</h5>
             <p class="card-text">Walkthroughs written so a first-time player can easily follow along and succeed.</p>
-            <a href="#" class="btn btn-secondary btn-sm">Read Guides</a>
+            <a href="guides.html" class="btn btn-secondary btn-sm">Read Guides</a>
           </div>
         </div>
       </div>

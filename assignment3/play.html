@@ -1,139 +1,187 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explore PixelForge's interactive Player Lab: build a demo profile, browse games, rate the hub and try a tiny quest.">
-  <title>PixelForge — Player Lab</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/play.css">
-  <link rel="stylesheet" href="css/player-profile.css">
-  <script src="js/navigation.js" defer></script>
-  <script src="js/play.js" defer></script>
+  <title data-i18n="title.lab">PixelForge — Player Lab</title>
+  <meta name="description" content="Build a player card, rate the hub, launch a quest and try small interactive tools.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 26'%3E%3Crect width='11' height='11' rx='2' fill='%23ff1f5a'/%3E%3Crect x='12' y='8' width='11' height='11' rx='2' fill='%23ff5a1f'/%3E%3Crect y='13' width='13' height='13' rx='2' fill='%2300b4ff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+  <!-- Shared: translations, theme, language, keyboard shortcuts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/core.js"></script>
+  <!-- Assignment 6: jQuery from the CDN + external script.js -->
+  <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+  <script src="script.js"></script>
   <script src="js/player-profile.js" defer></script>
-  <link rel="stylesheet" href="css/extras.css">
-  <script src="js/theme.js" defer></script>
-  <script src="js/extras.js" defer></script>
+  <script src="js/lab.js" defer></script>
 </head>
-<body class="page-layout player-lab">
-  <a class="skip-link" href="#main-content">Skip to content</a>
+<body>
+  <div id="scroll-progress" role="progressbar" aria-label="Reading progress" data-i18n-aria="common.progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+  <a class="skip-link" href="#main" data-i18n="common.skip">Skip to content</a>
 
-  <header id="main-header">
-    <a class="brand" href="index.html" aria-label="PixelForge home"><span class="brand-icon" aria-hidden="true">PF</span>Pixel<span>Forge</span></a>
-    <nav aria-label="Main navigation">
-      <ul class="nav-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="games.html">Top Games</a></li>
-        <li><a href="guides.html">Guides</a></li>
-        <li><a href="team.html">Team</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="play.html" class="active" aria-current="page">Player Lab</a></li>
-        <li><a href="part1.html">Media Queries</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <aside class="sidebar" aria-label="Explore PixelForge">
-    <p class="eyebrow">PLAYER HUB / SE-2501</p>
-    <h2>Make your next move</h2>
-    <p>Your space to explore, experiment and play.</p>
-    <nav aria-label="Player Lab sections" class="side-links">
-      <a href="#player-profile">01 / Your player card <span aria-hidden="true">↘</span></a>
-      <a href="#discover-games">02 / Find a game <span aria-hidden="true">↘</span></a>
-      <a href="#lab-gallery">03 / Change the view <span aria-hidden="true">↘</span></a>
-      <a href="#lab-rating">04 / Leave a rating <span aria-hidden="true">↘</span></a>
-    </nav>
-    <div class="sidebar-note"><span class="tag">Assignment 5</span><p>A small playground powered by JavaScript and the DOM.</p><a href="contact.html">Meet the community →</a></div>
-  </aside>
-
-  <main id="main-content" class="container">
-    <section class="lab-hero" aria-labelledby="lab-title">
-      <div>
-        <p class="eyebrow">PIXELFORGE / INTERACTIVE PLAYGROUND</p>
-        <h1 id="lab-title">Player Lab<span aria-hidden="true">.</span></h1>
-        <p id="lab-welcome">Choose your games. Make it yours.</p>
-        <a href="#player-profile" class="btn">Build your player card <span aria-hidden="true">↘</span></a>
-      </div>
-      <div class="hero-emblem" aria-hidden="true"><span>PF</span><small>PRESS PLAY</small></div>
-    </section>
-
-    <noscript><p class="lab-panel">Please enable JavaScript to use the profile builder, game filters, gallery, rating and sound controls.</p></noscript>
-
-    <div class="lab-grid">
-      <section id="player-profile" class="lab-panel" aria-labelledby="profile-heading"></section>
-
-      <section id="discover-games" class="lab-panel catalog-panel" aria-labelledby="catalog-heading">
-        <div class="lab-section-heading">
-          <div><p class="eyebrow">01 / CHOOSE YOUR WORLD</p><h2 id="catalog-heading">Find your next game</h2></div>
-          <span class="lab-badge">3 crew favourites</span>
-        </div>
-        <p>Filter our collection by the way you like to play.</p>
-        <div id="game-filters" class="filter-buttons" role="group" aria-label="Filter games by category">
-          <button type="button" class="filter-button is-selected" data-category="all" aria-pressed="true">All games</button>
-          <button type="button" class="filter-button" data-category="fps" aria-pressed="false">Tactical FPS</button>
-          <button type="button" class="filter-button" data-category="sandbox" aria-pressed="false">Sandbox</button>
-          <button type="button" class="filter-button" data-category="arena" aria-pressed="false">Arena</button>
-        </div>
-        <p id="catalog-status" class="lab-status" role="status" aria-live="polite"></p>
-        <div id="game-catalog" class="game-catalog"></div>
-      </section>
-
-      <section id="lab-gallery" class="lab-panel gallery-panel" aria-labelledby="lab-gallery-heading">
-        <p class="eyebrow">02 / A DIFFERENT PERSPECTIVE</p>
-        <h2 id="lab-gallery-heading">Pick your world</h2>
-        <p>Select a thumbnail to change the featured scene.</p>
-        <figure class="featured-scene">
-          <img id="featured-image" src="images/minecraft.png" alt="Minecraft landscape with block-built terrain and scenery" width="900" height="506">
-          <figcaption><strong id="featured-title">Minecraft</strong><span id="featured-caption">One block. Endless possibilities.</span></figcaption>
-        </figure>
-        <div id="gallery-thumbnails" class="gallery-thumbnails" role="group" aria-label="Choose a featured game image">
-          <button type="button" class="thumbnail-button is-selected" data-image="0" aria-label="Show Minecraft" aria-pressed="true"><img src="images/minecraft.png" alt="" width="160" height="90"><span>Minecraft</span></button>
-          <button type="button" class="thumbnail-button" data-image="1" aria-label="Show Counter-Strike 2" aria-pressed="false"><img src="images/counterstrike2.png" alt="" width="160" height="90"><span>Counter-Strike 2</span></button>
-          <button type="button" class="thumbnail-button" data-image="2" aria-label="Show Brawl Stars" aria-pressed="false"><img src="images/brawlstars.png" alt="" width="160" height="90"><span>Brawl Stars</span></button>
-        </div>
-        <p id="gallery-status" class="sr-only" role="status" aria-live="polite"></p>
-      </section>
-
-      <div class="lab-side-stack">
-        <section id="lab-rating" class="lab-panel" aria-labelledby="rating-heading">
-          <p class="eyebrow">03 / YOUR CALL</p>
-          <h2 id="rating-heading">Rate the experience</h2>
-          <p>How is the Player Lab treating you?</p>
-          <div id="rating-stars" class="rating-stars" role="radiogroup" aria-label="Rate the Player Lab out of five stars" aria-describedby="rating-help">
-            <button type="button" role="radio" aria-checked="false" aria-label="1 star" data-rating="1" tabindex="0"><span aria-hidden="true">★</span></button>
-            <button type="button" role="radio" aria-checked="false" aria-label="2 stars" data-rating="2" tabindex="-1"><span aria-hidden="true">★</span></button>
-            <button type="button" role="radio" aria-checked="false" aria-label="3 stars" data-rating="3" tabindex="-1"><span aria-hidden="true">★</span></button>
-            <button type="button" role="radio" aria-checked="false" aria-label="4 stars" data-rating="4" tabindex="-1"><span aria-hidden="true">★</span></button>
-            <button type="button" role="radio" aria-checked="false" aria-label="5 stars" data-rating="5" tabindex="-1"><span aria-hidden="true">★</span></button>
-          </div>
-          <p id="rating-help" class="lab-hint">Choose a star. You can also use the arrow keys.</p>
-          <p id="rating-status" class="lab-status" role="status" aria-live="polite">No rating selected yet.</p>
-        </section>
-
-        <section class="lab-panel quest-panel" aria-labelledby="quest-heading">
-          <p class="eyebrow">04 / SMALL WINS</p>
-          <div id="quest-card" class="quest-card"><span class="quest-icon" aria-hidden="true">✦</span><h2 id="quest-heading">A tiny victory</h2><p id="quest-status" role="status" aria-live="polite">Launch a quest and watch your badge come alive.</p></div>
-          <div class="quest-actions"><button id="start-quest" class="btn" type="button">Launch quest</button><button id="play-sound" class="lab-button" type="button">Play victory sound <span aria-hidden="true">♫</span></button></div>
-          <p id="sound-status" class="lab-hint" role="status" aria-live="polite">Sound plays only when you press the button.</p>
-        </section>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="PixelForge home" data-i18n-aria="nav.brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span class="brand-text">PixelForge</span></a>
+      <nav id="main-nav" class="main-nav" aria-label="Main navigation" data-i18n-aria="nav.label">
+        <ul class="nav-menu">
+        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="games.html" data-i18n="nav.games">Top Games</a></li>
+        <li><a href="guides.html" data-i18n="nav.guides">Guides</a></li>
+        <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+        <li><a href="play.html" aria-current="page" data-i18n="nav.lab">Player Lab</a></li>
+        <li><a href="about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+          <li class="nav-account"><a href="register.html" data-i18n="footer.register">Create an account</a></li>
+        </ul>
+      </nav>
+      <div class="header-tools">
+        <label class="sr-only" for="lang-select" data-i18n="nav.language">Language</label>
+        <select id="lang-select" class="lang-select">
+          <option value="en">EN</option>
+          <option value="ru">RU</option>
+          <option value="kk">KZ</option>
+        </select>
+        <button id="theme-toggle" class="icon-btn" type="button" aria-label="Switch to light theme" aria-pressed="false">☀</button>
+        <a id="account-link" class="btn btn-sm user-chip" href="register.html">Sign up</a>
+        <button id="nav-toggle" class="icon-btn nav-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Menu" data-i18n-aria="nav.menu">☰</button>
       </div>
     </div>
-    <section id="extra-lab" class="lab-panel extras-panel" aria-labelledby="extras-title">
-<h2 id="extras-title" data-i18n="title">More ways to play</h2>
-<label for="language" data-i18n="language">Lab language</label>
-<select id="language"><option value="en">English</option><option value="ru">Русский</option><option value="kk">Қазақша</option></select>
-<p data-i18n="languageNote">This selector translates this extra lab. The original project pages stay in English.</p>
-<div class="extras-grid">
-<article><h3 data-i18n="story">Behind PixelForge</h3><p data-i18n="intro">We explore games together.</p><button id="read-more" type="button" class="lab-button" aria-expanded="false" aria-controls="more-story" data-i18n="read">Read more</button><p id="more-story" hidden data-i18n="detail">Our crew shares strategies, builds worlds and helps new players find their next adventure.</p></article>
-<article><h3 data-i18n="welcome">Your welcome</h3><form id="greeting-form"><label for="greeting-name" data-i18n="name">Player name</label><input id="greeting-name" required maxlength="40"><button class="lab-button" data-i18n="greet">Greet me</button></form><p id="personal-greeting" role="status"></p><button id="show-time" class="lab-button" type="button" data-i18n="clock">Show current time</button><p id="time-result" role="status"></p></article>
-<article><h3 data-i18n="facts">Game facts</h3><button id="fetch-fact" class="lab-button" type="button" data-i18n="fact">Fetch a random fact</button><p id="fact-result" role="status"></p></article>
-<article><h3 data-i18n="news">Crew news</h3><div id="news-filters" class="filter-buttons"><button class="lab-button" type="button" data-feed="all" aria-pressed="true">All</button><button class="lab-button" type="button" data-feed="games" aria-pressed="false">Games</button><button class="lab-button" type="button" data-feed="tech" aria-pressed="false">Technology</button></div><div id="news-feed"></div><button id="load-posts" class="lab-button" type="button" data-i18n="load">Load more posts</button><p id="news-status" role="status"></p></article>
-<article class="extras-contact"><h3 data-i18n="contact">Async contact demo</h3><p data-i18n="demo">Uses JSONPlaceholder, a public test API. Use invented details. This sends a demo POST; it does not deliver email or save a message.</p><form id="async-contact"><label for="async-name" data-i18n="name">Player name</label><input id="async-name" name="name" required maxlength="40"><label for="async-message" data-i18n="message">Message</label><textarea id="async-message" name="message" required minlength="5" maxlength="500"></textarea><button class="lab-button" data-i18n="send">Send demo</button><button class="lab-button" type="button" id="reset-contact" data-i18n="reset">Reset form</button></form><p id="contact-feedback" role="status"></p></article>
-</div></section>
-<p class="lab-footnote">Made for practice. Player cards and ratings are temporary and stay in this page session.</p>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="container">
+        <p class="crumbs"><a href="index.html" data-i18n="nav.home">Home</a> / <span data-i18n="nav.lab">Player Lab</span></p>
+        <h1 id="page-title" data-i18n="lab.title">Player Lab</h1>
+        <p class="lead" data-i18n="lab.lead">Your playground: build a player card, rate the hub and try a few small tools.</p>
+      </div>
+    </section>
+
+    <noscript><div class="container"><p class="panel" data-i18n="lab.noscript">Please enable JavaScript to use the Player Lab.</p></div></noscript>
+
+    <section class="section-tight" aria-label="Player card and rating" data-i18n-aria="lab.area1">
+      <div class="container lab-grid">
+        <div id="player-profile" class="panel" aria-labelledby="profile-heading"></div>
+
+        <div class="lab-stack">
+          <div class="panel" id="lab-rating">
+            <p class="eyebrow" data-i18n="lab.rateEyebrow">Your call</p>
+            <h2 id="rating-heading" data-i18n="lab.rateTitle">Rate the experience</h2>
+            <div id="rating-stars" class="rating-stars" role="radiogroup" aria-labelledby="rating-heading" aria-describedby="rating-help">
+              <button type="button" role="radio" aria-checked="false" data-rating="1" tabindex="0"><span aria-hidden="true">★</span></button>
+              <button type="button" role="radio" aria-checked="false" data-rating="2" tabindex="-1"><span aria-hidden="true">★</span></button>
+              <button type="button" role="radio" aria-checked="false" data-rating="3" tabindex="-1"><span aria-hidden="true">★</span></button>
+              <button type="button" role="radio" aria-checked="false" data-rating="4" tabindex="-1"><span aria-hidden="true">★</span></button>
+              <button type="button" role="radio" aria-checked="false" data-rating="5" tabindex="-1"><span aria-hidden="true">★</span></button>
+            </div>
+            <p id="rating-help" class="small muted" data-i18n="lab.rateHelp">Choose a star. Arrow keys work too.</p>
+            <p id="rating-status" role="status" aria-live="polite"></p>
+          </div>
+
+          <div class="panel">
+            <p class="eyebrow" data-i18n="lab.questEyebrow">Small wins</p>
+            <div id="quest-card" class="quest-card">
+              <div class="quest-icon" aria-hidden="true">✦</div>
+              <h2 id="quest-heading" data-i18n="lab.questTitle">A tiny victory</h2>
+              <p id="quest-status" role="status" aria-live="polite" style="margin:0"></p>
+            </div>
+            <div class="btn-row">
+              <button id="start-quest" class="btn" type="button"></button>
+              <button id="play-sound" class="btn btn-soft" type="button"><span data-i18n="lab.sound">Play victory sound</span> <span aria-hidden="true">♫</span></button>
+            </div>
+            <p id="sound-status" class="small muted" role="status" aria-live="polite" style="margin-top:10px"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="tools-title">
+      <div class="container">
+        <p class="eyebrow" data-i18n="lab.toolsEyebrow">More ways to play</p>
+        <h2 id="tools-title" data-i18n="lab.toolsTitle">Lab tools</h2>
+        <div class="grid grid-3">
+          <div class="card">
+            <div class="card-icon" aria-hidden="true">👋</div>
+            <h3 data-i18n="lab.greetTitle">Your welcome</h3>
+            <form id="greeting-form" class="form" novalidate>
+              <div class="field">
+                <label for="greeting-name" data-i18n="lab.playerName">Player name</label>
+                <input id="greeting-name" type="text" maxlength="40" autocomplete="nickname">
+              </div>
+              <div class="btn-row">
+                <button class="btn btn-sm" type="submit" data-i18n="lab.greet">Greet me</button>
+                <button id="show-time" class="btn btn-sm btn-soft" type="button" data-i18n="lab.time">Show time</button>
+              </div>
+            </form>
+            <p id="personal-greeting" class="result-box" role="status"></p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon" aria-hidden="true">💡</div>
+            <h3 data-i18n="lab.factTitle">Game facts</h3>
+            <p class="muted" data-i18n="lab.factText">Load a random fact from our small JSON file.</p>
+            <button id="fetch-fact" class="btn btn-sm" type="button" data-i18n="lab.factBtn">Fetch a random fact</button>
+            <p id="fact-result" class="result-box" role="status"></p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon" aria-hidden="true">🎨</div>
+            <h3 data-i18n="lab.colorTitle">Arena lighting</h3>
+            <p class="muted" data-i18n="lab.colorText">Change the page background colour.</p>
+            <div class="btn-row">
+              <button id="change-color" class="btn btn-sm" type="button" data-i18n="lab.colorBtn">Next colour</button>
+              <button id="reset-color" class="btn btn-sm btn-ghost" type="button" data-i18n="lab.colorReset">Reset</button>
+            </div>
+            <p id="color-text" class="result-box" aria-live="polite"></p>
+          </div>
+        </div>
+        <p class="small muted" style="margin-top:22px" data-i18n="lab.footnote">Player cards and ratings live only in this browser tab — nothing is sent anywhere.</p>
+      </div>
+    </section>
   </main>
 
-  <footer id="site-footer"><p>Marat Nurdaulet | Kadyr Tlektes | Suinalin Azamat</p><p>PixelForge / Player Lab</p></footer>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>PixelForge</a>
+          <p class="muted small" style="margin-top:12px" data-i18n="footer.about">A student-built gaming hub with honest rankings, clear guides and a small interactive lab.</p>
+        </div>
+        <div>
+          <h3 data-i18n="footer.explore">Explore</h3>
+          <ul>
+            <li><a href="games.html" data-i18n="nav.games">Top Games</a></li>
+            <li><a href="guides.html" data-i18n="nav.guides">Guides</a></li>
+            <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+            <li><a href="play.html" data-i18n="nav.lab">Player Lab</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 data-i18n="footer.community">Community</h3>
+          <ul>
+            <li><a href="about.html#team" data-i18n="footer.team">Meet the team</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+            <li><a href="register.html" data-i18n="footer.register">Create an account</a></li>
+            <li><a href="part1.html" data-i18n="footer.responsive">Responsive design</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 data-i18n="footer.project">Project</h3>
+          <ul>
+            <li><a href="https://github.com/NURDA07/Web-assignment" target="_blank" rel="noopener" data-i18n="footer.github">Source on GitHub</a></li>
+            <li><button type="button" class="kbd-hint" data-shortcuts aria-haspopup="dialog"><span data-i18n="footer.shortcuts">Keyboard shortcuts</span> <kbd>?</kbd></button></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PixelForge · SE-2501</span>
+        <span>Marat Nurdaulet · Kadyr Tlektes · Suinalin Azamat</span>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

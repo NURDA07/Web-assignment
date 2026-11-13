@@ -1,1 +1,8 @@
-["Minecraft worlds are made of blocks.", "Team communication can improve tactical play.", "Game designers use sound to communicate feedback.", "Keyboard controls make games and websites more accessible."]
+[
+  {"en": "Minecraft worlds are made of blocks — about 1 cubic metre each.", "ru": "Миры Minecraft состоят из блоков размером примерно 1 кубический метр.", "kk": "Minecraft әлемдері шамамен 1 текше метрлік блоктардан тұрады."},
+  {"en": "Clear team communication wins more rounds than perfect aim.", "ru": "Чёткая связь в команде выигрывает больше раундов, чем идеальный прицел.", "kk": "Командадағы нақты байланыс мінсіз нысанадан көп раунд ұтады."},
+  {"en": "Game designers use sound to give instant feedback to players.", "ru": "Геймдизайнеры используют звук, чтобы мгновенно давать игроку обратную связь.", "kk": "Ойын дизайнерлері ойыншыға жедел кері байланыс беру үшін дыбысты пайдаланады."},
+  {"en": "Keyboard controls make both games and websites more accessible.", "ru": "Управление с клавиатуры делает игры и сайты доступнее.", "kk": "Пернетақтамен басқару ойындар мен сайттарды қолжетімді етеді."},
+  {"en": "Short breaks every hour help you play better and longer.", "ru": "Короткие перерывы каждый час помогают играть лучше и дольше.", "kk": "Әр сағат сайынғы қысқа үзіліс жақсырақ әрі ұзағырақ ойнауға көмектеседі."},
+  {"en": "Speedrunners practise the same few seconds hundreds of times.", "ru": "Спидраннеры отрабатывают одни и те же секунды сотни раз.", "kk": "Спидраннерлер бірнеше секундты жүздеген рет қайталап жаттығады."}
+]

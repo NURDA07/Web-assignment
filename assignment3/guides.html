@@ -1,89 +1,207 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PixelForge — Guides</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
-  <script src="js/navigation.js" defer></script>
-  <link rel="stylesheet" href="css/extras.css">
-  <script src="js/theme.js" defer></script>
+  <title data-i18n="title.guides">PixelForge — Guides</title>
+  <meta name="description" content="Step-by-step PixelForge guides for Brawl Stars, Counter-Strike 2, Minecraft and Stardew Valley.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 26'%3E%3Crect width='11' height='11' rx='2' fill='%23ff1f5a'/%3E%3Crect x='12' y='8' width='11' height='11' rx='2' fill='%23ff5a1f'/%3E%3Crect y='13' width='13' height='13' rx='2' fill='%2300b4ff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+  <!-- Shared: translations, theme, language, keyboard shortcuts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/core.js"></script>
+  <!-- Assignment 6: jQuery from the CDN + external script.js -->
+  <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+  <script src="script.js"></script>
+
 </head>
-<body class="page-layout">
-  <a class="skip-link" href="#main-content">Skip to content</a>
+<body>
+  <div id="scroll-progress" role="progressbar" aria-label="Reading progress" data-i18n-aria="common.progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+  <a class="skip-link" href="#main" data-i18n="common.skip">Skip to content</a>
 
-  <header id="main-header">
-    <a class="brand" href="index.html" aria-label="PixelForge home"><span class="brand-icon" aria-hidden="true">PF</span>Pixel<span>Forge</span></a>
-    <nav aria-label="Main navigation">
-      <ul class="nav-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="games.html">Top Games</a></li>
-        <li><a href="guides.html" class="active" aria-current="page">Guides</a></li>
-        <li><a href="team.html">Team</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="play.html">Player Lab</a></li>
-        <li><a href="part1.html">Media Queries</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  
-  <aside class="sidebar" aria-label="Explore PixelForge">
-    <p class="eyebrow">PLAYER HUB / SE-2501</p>
-    <h2>Find your next quest</h2>
-    <p>Discover a game, learn a new strategy, and meet the crew.</p>
-    <nav aria-label="Quick links" class="side-links">
-      <a href="games.html">01 / Game rankings <span aria-hidden="true">↗</span></a>
-      <a href="guides.html">02 / Player guides <span aria-hidden="true">↗</span></a>
-      <a href="games.html#gallery">03 / Community gallery <span aria-hidden="true">↗</span></a>
-      <a href="team.html">04 / Meet the crew <span aria-hidden="true">↗</span></a>
-    </nav>
-    <div class="sidebar-note"><span class="tag">PixelForge</span><p>Three players. One shared passion for games.</p><a href="contact.html">Suggest our next game →</a></div>
-  </aside>
-
-  <main id="main-content" class="container">
-    <h1>Guides &amp; Walkthroughs</h1>
-    <p>Step-by-step guides written so a first-time player can actually follow them.</p>
-
-    <div class="card-row">
-      <div class="card">
-        <img src="images/brawlstars.png" alt="Brawl Stars gameplay and characters">
-        <h3>Brawl Stars: Best Brawlers Guide</h3>
-        <p>Top strategies and best brawlers for every game mode to help you push trophies.</p>
-        <a class="btn" href="#brawl-guide">Read guide</a>
-      </div>
-      <div class="card">
-        <img src="images/counterstrike2.png" alt="Counter-Strike 2 tactical gameplay">
-        <h3>Counter-Strike 2: Utility Lineups</h3>
-        <p>Essential smoke and flash lineups for competitive maps to give your team the edge.</p>
-        <a class="btn" href="#cs-guide">Read guide</a>
-      </div>
-      <div class="card">
-        <img src="images/minecraft.png" alt="Minecraft survival base building">
-        <h3>Minecraft: Survival Mechanics</h3>
-        <p>Step-by-step guide to gathering resources and building a secure base on your first night.</p>
-        <a class="btn" href="#minecraft-guide">Read guide</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="PixelForge home" data-i18n-aria="nav.brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span class="brand-text">PixelForge</span></a>
+      <nav id="main-nav" class="main-nav" aria-label="Main navigation" data-i18n-aria="nav.label">
+        <ul class="nav-menu">
+        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="games.html" data-i18n="nav.games">Top Games</a></li>
+        <li><a href="guides.html" aria-current="page" data-i18n="nav.guides">Guides</a></li>
+        <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+        <li><a href="play.html" data-i18n="nav.lab">Player Lab</a></li>
+        <li><a href="about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+          <li class="nav-account"><a href="register.html" data-i18n="footer.register">Create an account</a></li>
+        </ul>
+      </nav>
+      <div class="header-tools">
+        <label class="sr-only" for="lang-select" data-i18n="nav.language">Language</label>
+        <select id="lang-select" class="lang-select">
+          <option value="en">EN</option>
+          <option value="ru">RU</option>
+          <option value="kk">KZ</option>
+        </select>
+        <button id="theme-toggle" class="icon-btn" type="button" aria-label="Switch to light theme" aria-pressed="false">☀</button>
+        <a id="account-link" class="btn btn-sm user-chip" href="register.html">Sign up</a>
+        <button id="nav-toggle" class="icon-btn nav-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Menu" data-i18n-aria="nav.menu">☰</button>
       </div>
     </div>
+  </header>
 
-    <h2>How We Write Our Guides</h2>
-    <ol>
-      <li>Play the game fully before writing anything</li>
-      <li>Note the steps that actually confuse new players</li>
-      <li>Write short, numbered steps instead of long paragraphs</li>
-      <li>Add screenshots for anything hard to describe in words</li>
-    </ol>
+  <main id="main" tabindex="-1">
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="container">
+        <p class="crumbs"><a href="index.html" data-i18n="nav.home">Home</a> / <span data-i18n="nav.guides">Guides</span></p>
+        <h1 id="page-title" data-i18n="guides.title">Guides &amp; walkthroughs</h1>
+        <p class="lead" data-i18n="guides.lead">Step-by-step guides written so a first-time player can actually follow them.</p>
+      </div>
+    </section>
 
-    <section class="guide-detail" id="brawl-guide"><h2>Brawl Stars: Pick with a Plan</h2><ol><li>Check the mode and map before choosing a brawler.</li><li>Use cover and keep enough range to suit your character.</li><li>Save your super for a clear objective or a coordinated team push.</li></ol></section>
-    <section class="guide-detail" id="cs-guide"><h2>Counter-Strike 2: Practice Utility</h2><ol><li>Open a practice map and choose one entrance to defend.</li><li>Pick a repeatable standing position and aim at a fixed landmark.</li><li>Test your smoke or flash, check where it lands, and repeat before using it with your team.</li></ol></section>
-    <section class="guide-detail" id="minecraft-guide"><h2>Minecraft: Your First Night</h2><ol><li>Gather wood and craft a workbench and basic tools.</li><li>Collect stone and food before exploring far from spawn.</li><li>Build an enclosed shelter, add light, and save a safe exit for morning.</li></ol></section>
+    <section class="section-tight" aria-labelledby="pick-title">
+      <div class="container">
+        <h2 id="pick-title" class="sr-only" data-i18n="guides.pick">Pick a guide</h2>
+        <div class="grid grid-3">
+          <article class="card card-media">
+            <img src="img/brawlstars.jpg" alt="Brawl Stars characters" width="1400" height="607" loading="lazy">
+            <div class="card-body">
+              <div class="guide-meta"><span class="tag" data-i18n="guides.easy">Beginner</span><span class="tag">5 min</span></div>
+              <h3 data-i18n="guides.g1">Brawl Stars: pick with a plan</h3>
+              <p class="muted" data-i18n="guides.g1t">Choose the right brawler for every mode and push trophies faster.</p>
+              <a class="btn btn-sm" href="#brawl-guide" data-open-guide="brawl-guide" data-i18n="guides.read">Read guide</a>
+            </div>
+          </article>
+          <article class="card card-media">
+            <img src="img/counterstrike2.jpg" alt="Counter-Strike 2 artwork" width="1400" height="788" loading="lazy">
+            <div class="card-body">
+              <div class="guide-meta"><span class="tag" data-i18n="guides.mid">Intermediate</span><span class="tag">8 min</span></div>
+              <h3 data-i18n="guides.g2">Counter-Strike 2: practise utility</h3>
+              <p class="muted" data-i18n="guides.g2t">Learn repeatable smoke and flash lineups that help your whole team.</p>
+              <a class="btn btn-sm" href="#cs-guide" data-open-guide="cs-guide" data-i18n="guides.read">Read guide</a>
+            </div>
+          </article>
+          <article class="card card-media">
+            <img src="img/minecraft.jpg" alt="Minecraft landscape" width="1280" height="720" loading="lazy">
+            <div class="card-body">
+              <div class="guide-meta"><span class="tag" data-i18n="guides.easy">Beginner</span><span class="tag">6 min</span></div>
+              <h3 data-i18n="guides.g3">Minecraft: your first night</h3>
+              <p class="muted" data-i18n="guides.g3t">Gather, craft and build a safe shelter before the monsters arrive.</p>
+              <a class="btn btn-sm" href="#minecraft-guide" data-open-guide="minecraft-guide" data-i18n="guides.read">Read guide</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="all-title">
+      <div class="container">
+        <p class="eyebrow" data-i18n="guides.allEyebrow">Full walkthroughs</p>
+        <h2 id="all-title" data-i18n="guides.allTitle">All guides</h2>
+        <div class="accordion" data-accordion>
+          <div class="acc-item" id="brawl-guide">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="brawl-panel" data-i18n="guides.g1">Brawl Stars: pick with a plan</button></h3>
+            <div class="acc-panel" id="brawl-panel">
+              <ol class="steps-list">
+                <li data-i18n="guides.g1s1">Check the mode and the map before choosing a brawler.</li>
+                <li data-i18n="guides.g1s2">Use walls and bushes as cover and keep the range that suits your character.</li>
+                <li data-i18n="guides.g1s3">Save your super for a clear objective or a coordinated team push.</li>
+                <li data-i18n="guides.g1s4">After each match, check what beat you and adjust your pick.</li>
+              </ol>
+            </div>
+          </div>
+          <div class="acc-item" id="cs-guide">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="cs-panel" data-i18n="guides.g2">Counter-Strike 2: practise utility</button></h3>
+            <div class="acc-panel" id="cs-panel">
+              <ol class="steps-list">
+                <li data-i18n="guides.g2s1">Open a practice map and choose one entrance to defend.</li>
+                <li data-i18n="guides.g2s2">Pick a repeatable standing position and aim at a fixed landmark.</li>
+                <li data-i18n="guides.g2s3">Throw your smoke or flash, check where it lands and repeat until it is consistent.</li>
+                <li data-i18n="guides.g2s4">Call the lineup to your team before using it in a real match.</li>
+              </ol>
+            </div>
+          </div>
+          <div class="acc-item" id="minecraft-guide">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="mc-panel" data-i18n="guides.g3">Minecraft: your first night</button></h3>
+            <div class="acc-panel" id="mc-panel">
+              <ol class="steps-list">
+                <li data-i18n="guides.g3s1">Gather wood and craft a workbench and basic tools.</li>
+                <li data-i18n="guides.g3s2">Collect stone and food before exploring far from spawn.</li>
+                <li data-i18n="guides.g3s3">Build an enclosed shelter, add torches and keep a safe exit for the morning.</li>
+              </ol>
+            </div>
+          </div>
+          <div class="acc-item" id="stardew-guide">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="sd-panel" data-i18n="guides.g4">Stardew Valley: a calm first spring</button></h3>
+            <div class="acc-panel" id="sd-panel">
+              <ol class="steps-list">
+                <li data-i18n="guides.g4s1">Clear a small field near the house and plant parsnips first.</li>
+                <li data-i18n="guides.g4s2">Water every morning, then spend the afternoon fishing or foraging.</li>
+                <li data-i18n="guides.g4s3">Save money for a watering can upgrade before summer.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight" aria-labelledby="how-title">
+      <div class="container grid grid-2" style="align-items:center">
+        <div>
+          <p class="eyebrow" data-i18n="guides.howEyebrow">Our method</p>
+          <h2 id="how-title" data-i18n="guides.howTitle">How we write our guides</h2>
+          <p class="muted" data-i18n="guides.howLead">Every guide goes through the same four steps before it is published.</p>
+          <a class="btn btn-ghost" href="contact.html" data-i18n="guides.request">Request a guide</a>
+        </div>
+        <ol class="steps-list panel">
+          <li data-i18n="guides.how1">Play the game fully before writing anything.</li>
+          <li data-i18n="guides.how2">Note the steps that confuse new players.</li>
+          <li data-i18n="guides.how3">Write short numbered steps instead of long paragraphs.</li>
+          <li data-i18n="guides.how4">Test the guide with a friend who has never played.</li>
+        </ol>
+      </div>
+    </section>
   </main>
 
-<footer id="site-footer">
-  <p>Marat Nurdaulet | Kadyr Tlektes | Suinalin Azamat</p>
-</footer>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>PixelForge</a>
+          <p class="muted small" style="margin-top:12px" data-i18n="footer.about">A student-built gaming hub with honest rankings, clear guides and a small interactive lab.</p>
+        </div>
+        <div>
+          <h3 data-i18n="footer.explore">Explore</h3>
+          <ul>
+            <li><a href="games.html" data-i18n="nav.games">Top Games</a></li>
+            <li><a href="guides.html" data-i18n="nav.guides">Guides</a></li>
+            <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+            <li><a href="play.html" data-i18n="nav.lab">Player Lab</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 data-i18n="footer.community">Community</h3>
+          <ul>
+            <li><a href="about.html#team" data-i18n="footer.team">Meet the team</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+            <li><a href="register.html" data-i18n="footer.register">Create an account</a></li>
+            <li><a href="part1.html" data-i18n="footer.responsive">Responsive design</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 data-i18n="footer.project">Project</h3>
+          <ul>
+            <li><a href="https://github.com/NURDA07/Web-assignment" target="_blank" rel="noopener" data-i18n="footer.github">Source on GitHub</a></li>
+            <li><button type="button" class="kbd-hint" data-shortcuts aria-haspopup="dialog"><span data-i18n="footer.shortcuts">Keyboard shortcuts</span> <kbd>?</kbd></button></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PixelForge · SE-2501</span>
+        <span>Marat Nurdaulet · Kadyr Tlektes · Suinalin Azamat</span>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

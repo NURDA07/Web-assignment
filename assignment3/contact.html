@@ -1,144 +1,174 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PixelForge - Contact</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/theme.css">
-  <link rel="stylesheet" href="css/bootstrap-theme.css">
-  <link rel="stylesheet" href="css/features.css">
-  <script src="js/navigation.js" defer></script>
-  <link rel="stylesheet" href="css/extras.css">
-  <script src="js/theme.js" defer></script>
+  <title data-i18n="title.contact">PixelForge — Contact us</title>
+  <meta name="description" content="Send a question, suggest a game or report a problem to the PixelForge team.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 26'%3E%3Crect width='11' height='11' rx='2' fill='%23ff1f5a'/%3E%3Crect x='12' y='8' width='11' height='11' rx='2' fill='%23ff5a1f'/%3E%3Crect y='13' width='13' height='13' rx='2' fill='%2300b4ff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+  <!-- Shared: translations, theme, language, keyboard shortcuts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/core.js"></script>
+  <!-- Assignment 6: jQuery from the CDN + external script.js -->
+  <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+  <script src="script.js"></script>
+  <script src="js/forms.js" defer></script>
 </head>
 <body>
+  <div id="scroll-progress" role="progressbar" aria-label="Reading progress" data-i18n-aria="common.progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+  <a class="skip-link" href="#main" data-i18n="common.skip">Skip to content</a>
 
-<nav aria-label="Main navigation" class="navbar navbar-expand-lg navbar-dark bg-dark px-sm-2 px-lg-5 py-3">
-  <div class="container-fluid">
-    <a class="navbar-brand fw-bold" href="index.html">PixelForge</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="mainNav">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-        <li class="nav-item"><a href="games.html" class="nav-link">Top Games</a></li>
-        <li class="nav-item"><a href="guides.html" class="nav-link">Guides</a></li>
-        <li class="nav-item"><a href="team.html" class="nav-link">Team</a></li>
-        <li class="nav-item"><a href="contact.html" class="nav-link active" aria-current="page">Contact</a></li>
-        <li class="nav-item"><a href="play.html" class="nav-link">Player Lab</a></li>
-        <li class="nav-item"><a href="part1.html" class="nav-link">Media Queries</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<main class="container my-5">
-  <noscript><p class="error" role="alert">Enable JavaScript to check these demo forms. No data can be submitted while JavaScript is disabled.</p></noscript>
-  <section class="row justify-content-center">
-    <div class="col-12 col-md-8 col-lg-6">
-      <div class="card shadow-sm p-4">
-        <h2 class="text-center mb-4">Contact Us</h2>
-        <p id="contact-note" class="small">Demo form: you can check your details here. Messages and newsletter requests are not sent or saved.</p>
-        <form id="contact-form" method="post" aria-describedby="contact-note" novalidate>
-          <div class="mb-3">
-            <label for="nameInput" class="form-label">Full Name</label>
-            <input type="text" class="form-control" id="nameInput" name="name" autocomplete="name" maxlength="100" placeholder="Enter your full name" aria-describedby="contact-name-error" required>
-            <span id="contact-name-error" class="error d-block"></span>
-          </div>
-          <div class="mb-3">
-            <label for="emailInput" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="emailInput" name="email" autocomplete="email" maxlength="254" placeholder="name@example.com" aria-describedby="contact-email-error" required>
-            <span id="contact-email-error" class="error d-block"></span>
-          </div>
-          <div class="mb-3">
-            <label for="contact-reason" class="form-label">Reason for Contact</label>
-            <select id="contact-reason" name="reason" class="form-select" aria-describedby="contact-reason-error" required>
-              <option value="" selected>Choose a reason</option>
-              <option value="feedback">Feedback</option>
-              <option value="game-request">Game Request</option>
-              <option value="other">Other</option>
-            </select>
-            <span id="contact-reason-error" class="error d-block"></span>
-          </div>
-          <fieldset class="mb-3">
-            <legend class="form-label">Preferred Contact Method</legend>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="contactMethod" id="radioEmail" value="email" checked>
-              <label class="form-check-label" for="radioEmail">Email</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="contactMethod" id="radioPhone" value="phone">
-              <label class="form-check-label" for="radioPhone">Phone</label>
-            </div>
-          </fieldset>
-          <div id="phone-field" class="mb-3" hidden>
-            <label for="phoneInput" class="form-label">Phone number</label>
-            <input type="tel" class="form-control" id="phoneInput" name="phone" autocomplete="tel" maxlength="30" placeholder="+7 700 123 4567" aria-describedby="contact-phone-error" disabled>
-            <span id="contact-phone-error" class="error d-block"></span>
-          </div>
-          <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="newsletterCheck">
-            <label class="form-check-label" for="newsletterCheck">Subscribe to newsletter</label>
-          </div>
-          <div class="mb-4">
-            <label for="messageTextarea" class="form-label">Message</label>
-            <textarea class="form-control" id="messageTextarea" name="message" rows="4" maxlength="5000" aria-describedby="contact-message-error" required></textarea>
-            <span id="contact-message-error" class="error d-block"></span>
-          </div>
-          <div class="d-grid">
-            <button type="submit" class="btn btn-primary btn-lg" disabled>Check message</button>
-          </div>
-          <p id="contact-message" class="mt-3 mb-0" role="status" aria-live="polite" aria-atomic="true"></p>
-        </form>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="PixelForge home" data-i18n-aria="nav.brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span class="brand-text">PixelForge</span></a>
+      <nav id="main-nav" class="main-nav" aria-label="Main navigation" data-i18n-aria="nav.label">
+        <ul class="nav-menu">
+        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="games.html" data-i18n="nav.games">Top Games</a></li>
+        <li><a href="guides.html" data-i18n="nav.guides">Guides</a></li>
+        <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+        <li><a href="play.html" data-i18n="nav.lab">Player Lab</a></li>
+        <li><a href="about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="contact.html" aria-current="page" data-i18n="nav.contact">Contact</a></li>
+          <li class="nav-account"><a href="register.html" data-i18n="footer.register">Create an account</a></li>
+        </ul>
+      </nav>
+      <div class="header-tools">
+        <label class="sr-only" for="lang-select" data-i18n="nav.language">Language</label>
+        <select id="lang-select" class="lang-select">
+          <option value="en">EN</option>
+          <option value="ru">RU</option>
+          <option value="kk">KZ</option>
+        </select>
+        <button id="theme-toggle" class="icon-btn" type="button" aria-label="Switch to light theme" aria-pressed="false">☀</button>
+        <a id="account-link" class="btn btn-sm user-chip" href="register.html">Sign up</a>
+        <button id="nav-toggle" class="icon-btn nav-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Menu" data-i18n-aria="nav.menu">☰</button>
       </div>
     </div>
-  </section>
+  </header>
 
-  <section class="row justify-content-center mt-5">
-    <div class="col-12 col-md-8 col-lg-6">
-      <div class="card shadow-sm p-4">
-        <h2 class="text-center mb-4">Registration</h2>
-        <p id="registration-note" class="small">Demo registration: details are checked in your browser. No account is created and no personal data or passwords are sent or saved.</p>
-        <form id="registration-form" method="post" aria-describedby="registration-note" novalidate>
-          <div class="mb-3">
-            <label for="reg-name" class="form-label">Full name</label>
-            <input type="text" id="reg-name" name="name" class="form-control" autocomplete="name" maxlength="100" aria-describedby="name-error" required>
-            <span id="name-error" class="error d-block"></span>
-          </div>
-          <div class="mb-3">
-            <label for="reg-email" class="form-label">Email address</label>
-            <input type="email" id="reg-email" name="email" class="form-control" autocomplete="email" maxlength="254" aria-describedby="email-error" required>
-            <span id="email-error" class="error d-block"></span>
-          </div>
-          <div class="mb-3">
-            <label for="reg-password" class="form-label">Password (min 8 characters, excluding spaces)</label>
-            <input type="password" id="reg-password" name="password" class="form-control" autocomplete="new-password" minlength="8" aria-describedby="password-error" required>
-            <span id="password-error" class="error d-block"></span>
-          </div>
-          <div class="mb-3">
-            <label for="reg-confirm" class="form-label">Confirm password</label>
-            <input type="password" id="reg-confirm" name="confirm-password" class="form-control" autocomplete="new-password" minlength="8" aria-describedby="confirm-error" required>
-            <span id="confirm-error" class="error d-block"></span>
-          </div>
-          <button type="submit" class="btn btn-primary" disabled>Check registration</button>
-          <p id="registration-message" class="mt-3 mb-0" role="status" aria-live="polite" aria-atomic="true"></p>
-        </form>
+  <main id="main" tabindex="-1">
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="container">
+        <p class="crumbs"><a href="index.html" data-i18n="nav.home">Home</a> / <span data-i18n="nav.contact">Contact</span></p>
+        <h1 id="page-title" data-i18n="contact.title">Contact us</h1>
+        <p class="lead" data-i18n="contact.lead">Questions, game suggestions or a bug on the site? Write to us — we read every message.</p>
+      </div>
+    </section>
+
+    <section class="section-tight" aria-labelledby="form-title">
+      <div class="container contact-layout">
+        <aside class="panel" aria-labelledby="info-title">
+          <h2 id="info-title" data-i18n="contact.infoTitle">Get in touch</h2>
+          <ul class="info-list">
+            <li><span class="card-icon" aria-hidden="true">✉</span><div><strong data-i18n="contact.emailT">Email</strong><a href="mailto:team@pixelforge.example">team@pixelforge.example</a></div></li>
+            <li><span class="card-icon" aria-hidden="true">📍</span><div><strong data-i18n="contact.whereT">Where we are</strong><span class="muted" data-i18n="contact.where">Group SE-2501, Kazakhstan</span></div></li>
+            <li><span class="card-icon" aria-hidden="true">⏱</span><div><strong data-i18n="contact.replyT">Response time</strong><span class="muted" data-i18n="contact.reply">Usually within 2 working days</span></div></li>
+            <li><span class="card-icon" aria-hidden="true">💬</span><div><strong data-i18n="contact.faqT">Quick answers</strong><a href="about.html#faq-title" data-i18n="contact.faq">Read the FAQ first</a></div></li>
+          </ul>
+        </aside>
+
+        <div class="panel">
+          <h2 id="form-title" data-i18n="contact.formTitle">Send a message</h2>
+          <form id="contact-form" class="form" novalidate>
+            <div class="form-row">
+              <div class="field">
+                <label for="c-name" data-i18n="form.name">Full name</label>
+                <input type="text" id="c-name" name="name" autocomplete="name" maxlength="80" aria-describedby="c-name-error" required>
+                <span id="c-name-error" class="error"></span>
+              </div>
+              <div class="field">
+                <label for="c-email" data-i18n="form.email">Email address</label>
+                <input type="email" id="c-email" name="email" autocomplete="email" maxlength="254" placeholder="name@example.com" aria-describedby="c-email-error" required>
+                <span id="c-email-error" class="error"></span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="c-topic" data-i18n="contact.topic">Topic</label>
+              <select id="c-topic" name="topic" aria-describedby="c-topic-error" required>
+                <option value="" data-i18n="contact.topic0">Choose a topic</option>
+                <option value="question" data-i18n="contact.topic1">General question</option>
+                <option value="game" data-i18n="contact.topic2">Suggest a game or guide</option>
+                <option value="bug" data-i18n="contact.topic3">Report a problem on the site</option>
+                <option value="team" data-i18n="contact.topic4">Join the crew</option>
+              </select>
+              <span id="c-topic-error" class="error"></span>
+            </div>
+
+            <fieldset class="field">
+              <legend data-i18n="contact.method">How should we reply?</legend>
+              <div class="radio-row">
+                <label class="check"><input type="radio" name="method" value="email" checked> <span data-i18n="contact.byEmail">By email</span></label>
+                <label class="check"><input type="radio" name="method" value="phone"> <span data-i18n="contact.byPhone">By phone</span></label>
+              </div>
+            </fieldset>
+
+            <div class="field" id="phone-field" hidden>
+              <label for="c-phone" data-i18n="form.phone">Phone number</label>
+              <input type="tel" id="c-phone" name="phone" autocomplete="tel" maxlength="20" placeholder="+7 700 123 4567" aria-describedby="c-phone-error" disabled>
+              <span id="c-phone-error" class="error"></span>
+            </div>
+
+            <div class="field">
+              <label for="c-message"><span data-i18n="form.message">Message</span> <span id="c-counter" class="counter">0 / 1000</span></label>
+              <textarea id="c-message" name="message" maxlength="1000" aria-describedby="c-message-error" required></textarea>
+              <span id="c-message-error" class="error"></span>
+            </div>
+
+            <label class="check"><input type="checkbox" id="c-newsletter" name="newsletter"> <span data-i18n="contact.newsletter">Also send me the weekly newsletter</span></label>
+
+            <button type="submit" class="btn btn-lg" data-i18n="contact.send">Send message</button>
+            <p id="contact-status" class="form-status" role="status" aria-live="polite"></p>
+            <p class="form-note" data-i18n="contact.note">Student project: messages go to a public test API (JSONPlaceholder) and are not stored.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>PixelForge</a>
+          <p class="muted small" style="margin-top:12px" data-i18n="footer.about">A student-built gaming hub with honest rankings, clear guides and a small interactive lab.</p>
+        </div>
+        <div>
+          <h3 data-i18n="footer.explore">Explore</h3>
+          <ul>
+            <li><a href="games.html" data-i18n="nav.games">Top Games</a></li>
+            <li><a href="guides.html" data-i18n="nav.guides">Guides</a></li>
+            <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+            <li><a href="play.html" data-i18n="nav.lab">Player Lab</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 data-i18n="footer.community">Community</h3>
+          <ul>
+            <li><a href="about.html#team" data-i18n="footer.team">Meet the team</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+            <li><a href="register.html" data-i18n="footer.register">Create an account</a></li>
+            <li><a href="part1.html" data-i18n="footer.responsive">Responsive design</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 data-i18n="footer.project">Project</h3>
+          <ul>
+            <li><a href="https://github.com/NURDA07/Web-assignment" target="_blank" rel="noopener" data-i18n="footer.github">Source on GitHub</a></li>
+            <li><button type="button" class="kbd-hint" data-shortcuts aria-haspopup="dialog"><span data-i18n="footer.shortcuts">Keyboard shortcuts</span> <kbd>?</kbd></button></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PixelForge · SE-2501</span>
+        <span>Marat Nurdaulet · Kadyr Tlektes · Suinalin Azamat</span>
       </div>
     </div>
-  </section>
-
-</main>
-
-<footer class="bg-dark text-light text-center py-4 mt-5">
-  <div class="container">
-    <p class="mb-0">Marat Nurdaulet | Kadyr Tlektes | Suinalin Azamat</p>
-  </div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/script.js"></script>
+  </footer>
 </body>
 </html>

@@ -1,95 +1,191 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PixelForge — About Us</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/features.css">
-  <script src="js/navigation.js" defer></script>
-  <link rel="stylesheet" href="css/extras.css">
-  <script src="js/theme.js" defer></script>
-</head>
-<body class="page-layout">
-  <a class="skip-link" href="#main-content">Skip to content</a>
+  <title data-i18n="title.about">PixelForge — About & Team</title>
+  <meta name="description" content="The story, values and team behind PixelForge.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 26'%3E%3Crect width='11' height='11' rx='2' fill='%23ff1f5a'/%3E%3Crect x='12' y='8' width='11' height='11' rx='2' fill='%23ff5a1f'/%3E%3Crect y='13' width='13' height='13' rx='2' fill='%2300b4ff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+  <!-- Shared: translations, theme, language, keyboard shortcuts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/core.js"></script>
+  <!-- Assignment 6: jQuery from the CDN + external script.js -->
+  <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+  <script src="script.js"></script>
 
-  <header id="main-header">
-    <a class="brand" href="index.html" aria-label="PixelForge home"><span class="brand-icon" aria-hidden="true">PF</span>Pixel<span>Forge</span></a>
-    <nav aria-label="Main navigation">
-      <ul class="nav-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html" class="active" aria-current="page">About</a></li>
-        <li><a href="games.html">Top Games</a></li>
-        <li><a href="guides.html">Guides</a></li>
-        <li><a href="team.html">Team</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="play.html">Player Lab</a></li>
-        <li><a href="part1.html">Media Queries</a></li>
-      </ul>
-    </nav>
+</head>
+<body>
+  <div id="scroll-progress" role="progressbar" aria-label="Reading progress" data-i18n-aria="common.progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+  <a class="skip-link" href="#main" data-i18n="common.skip">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="PixelForge home" data-i18n-aria="nav.brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span class="brand-text">PixelForge</span></a>
+      <nav id="main-nav" class="main-nav" aria-label="Main navigation" data-i18n-aria="nav.label">
+        <ul class="nav-menu">
+        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="games.html" data-i18n="nav.games">Top Games</a></li>
+        <li><a href="guides.html" data-i18n="nav.guides">Guides</a></li>
+        <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+        <li><a href="play.html" data-i18n="nav.lab">Player Lab</a></li>
+        <li><a href="about.html" aria-current="page" data-i18n="nav.about">About</a></li>
+        <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+          <li class="nav-account"><a href="register.html" data-i18n="footer.register">Create an account</a></li>
+        </ul>
+      </nav>
+      <div class="header-tools">
+        <label class="sr-only" for="lang-select" data-i18n="nav.language">Language</label>
+        <select id="lang-select" class="lang-select">
+          <option value="en">EN</option>
+          <option value="ru">RU</option>
+          <option value="kk">KZ</option>
+        </select>
+        <button id="theme-toggle" class="icon-btn" type="button" aria-label="Switch to light theme" aria-pressed="false">☀</button>
+        <a id="account-link" class="btn btn-sm user-chip" href="register.html">Sign up</a>
+        <button id="nav-toggle" class="icon-btn nav-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Menu" data-i18n-aria="nav.menu">☰</button>
+      </div>
+    </div>
   </header>
 
-  
-  <aside class="sidebar" aria-label="Explore PixelForge">
-    <p class="eyebrow">PLAYER HUB / SE-2501</p>
-    <h2>Find your next quest</h2>
-    <p>Discover a game, learn a new strategy, and meet the crew.</p>
-    <nav aria-label="Quick links" class="side-links">
-      <a href="games.html">01 / Game rankings <span aria-hidden="true">↗</span></a>
-      <a href="guides.html">02 / Player guides <span aria-hidden="true">↗</span></a>
-      <a href="games.html#gallery">03 / Community gallery <span aria-hidden="true">↗</span></a>
-      <a href="team.html">04 / Meet the crew <span aria-hidden="true">↗</span></a>
-    </nav>
-    <div class="sidebar-note"><span class="tag">PixelForge</span><p>Three players. One shared passion for games.</p><a href="contact.html">Suggest our next game →</a></div>
-  </aside>
+  <main id="main" tabindex="-1">
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="container">
+        <p class="crumbs"><a href="index.html" data-i18n="nav.home">Home</a> / <span data-i18n="nav.about">About</span></p>
+        <h1 id="page-title" data-i18n="about.title">About PixelForge</h1>
+        <p class="lead" data-i18n="about.lead">A gaming hub built by three students who wanted to understand the web from the ground up.</p>
+      </div>
+    </section>
 
-  <main id="main-content" class="container">
-    <h1>About PixelForge</h1>
-    <img src="images/pixelforge.png" alt="Controller resting on a desk next to a monitor">
+    <section class="section-tight" aria-labelledby="story-title">
+      <div class="container grid grid-2" style="align-items:center">
+        <div>
+          <p class="eyebrow" data-i18n="about.storyEyebrow">Our story</p>
+          <h2 id="story-title" data-i18n="about.storyTitle">From class project to gaming hub</h2>
+          <p data-i18n="about.story1">PixelForge started as a Front-End Basics assignment. We chose gaming because it is what we talk about between lectures anyway.</p>
+          <p class="muted" data-i18n="about.story2">Every assignment added something new: Bootstrap layouts, JavaScript forms, an interactive lab, jQuery effects and now a complete multilingual website.</p>
+        </div>
+        <img src="img/pixelforge.jpg" alt="PixelForge logo on a neon stage" width="1400" height="735" loading="lazy" style="border-radius:var(--radius);border:1px solid var(--border)">
+      </div>
+    </section>
 
-    <p>
-      PixelForge started as a class project for the <span class="highlight">Front-End Basics</span>
-      assignment. We wanted a site about something we actually care about — gaming —
-      built without any framework, so we'd really understand HTML and CSS.
-    </p>
+    <section class="section" aria-labelledby="journey-title">
+      <div class="container grid grid-2">
+        <div>
+          <h2 id="journey-title" data-i18n="about.journeyTitle">Our journey</h2>
+          <ol class="timeline">
+            <li><strong data-i18n="about.j1t">HTML &amp; CSS</strong><span class="muted" data-i18n="about.j1">Six pages, one shared dark palette, published on GitHub Pages.</span></li>
+            <li><strong data-i18n="about.j2t">Bootstrap &amp; responsive layout</strong><span class="muted" data-i18n="about.j2">Grids, carousel and media queries for phones, tablets and desktops.</span></li>
+            <li><strong data-i18n="about.j3t">JavaScript</strong><span class="muted" data-i18n="about.j3">Form validation, FAQ accordion, pop-up and a live clock.</span></li>
+            <li><strong data-i18n="about.j4t">Player Lab</strong><span class="muted" data-i18n="about.j4">DOM events, objects, arrays, sound and animation.</span></li>
+            <li><strong data-i18n="about.j5t">jQuery</strong><span class="muted" data-i18n="about.j5">Live search, autocomplete, counters, lazy images and notifications.</span></li>
+          </ol>
+        </div>
+        <div>
+          <h2 data-i18n="about.valuesTitle">What we value</h2>
+          <div class="grid" style="gap:14px">
+            <div class="card"><h3 data-i18n="about.v1">Honesty</h3><p class="muted" data-i18n="about.v1t">Reviews and rankings without sponsored bias.</p></div>
+            <div class="card"><h3 data-i18n="about.v2">Consistency</h3><p class="muted" data-i18n="about.v2t">The same design and navigation on every page.</p></div>
+            <div class="card"><h3 data-i18n="about.v3">Collaboration</h3><p class="muted" data-i18n="about.v3t">Three students, one shared hub, equal work.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <h2>Our Story</h2>
-    <ol>
-      <li>Chose gaming as our shared topic and split the six pages between three members.</li>
-      <li>Built the HTML structure for every page — headings, lists, tables, forms.</li>
-      <li>Designed one shared dark-mode stylesheet with a neon color palette.</li>
-      <li>Tested every navigation link and fixed broken image paths.</li>
-      <li>Published the finished site on GitHub Pages.</li>
-    </ol>
-    
-    <h2>Our Values</h2>
-    <ul>
-      <li>Honesty — reviews and rankings with no sponsored bias</li>
-      <li>Consistency — the same palette and layout on every page</li>
-      <li>Collaboration — three students, one unified gaming hub</li>
-    </ul>
-  
-    <h2>Frequently Asked Questions</h2>
-    <div class="faq-item">
-      <button type="button" class="faq-question">What is PixelForge?</button>
-      <div class="faq-answer"><p>PixelForge is a student-built gaming website with game rankings, reviews, and beginner-friendly guides.</p></div>
+    <section class="section" id="team" aria-labelledby="team-title">
+      <div class="container">
+        <p class="eyebrow" data-i18n="team.eyebrow">The crew · SE-2501</p>
+        <h2 id="team-title" data-i18n="team.title">Meet the team</h2>
+        <div class="grid grid-3">
+          <article class="card team-card">
+            <img src="img/nurda.jpg" alt="Portrait of Marat Nurdaulet" width="240" height="240" loading="lazy">
+            <h3>Marat Nurdaulet</h3>
+            <p class="role" data-i18n="team.r1">Front-end · Home &amp; About</p>
+            <p class="muted" data-i18n="team.d1">Builds layouts and keeps every page consistent. Favourite genre: RPG.</p>
+          </article>
+          <article class="card team-card">
+            <img src="img/tlektes.jpg" alt="Portrait of Kadyr Tlektes" width="240" height="240" loading="lazy">
+            <h3>Kadyr Tlektes</h3>
+            <p class="role" data-i18n="team.r2">Content · Games &amp; Guides</p>
+            <p class="muted" data-i18n="team.d2">Plays every game before ranking it. Favourite genre: FPS.</p>
+          </article>
+          <article class="card team-card">
+            <img src="img/azamat.jpg" alt="Portrait of Suinalin Azamat" width="240" height="240" loading="lazy">
+            <h3>Suinalin Azamat</h3>
+            <p class="role" data-i18n="team.r3">Design · Team &amp; Contact</p>
+            <p class="muted" data-i18n="team.d3">Designs forms and interactions. Favourite genres: indie and strategy.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="faq-title">
+      <div class="container" style="max-width:820px">
+        <p class="eyebrow center" data-i18n="faq.eyebrow">FAQ</p>
+        <h2 id="faq-title" class="center" data-i18n="faq.title">Frequently asked questions</h2>
+        <div class="accordion" data-accordion>
+          <div class="acc-item">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq1" data-i18n="faq.q1">What is PixelForge?</button></h3>
+            <div class="acc-panel" id="faq1"><p data-i18n="faq.a1">A student-built gaming website with game rankings, guides and an interactive Player Lab.</p></div>
+          </div>
+          <div class="acc-item">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq2" data-i18n="faq.q2">Which technologies does the website use?</button></h3>
+            <div class="acc-panel" id="faq2"><p data-i18n="faq.a2">HTML, CSS, vanilla JavaScript and jQuery. It is hosted on GitHub Pages.</p></div>
+          </div>
+          <div class="acc-item">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq3" data-i18n="faq.q3">Does the website store my data?</button></h3>
+            <div class="acc-panel" id="faq3"><p data-i18n="faq.a3">Only in your own browser: your theme, language and account name are saved in localStorage. Passwords are never saved.</p></div>
+          </div>
+          <div class="acc-item">
+            <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq4" data-i18n="faq.q4">Can I use the site with only a keyboard?</button></h3>
+            <div class="acc-panel" id="faq4"><p data-i18n="faq.a4">Yes. Press ? on any page to see shortcuts: J and K jump between sections, T and B go to the top and bottom.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>PixelForge</a>
+          <p class="muted small" style="margin-top:12px" data-i18n="footer.about">A student-built gaming hub with honest rankings, clear guides and a small interactive lab.</p>
+        </div>
+        <div>
+          <h3 data-i18n="footer.explore">Explore</h3>
+          <ul>
+            <li><a href="games.html" data-i18n="nav.games">Top Games</a></li>
+            <li><a href="guides.html" data-i18n="nav.guides">Guides</a></li>
+            <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+            <li><a href="play.html" data-i18n="nav.lab">Player Lab</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 data-i18n="footer.community">Community</h3>
+          <ul>
+            <li><a href="about.html#team" data-i18n="footer.team">Meet the team</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+            <li><a href="register.html" data-i18n="footer.register">Create an account</a></li>
+            <li><a href="part1.html" data-i18n="footer.responsive">Responsive design</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 data-i18n="footer.project">Project</h3>
+          <ul>
+            <li><a href="https://github.com/NURDA07/Web-assignment" target="_blank" rel="noopener" data-i18n="footer.github">Source on GitHub</a></li>
+            <li><button type="button" class="kbd-hint" data-shortcuts aria-haspopup="dialog"><span data-i18n="footer.shortcuts">Keyboard shortcuts</span> <kbd>?</kbd></button></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PixelForge · SE-2501</span>
+        <span>Marat Nurdaulet · Kadyr Tlektes · Suinalin Azamat</span>
+      </div>
     </div>
-    <div class="faq-item">
-      <button type="button" class="faq-question">Which technologies does the website use?</button>
-      <div class="faq-answer"><p>HTML, CSS, JavaScript, and Bootstrap on some pages.</p></div>
-    </div>
-    <div class="faq-item">
-      <button type="button" class="faq-question">Does the website store my data?</button>
-      <div class="faq-answer"><p>No. The forms are only demos. They do not send or save any information.</p></div>
-    </div>
-
-</main>
-
-<footer id="site-footer">
-  <p>Marat Nurdaulet | Kadyr Tlektes | Suinalin Azamat</p>
-</footer>
-<script src="js/script.js"></script>
+  </footer>
 </body>
 </html>

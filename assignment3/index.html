@@ -1,185 +1,241 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PixelForge - Home</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/home.css">
-  <link rel="stylesheet" href="css/theme.css">
-  <link rel="stylesheet" href="css/bootstrap-theme.css">
-  <link rel="stylesheet" href="css/features.css">
-  <script src="js/navigation.js" defer></script>
-  <link rel="stylesheet" href="css/extras.css">
-  <script src="js/theme.js" defer></script>
+  <title data-i18n="title.home">PixelForge — Gaming hub</title>
+  <meta name="description" content="PixelForge: honest game rankings, step-by-step guides and an interactive player lab.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 26'%3E%3Crect width='11' height='11' rx='2' fill='%23ff1f5a'/%3E%3Crect x='12' y='8' width='11' height='11' rx='2' fill='%23ff5a1f'/%3E%3Crect y='13' width='13' height='13' rx='2' fill='%2300b4ff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+  <!-- Shared: translations, theme, language, keyboard shortcuts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/core.js"></script>
+  <!-- Assignment 6: jQuery from the CDN + external script.js -->
+  <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+  <script src="script.js"></script>
+  <script src="js/forms.js" defer></script>
+  <script src="js/home.js" defer></script>
 </head>
 <body>
+  <div id="scroll-progress" role="progressbar" aria-label="Reading progress" data-i18n-aria="common.progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+  <a class="skip-link" href="#main" data-i18n="common.skip">Skip to content</a>
 
-<nav aria-label="Main navigation" class="navbar navbar-expand-lg navbar-dark bg-dark px-sm-2 px-lg-5 py-3">
-  <div class="container-fluid">
-    <a class="navbar-brand fw-bold" href="index.html">PixelForge</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="mainNav">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a href="index.html" class="nav-link active" aria-current="page">Home</a></li>
-        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-        <li class="nav-item"><a href="games.html" class="nav-link">Top Games</a></li>
-        <li class="nav-item"><a href="guides.html" class="nav-link">Guides</a></li>
-        <li class="nav-item"><a href="team.html" class="nav-link">Team</a></li>
-        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-        <li class="nav-item"><a href="play.html" class="nav-link">Player Lab</a></li>
-        <li class="nav-item"><a href="part1.html" class="nav-link">Media Queries</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<main class="container my-5">
-  <section class="mb-5">
-    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
-        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
-        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
-        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="6" aria-label="Slide 7"></button>
-        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="7" aria-label="Slide 8"></button>
-        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="8" aria-label="Slide 9"></button>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="PixelForge home" data-i18n-aria="nav.brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span class="brand-text">PixelForge</span></a>
+      <nav id="main-nav" class="main-nav" aria-label="Main navigation" data-i18n-aria="nav.label">
+        <ul class="nav-menu">
+        <li><a href="index.html" aria-current="page" data-i18n="nav.home">Home</a></li>
+        <li><a href="games.html" data-i18n="nav.games">Top Games</a></li>
+        <li><a href="guides.html" data-i18n="nav.guides">Guides</a></li>
+        <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+        <li><a href="play.html" data-i18n="nav.lab">Player Lab</a></li>
+        <li><a href="about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+          <li class="nav-account"><a href="register.html" data-i18n="footer.register">Create an account</a></li>
+        </ul>
+      </nav>
+      <div class="header-tools">
+        <label class="sr-only" for="lang-select" data-i18n="nav.language">Language</label>
+        <select id="lang-select" class="lang-select">
+          <option value="en">EN</option>
+          <option value="ru">RU</option>
+          <option value="kk">KZ</option>
+        </select>
+        <button id="theme-toggle" class="icon-btn" type="button" aria-label="Switch to light theme" aria-pressed="false">☀</button>
+        <a id="account-link" class="btn btn-sm user-chip" href="register.html">Sign up</a>
+        <button id="nav-toggle" class="icon-btn nav-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Menu" data-i18n-aria="nav.menu">☰</button>
       </div>
-      <div class="carousel-inner rounded shadow-sm">
-        <div class="carousel-item active">
-          <img src="images/brawlstars.png" class="d-block w-100" alt="Brawl Stars">
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow" data-i18n="home.eyebrow">Gaming hub · SE-2501</p>
+          <h1 id="hero-title"><span data-i18n="home.title1">Play smarter.</span> <span data-i18n="home.title2">Win together.</span></h1>
+          <p class="lead" data-i18n="home.lead">Honest reviews, monthly rankings and step-by-step guides from three students who play as much as they code.</p>
+          <div class="btn-row hero-actions">
+            <a class="btn btn-lg" href="games.html" data-i18n="home.ctaGames">Explore top games</a>
+            <a class="btn btn-ghost btn-lg" href="register.html" data-i18n="home.ctaJoin">Join PixelForge</a>
+          </div>
+          <p id="home-greeting" class="hero-meta" aria-live="polite"></p>
         </div>
-        <div class="carousel-item">
-          <img src="images/counterstrike2.png" class="d-block w-100" alt="Counter Strike 2">
-        </div>
-        <div class="carousel-item">
-          <img src="images/minecraft.png" class="d-block w-100" alt="Minecraft">
-        </div>
-        <div class="carousel-item">
-          <img src="images/nurda.png" class="d-block w-100" alt="Marat Nurdaulet">
-        </div>
-        <div class="carousel-item">
-          <img src="images/pixelforge.png" class="d-block w-100" alt="PixelForge Logo">
-        </div>
-        <div class="carousel-item">
-          <img src="images/tlektes.png" class="d-block w-100" alt="Kadyr Tlektes">
-        </div>
-        <div class="carousel-item">
-          <img src="images/topratedgameswallpaper.png" class="d-block w-100" alt="Top Rated Games">
-        </div>
-        <div class="carousel-item">
-          <img src="images/welcome.png" class="d-block w-100" alt="Welcome to PixelForge">
-        </div>
-        <div class="carousel-item">
-          <img src="images/Azamat.png" class="d-block w-100" alt="Suinalin Azamat">
+
+        <div class="carousel" id="hero-carousel" role="region" aria-roledescription="carousel" aria-label="Featured games" data-i18n-aria="home.carousel">
+          <div class="carousel-track">
+            <div class="carousel-slide" role="group" aria-roledescription="slide">
+              <img src="img/counterstrike2.jpg" alt="Counter-Strike 2 artwork" width="1400" height="788">
+              <div class="carousel-caption"><strong>Counter-Strike 2</strong><span data-i18n="home.slide1">Every round is a fresh strategy.</span></div>
+            </div>
+            <div class="carousel-slide" role="group" aria-roledescription="slide">
+              <img src="img/minecraft.jpg" alt="Minecraft landscape" width="1280" height="720" loading="lazy">
+              <div class="carousel-caption"><strong>Minecraft</strong><span data-i18n="home.slide2">One block. Endless possibilities.</span></div>
+            </div>
+            <div class="carousel-slide" role="group" aria-roledescription="slide">
+              <img src="img/brawlstars.jpg" alt="Brawl Stars characters" width="1400" height="607" loading="lazy">
+              <div class="carousel-caption"><strong>Brawl Stars</strong><span data-i18n="home.slide3">Fast matches. Big teamwork.</span></div>
+            </div>
+            <div class="carousel-slide" role="group" aria-roledescription="slide">
+              <img src="img/pixelforge.jpg" alt="PixelForge logo on a neon stage" width="1400" height="735" loading="lazy">
+              <div class="carousel-caption"><strong>PixelForge</strong><span data-i18n="home.slide4">Three players. One shared passion.</span></div>
+            </div>
+          </div>
+          <button class="carousel-btn prev" type="button" aria-label="Previous slide" data-i18n-aria="home.prev">‹</button>
+          <button class="carousel-btn next" type="button" aria-label="Next slide" data-i18n-aria="home.next">›</button>
+          <div class="carousel-dots"></div>
         </div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-  </section>
+    </section>
 
-  <section class="row mt-lg-4 mb-5 align-items-center">
-    <div class="col-12 col-lg-6 p-4">
-      <h1 class="display-4 fw-bold mb-3">Welcome to PixelForge</h1>
-      <p class="lead">Reviews, rankings, and guides for gamers who play to win.</p>
-      <p>PixelForge is a student-run gaming hub built for our Front-End Basics assignment. Three of us, three passions, all styled using Bootstrap.</p>
-      <div class="btn-group mt-3" role="group" aria-label="Action buttons">
-        <a href="contact.html" class="btn btn-primary btn-lg">Join Us</a>
-        <a href="about.html" class="btn btn-outline-secondary btn-lg">Learn More</a>
-        <button type="button" id="share-site" class="btn btn-outline-dark btn-lg">Share</button>
+    <section class="section-tight" aria-labelledby="stats-title">
+      <div class="container">
+        <h2 id="stats-title" class="sr-only" data-i18n="home.statsTitle">Community in numbers</h2>
+        <div class="stats">
+          <div class="stat"><strong class="number-counter" data-count="1200">0</strong><span data-i18n="home.statPlayers">players in the community</span></div>
+          <div class="stat"><strong class="number-counter" data-count="36">0</strong><span data-i18n="home.statGuides">guides written</span></div>
+          <div class="stat"><strong class="number-counter" data-count="10">0</strong><span data-i18n="home.statGames">games ranked</span></div>
+          <div class="stat"><strong class="number-counter" data-count="3">0</strong><span data-i18n="home.statCrew">crew members</span></div>
+        </div>
       </div>
-      <p id="share-status" class="small mb-0" role="status"></p>
-    </div>
-    <div class="col-12 col-lg-6 p-4 text-center">
-      <img src="images/pixelforge.png" class="img-fluid rounded shadow" alt="Welcome Image">
-    </div>
-  </section>
+    </section>
 
-  <section class="mb-5">
-    <h2 class="text-center mb-4">Highlights</h2>
-    <div class="row g-4">
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card h-100 shadow-sm">
-          <img src="images/brawlstars.png" class="card-img-top" alt="Card Image 1">
-          <div class="card-body">
-            <h5 class="card-title">Honest Reviews</h5>
-            <p class="card-text">We rank games by gameplay, story, and replay value without any sponsored bias.</p>
-            <a href="games.html" class="btn btn-primary btn-sm">Explore</a>
+    <section class="section" aria-labelledby="features-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow" data-i18n="home.featEyebrow">What we do</p>
+            <h2 id="features-title" data-i18n="home.featTitle">Everything a player needs</h2>
+          </div>
+          <a class="btn btn-ghost" href="about.html" data-i18n="home.featMore">About PixelForge</a>
+        </div>
+        <div class="grid grid-3">
+          <article class="card card-media">
+            <img src="img/counterstrike2.jpg" alt="" width="1400" height="788" loading="lazy">
+            <div class="card-body">
+              <h3 data-i18n="home.f1Title">Honest rankings</h3>
+              <p class="muted" data-i18n="home.f1Text">We score games on gameplay, story and replay value — never on sponsorships.</p>
+              <a class="btn btn-sm" href="games.html" data-i18n="home.f1Btn">See rankings</a>
+            </div>
+          </article>
+          <article class="card card-media">
+            <img src="img/minecraft.jpg" alt="" width="1280" height="720" loading="lazy">
+            <div class="card-body">
+              <h3 data-i18n="home.f2Title">Clear guides</h3>
+              <p class="muted" data-i18n="home.f2Text">Short numbered steps that a first-time player can actually follow.</p>
+              <a class="btn btn-sm" href="guides.html" data-i18n="home.f2Btn">Read guides</a>
+            </div>
+          </article>
+          <article class="card card-media">
+            <img src="img/brawlstars.jpg" alt="" width="1400" height="607" loading="lazy">
+            <div class="card-body">
+              <h3 data-i18n="home.f3Title">Player Lab</h3>
+              <p class="muted" data-i18n="home.f3Text">Build a player card, rate the hub, launch a quest and play a victory sound.</p>
+              <a class="btn btn-sm" href="play.html" data-i18n="home.f3Btn">Open the lab</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="news-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow" data-i18n="home.newsEyebrow">Crew news</p>
+            <h2 id="news-title" data-i18n="home.newsTitle">Latest from the crew</h2>
+          </div>
+          <div class="filter-row" id="news-filters" role="group" aria-label="Filter news" data-i18n-aria="home.newsFilter">
+            <button class="chip" type="button" data-feed="all" aria-pressed="true" data-i18n="home.newsAll">All</button>
+            <button class="chip" type="button" data-feed="games" aria-pressed="false" data-i18n="home.newsGames">Games</button>
+            <button class="chip" type="button" data-feed="tech" aria-pressed="false" data-i18n="home.newsTech">Technology</button>
+          </div>
+        </div>
+        <div id="news-feed" class="news-feed"></div>
+        <div class="btn-row" style="margin-top:20px">
+          <button id="load-posts" class="btn btn-soft" type="button" data-i18n="home.newsLoad">Load more posts</button>
+          <p id="news-status" class="status-line" role="status" style="margin:0"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="cta">
+          <div>
+            <h2 id="cta-title" data-i18n="home.ctaTitle">Get the weekly drop</h2>
+            <p data-i18n="home.ctaText">New rankings, fresh guides and crew picks — once a week, no spam.</p>
+          </div>
+          <div class="btn-row">
+            <button id="open-popup" class="btn btn-lg" type="button" aria-haspopup="dialog" aria-controls="newsletter" aria-expanded="false" data-i18n="home.subscribe">Subscribe</button>
+            <a class="btn btn-ghost btn-lg" href="contact.html" data-i18n="home.contactUs">Contact us</a>
           </div>
         </div>
       </div>
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card h-100 shadow-sm">
-          <img src="images/minecraft.png" class="card-img-top" alt="Card Image 2">
-          <div class="card-body">
-            <h5 class="card-title">Clear Guides</h5>
-            <p class="card-text">Walkthroughs written so a first-time player can easily follow along and succeed.</p>
-            <a href="guides.html" class="btn btn-secondary btn-sm">Read Guides</a>
+    </section>
+
+    <div id="newsletter" class="modal-bg" hidden>
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="newsletter-title">
+        <button type="button" class="icon-btn modal-close" data-close aria-label="Close" data-i18n-aria="common.close">✕</button>
+        <p class="eyebrow" data-i18n="home.nlEyebrow">Newsletter</p>
+        <h2 id="newsletter-title" data-i18n="home.nlTitle">Join the weekly drop</h2>
+        <p class="muted" data-i18n="home.nlText">Enter your email and we will add you to the PixelForge list.</p>
+        <form id="newsletter-form" class="form" novalidate>
+          <div class="field">
+            <label for="nl-email" data-i18n="form.email">Email address</label>
+            <input type="email" id="nl-email" name="email" autocomplete="email" maxlength="254" placeholder="name@example.com" aria-describedby="nl-email-error" required>
+            <span id="nl-email-error" class="error"></span>
           </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card h-100 shadow-sm">
-          <img src="images/counterstrike2.png" class="card-img-top" alt="Card Image 3">
-          <div class="card-body">
-            <h5 class="card-title">Built by Gamers</h5>
-            <p class="card-text">Three students who play as much as they code bringing you the best updates.</p>
-            <a href="team.html" class="btn btn-dark btn-sm">Meet Team</a>
-          </div>
-        </div>
+          <button type="submit" class="btn btn-block" data-i18n="home.subscribe">Subscribe</button>
+          <p id="nl-status" class="form-status" role="status" aria-live="polite"></p>
+          <p class="form-note" data-i18n="form.studentNote">Student project: no real emails are sent.</p>
+        </form>
       </div>
     </div>
-  </section>
+  </main>
 
-  <section class="feature-box">
-    <h2>Interactive Features</h2>
-    <p>Try the buttons below, or <a href="play.html">explore the Player Lab</a> to filter games, rate your picks, and build a player profile.</p>
-    <button type="button" id="open-popup" class="feature-btn" aria-haspopup="dialog" aria-controls="newsletter-dialog" aria-expanded="false" disabled>Subscribe to updates</button>
-    <button type="button" id="change-color" class="feature-btn">Change background color</button>
-    <p id="color-text" aria-live="polite">Background color: Midnight</p>
-
-    <h3>Current date and time</h3>
-    <p id="clock" class="clock">Loading...</p>
-  </section>
-
-</main>
-
-
-<!-- Popup (hidden until the button is clicked) -->
-<div id="popup" class="popup-bg" hidden>
-  <div id="newsletter-dialog" class="popup-box" role="dialog" aria-modal="true" aria-labelledby="newsletter-title" aria-describedby="newsletter-note" tabindex="-1">
-    <button type="button" id="close-popup" class="popup-close" aria-label="Close newsletter dialog">&times;</button>
-    <h2 id="newsletter-title">Join the PixelForge newsletter</h2>
-    <p id="newsletter-note">Check your email address for game reviews and guides. This is a demo: no subscription is created, and no emails are sent or saved.</p>
-    <form id="popup-form" method="post" aria-describedby="newsletter-note" novalidate>
-      <label for="popup-email" class="form-label">Email address</label>
-      <input type="email" id="popup-email" name="email" class="form-control" autocomplete="email" maxlength="254" placeholder="name@example.com" aria-describedby="popup-email-error" required>
-      <span id="popup-email-error" class="error d-block"></span>
-      <button type="submit" class="feature-btn mt-3" disabled>Check email</button>
-      <p id="popup-message" role="status" aria-live="polite" aria-atomic="true"></p>
-    </form>
-  </div>
-</div>
-
-<footer class="bg-dark text-light text-center py-4 mt-5">
-  <div class="container">
-    <p class="mb-0">Marat Nurdaulet | Kadyr Tlektes | Suinalin Azamat</p>
-  </div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/script.js"></script>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>PixelForge</a>
+          <p class="muted small" style="margin-top:12px" data-i18n="footer.about">A student-built gaming hub with honest rankings, clear guides and a small interactive lab.</p>
+        </div>
+        <div>
+          <h3 data-i18n="footer.explore">Explore</h3>
+          <ul>
+            <li><a href="games.html" data-i18n="nav.games">Top Games</a></li>
+            <li><a href="guides.html" data-i18n="nav.guides">Guides</a></li>
+            <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+            <li><a href="play.html" data-i18n="nav.lab">Player Lab</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 data-i18n="footer.community">Community</h3>
+          <ul>
+            <li><a href="about.html#team" data-i18n="footer.team">Meet the team</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+            <li><a href="register.html" data-i18n="footer.register">Create an account</a></li>
+            <li><a href="part1.html" data-i18n="footer.responsive">Responsive design</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 data-i18n="footer.project">Project</h3>
+          <ul>
+            <li><a href="https://github.com/NURDA07/Web-assignment" target="_blank" rel="noopener" data-i18n="footer.github">Source on GitHub</a></li>
+            <li><button type="button" class="kbd-hint" data-shortcuts aria-haspopup="dialog"><span data-i18n="footer.shortcuts">Keyboard shortcuts</span> <kbd>?</kbd></button></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PixelForge · SE-2501</span>
+        <span>Marat Nurdaulet · Kadyr Tlektes · Suinalin Azamat</span>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

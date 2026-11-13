@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="title.gallery">PixelForge — Gallery</title>
+  <meta name="description" content="Screenshots and artwork from the games and people behind PixelForge.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 26'%3E%3Crect width='11' height='11' rx='2' fill='%23ff1f5a'/%3E%3Crect x='12' y='8' width='11' height='11' rx='2' fill='%23ff5a1f'/%3E%3Crect y='13' width='13' height='13' rx='2' fill='%2300b4ff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+  <!-- Shared: translations, theme, language, keyboard shortcuts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/core.js"></script>
+  <!-- Assignment 6: jQuery from the CDN + external script.js -->
+  <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+  <script src="script.js"></script>
+  <script src="js/gallery.js" defer></script>
+</head>
+<body>
+  <div id="scroll-progress" role="progressbar" aria-label="Reading progress" data-i18n-aria="common.progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+  <a class="skip-link" href="#main" data-i18n="common.skip">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="PixelForge home" data-i18n-aria="nav.brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span class="brand-text">PixelForge</span></a>
+      <nav id="main-nav" class="main-nav" aria-label="Main navigation" data-i18n-aria="nav.label">
+        <ul class="nav-menu">
+        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="games.html" data-i18n="nav.games">Top Games</a></li>
+        <li><a href="guides.html" data-i18n="nav.guides">Guides</a></li>
+        <li><a href="gallery.html" aria-current="page" data-i18n="nav.gallery">Gallery</a></li>
+        <li><a href="play.html" data-i18n="nav.lab">Player Lab</a></li>
+        <li><a href="about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+          <li class="nav-account"><a href="register.html" data-i18n="footer.register">Create an account</a></li>
+        </ul>
+      </nav>
+      <div class="header-tools">
+        <label class="sr-only" for="lang-select" data-i18n="nav.language">Language</label>
+        <select id="lang-select" class="lang-select">
+          <option value="en">EN</option>
+          <option value="ru">RU</option>
+          <option value="kk">KZ</option>
+        </select>
+        <button id="theme-toggle" class="icon-btn" type="button" aria-label="Switch to light theme" aria-pressed="false">☀</button>
+        <a id="account-link" class="btn btn-sm user-chip" href="register.html">Sign up</a>
+        <button id="nav-toggle" class="icon-btn nav-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Menu" data-i18n-aria="nav.menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="container">
+        <p class="crumbs"><a href="index.html" data-i18n="nav.home">Home</a> / <span data-i18n="nav.gallery">Gallery</span></p>
+        <h1 id="page-title" data-i18n="gallery.title">PixelForge gallery</h1>
+        <p class="lead" data-i18n="gallery.lead">The worlds we play in and the people behind the hub.</p>
+      </div>
+    </section>
+
+    <section class="section-tight" aria-labelledby="featured-title">
+      <div class="container">
+        <p class="eyebrow" data-i18n="gallery.featEyebrow">Featured scene</p>
+        <h2 id="featured-title" data-i18n="gallery.featTitle">Pick your world</h2>
+        <div class="featured">
+          <figure class="featured-scene">
+            <img id="featured-image" src="img/minecraft.jpg" alt="Minecraft landscape with block-built terrain" width="1280" height="720">
+            <figcaption><strong id="featured-title-text">Minecraft</strong><span id="featured-caption" class="muted"></span></figcaption>
+          </figure>
+          <div>
+            <p class="muted" data-i18n="gallery.featHint">Select a thumbnail to change the featured scene.</p>
+            <div id="gallery-thumbnails" class="thumbs" role="group" aria-label="Choose a featured image" data-i18n-aria="gallery.thumbsLabel">
+              <button type="button" class="thumb" data-image="0" aria-pressed="true"><img src="img/minecraft.jpg" alt="" width="96" height="54">Minecraft</button>
+              <button type="button" class="thumb" data-image="1" aria-pressed="false"><img src="img/counterstrike2.jpg" alt="" width="96" height="54">Counter-Strike 2</button>
+              <button type="button" class="thumb" data-image="2" aria-pressed="false"><img src="img/brawlstars.jpg" alt="" width="96" height="54">Brawl Stars</button>
+            </div>
+            <p id="gallery-status" class="sr-only" role="status" aria-live="polite"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="gallery" aria-labelledby="grid-title">
+      <div class="container">
+        <p class="eyebrow" data-i18n="gallery.gridEyebrow">The worlds · the players</p>
+        <h2 id="grid-title" data-i18n="gallery.gridTitle">Community wall</h2>
+        <p class="muted" data-i18n="gallery.gridLead">Images load only when they scroll into view, so the page stays fast.</p>
+        <div class="image-gallery">
+          <figure class="gallery-item" tabindex="0"><img data-src="img/brawlstars.jpg" alt="Brawl Stars characters" width="600" height="450"><figcaption><strong>Brawl Stars</strong><span data-i18n="gallery.c1">Fast matches. Big teamwork.</span></figcaption></figure>
+          <figure class="gallery-item" tabindex="0"><img data-src="img/counterstrike2.jpg" alt="Counter-Strike 2 artwork" width="600" height="450"><figcaption><strong>Counter-Strike 2</strong><span data-i18n="gallery.c2">Every round is a fresh strategy.</span></figcaption></figure>
+          <figure class="gallery-item" tabindex="0"><img data-src="img/minecraft.jpg" alt="Minecraft landscape" width="600" height="450"><figcaption><strong>Minecraft</strong><span data-i18n="gallery.c3">Build a world of your own.</span></figcaption></figure>
+          <figure class="gallery-item" tabindex="0"><img data-src="img/topratedgameswallpaper.jpg" alt="Chart of the top rated games of the decade" width="600" height="450"><figcaption><strong data-i18n="gallery.c4t">Top rated of the decade</strong><span data-i18n="gallery.c4">The bar we measure against.</span></figcaption></figure>
+          <figure class="gallery-item" tabindex="0"><img data-src="img/welcome.png" alt="PixelForge logo" width="600" height="450"><figcaption><strong data-i18n="gallery.c5t">Welcome to PixelForge</strong><span data-i18n="gallery.c5">Your next adventure starts here.</span></figcaption></figure>
+          <figure class="gallery-item" tabindex="0"><img data-src="img/pixelforge.jpg" alt="PixelForge logo on a neon stage" width="600" height="450"><figcaption><strong data-i18n="gallery.c6t">Our creative corner</strong><span data-i18n="gallery.c6">Where games meet web design.</span></figcaption></figure>
+          <figure class="gallery-item" tabindex="0"><img data-src="img/nurda.jpg" alt="Marat Nurdaulet" width="600" height="450"><figcaption><strong>Marat Nurdaulet</strong><span data-i18n="team.r1">Front-end · Home &amp; About</span></figcaption></figure>
+          <figure class="gallery-item" tabindex="0"><img data-src="img/tlektes.jpg" alt="Kadyr Tlektes" width="600" height="450"><figcaption><strong>Kadyr Tlektes</strong><span data-i18n="team.r2">Content · Games &amp; Guides</span></figcaption></figure>
+          <figure class="gallery-item" tabindex="0"><img data-src="img/azamat.jpg" alt="Suinalin Azamat" width="600" height="450"><figcaption><strong>Suinalin Azamat</strong><span data-i18n="team.r3">Design · Team &amp; Contact</span></figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight" aria-labelledby="share-title">
+      <div class="container">
+        <div class="panel">
+          <h2 id="share-title" data-i18n="gallery.shareTitle">Share PixelForge</h2>
+          <p class="muted" data-i18n="gallery.shareText">Copy the link and send it to your squad.</p>
+          <div class="copy-box">
+            <code id="share-text">https://nurda07.github.io/Web-assignment/</code>
+            <button id="copy-link" class="btn" type="button" aria-describedby="copy-tooltip"><span class="copy-icon" aria-hidden="true">⧉</span> <span data-i18n="gallery.copy">Copy</span></button>
+            <span id="copy-tooltip" role="status" hidden data-i18n="gallery.copied">Copied to clipboard!</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>PixelForge</a>
+          <p class="muted small" style="margin-top:12px" data-i18n="footer.about">A student-built gaming hub with honest rankings, clear guides and a small interactive lab.</p>
+        </div>
+        <div>
+          <h3 data-i18n="footer.explore">Explore</h3>
+          <ul>
+            <li><a href="games.html" data-i18n="nav.games">Top Games</a></li>
+            <li><a href="guides.html" data-i18n="nav.guides">Guides</a></li>
+            <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+            <li><a href="play.html" data-i18n="nav.lab">Player Lab</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 data-i18n="footer.community">Community</h3>
+          <ul>
+            <li><a href="about.html#team" data-i18n="footer.team">Meet the team</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+            <li><a href="register.html" data-i18n="footer.register">Create an account</a></li>
+            <li><a href="part1.html" data-i18n="footer.responsive">Responsive design</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 data-i18n="footer.project">Project</h3>
+          <ul>
+            <li><a href="https://github.com/NURDA07/Web-assignment" target="_blank" rel="noopener" data-i18n="footer.github">Source on GitHub</a></li>
+            <li><button type="button" class="kbd-hint" data-shortcuts aria-haspopup="dialog"><span data-i18n="footer.shortcuts">Keyboard shortcuts</span> <kbd>?</kbd></button></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PixelForge · SE-2501</span>
+        <span>Marat Nurdaulet · Kadyr Tlektes · Suinalin Azamat</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

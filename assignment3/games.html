@@ -1,140 +1,190 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PixelForge — Top Games</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
-  <script src="js/navigation.js" defer></script>
-  <link rel="stylesheet" href="css/extras.css">
-  <script src="js/theme.js" defer></script>
-  <link rel="stylesheet" href="css/jquery.css">
+  <title data-i18n="title.games">PixelForge — Top Games</title>
+  <meta name="description" content="This month's PixelForge game rankings with live search.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 26'%3E%3Crect width='11' height='11' rx='2' fill='%23ff1f5a'/%3E%3Crect x='12' y='8' width='11' height='11' rx='2' fill='%23ff5a1f'/%3E%3Crect y='13' width='13' height='13' rx='2' fill='%2300b4ff'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+  <!-- Shared: translations, theme, language, keyboard shortcuts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/core.js"></script>
+  <!-- Assignment 6: jQuery from the CDN + external script.js -->
   <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
   <script src="script.js"></script>
+  <script src="js/games.js" defer></script>
 </head>
-<body class="page-layout">
-  <div id="scroll-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
-  <a class="skip-link" href="#main-content">Skip to content</a>
+<body>
+  <div id="scroll-progress" role="progressbar" aria-label="Reading progress" data-i18n-aria="common.progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+  <a class="skip-link" href="#main" data-i18n="common.skip">Skip to content</a>
 
-  <header id="main-header">
-    <a class="brand" href="index.html" aria-label="PixelForge home"><span class="brand-icon" aria-hidden="true">PF</span>Pixel<span>Forge</span></a>
-    <nav aria-label="Main navigation">
-      <ul class="nav-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="games.html" class="active" aria-current="page">Top Games</a></li>
-        <li><a href="guides.html">Guides</a></li>
-        <li><a href="team.html">Team</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="play.html">Player Lab</a></li>
-        <li><a href="part1.html">Media Queries</a></li>
-      </ul>
-    </nav>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="PixelForge home" data-i18n-aria="nav.brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span class="brand-text">PixelForge</span></a>
+      <nav id="main-nav" class="main-nav" aria-label="Main navigation" data-i18n-aria="nav.label">
+        <ul class="nav-menu">
+        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="games.html" aria-current="page" data-i18n="nav.games">Top Games</a></li>
+        <li><a href="guides.html" data-i18n="nav.guides">Guides</a></li>
+        <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+        <li><a href="play.html" data-i18n="nav.lab">Player Lab</a></li>
+        <li><a href="about.html" data-i18n="nav.about">About</a></li>
+        <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+          <li class="nav-account"><a href="register.html" data-i18n="footer.register">Create an account</a></li>
+        </ul>
+      </nav>
+      <div class="header-tools">
+        <label class="sr-only" for="lang-select" data-i18n="nav.language">Language</label>
+        <select id="lang-select" class="lang-select">
+          <option value="en">EN</option>
+          <option value="ru">RU</option>
+          <option value="kk">KZ</option>
+        </select>
+        <button id="theme-toggle" class="icon-btn" type="button" aria-label="Switch to light theme" aria-pressed="false">☀</button>
+        <a id="account-link" class="btn btn-sm user-chip" href="register.html">Sign up</a>
+        <button id="nav-toggle" class="icon-btn nav-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Menu" data-i18n-aria="nav.menu">☰</button>
+      </div>
+    </div>
   </header>
 
-  
-  <aside class="sidebar" aria-label="Explore PixelForge">
-    <p class="eyebrow">PLAYER HUB / SE-2501</p>
-    <h2>Find your next quest</h2>
-    <p>Discover a game, learn a new strategy, and meet the crew.</p>
-    <nav aria-label="Quick links" class="side-links">
-      <a href="games.html">01 / Game rankings <span aria-hidden="true">↗</span></a>
-      <a href="guides.html">02 / Player guides <span aria-hidden="true">↗</span></a>
-      <a href="games.html#gallery">03 / Community gallery <span aria-hidden="true">↗</span></a>
-      <a href="team.html">04 / Meet the crew <span aria-hidden="true">↗</span></a>
-    </nav>
-    <div class="sidebar-note"><span class="tag">PixelForge</span><p>Three players. One shared passion for games.</p><a href="contact.html">Suggest our next game →</a></div>
-  </aside>
-
-  <main id="main-content" class="container">
-    <h1>Top Rated Games</h1>
-    <img src="images/topratedgameswallpaper.png" alt="Collage of our top rated video games">
-
-    <p>Our current rankings across popular genres, updated every month by the crew.</p>
-
-    <ul>
-      <li><span class="tag">MOBA</span> Team-based arena combat, unique characters and abilities</li>
-      <li><span class="tag">FPS</span> Fast reflexes, competitive multiplayer and tactical gameplay</li>
-      <li><span class="tag">Sandbox</span> Limitless creativity, building, and open world survival</li>
-    </ul>
-
-    <section class="jq-search" aria-label="Search games">
-      <label for="game-search">Search games, genres or platforms</label>
-      <input id="game-search" type="search" placeholder="Try Minecraft or FPS" autocomplete="off" aria-controls="search-suggestions" aria-expanded="false">
-      <ul id="search-suggestions" aria-label="Search suggestions" hidden></ul>
-      <p id="search-status" aria-live="polite">3 games found</p>
+  <main id="main" tabindex="-1">
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="container">
+        <p class="crumbs"><a href="index.html" data-i18n="nav.home">Home</a> / <span data-i18n="nav.games">Top Games</span></p>
+        <h1 id="page-title" data-i18n="games.title">Top Rated Games</h1>
+        <p class="lead" data-i18n="games.lead">Our rankings across popular genres, updated every month by the crew.</p>
+      </div>
     </section>
-    <h2>This Month's Rankings</h2>
-    <div class="table-scroll" role="region" aria-label="Game rankings" tabindex="0">
-    <table>
-      <thead>
-        <tr>
-          <th>Game</th>
-          <th>Genre</th>
-          <th>Platform</th>
-          <th>Rating</th>
-        </tr>
-      </thead>
-      <tbody id="game-results">
-        <tr>
-          <td>Brawl Stars</td>
-          <td>MOBA / Hero Shooter</td>
-          <td>Mobile</td>
-          <td>9.2 / 10</td>
-        </tr>
-        <tr>
-          <td>Counter-Strike 2</td>
-          <td>FPS</td>
-          <td>PC</td>
-          <td>9.5 / 10</td>
-        </tr>
-        <tr>
-          <td>Minecraft</td>
-          <td>Sandbox / Survival</td>
-          <td>PC / Console / Mobile</td>
-          <td>9.8 / 10</td>
-        </tr>
-      </tbody>
-    </table>
-    </div>
 
-    <section class="jq-stats" aria-label="Community statistics">
-      <p><strong class="number-counter" data-count="1200">0</strong> players</p>
-      <p><strong class="number-counter" data-count="36">0</strong> guides</p>
-      <p><strong class="number-counter" data-count="3">0</strong> featured games</p>
+    <section class="section-tight" aria-labelledby="fav-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow" data-i18n="games.favEyebrow">Crew favourites</p>
+            <h2 id="fav-title" data-i18n="games.favTitle">Find your next game</h2>
+          </div>
+          <div id="game-filters" class="filter-row" role="group" aria-label="Filter games by category" data-i18n-aria="games.filterLabel">
+            <button type="button" class="chip" data-category="all" aria-pressed="true" data-i18n="games.fAll">All games</button>
+            <button type="button" class="chip" data-category="fps" aria-pressed="false" data-i18n="games.fFps">Tactical FPS</button>
+            <button type="button" class="chip" data-category="sandbox" aria-pressed="false" data-i18n="games.fSandbox">Sandbox</button>
+            <button type="button" class="chip" data-category="arena" aria-pressed="false" data-i18n="games.fArena">Arena</button>
+          </div>
+        </div>
+        <div id="game-catalog" class="catalog"></div>
+        <p id="catalog-status" class="status-line" role="status" aria-live="polite"></p>
+      </div>
     </section>
-    <section class="jq-panel" aria-labelledby="share-title">
-      <h2 id="share-title">Share PixelForge</h2>
-      <p><code id="share-text">https://nurda07.github.io/Web-assignment/games.html</code></p>
-      <button id="copy-link" type="button" aria-describedby="copy-tooltip"><span class="copy-icon" aria-hidden="true">⧉</span> Copy</button>
-      <span id="copy-tooltip" role="status" hidden>Copied to clipboard!</span>
+
+    <section class="section" aria-labelledby="rank-title">
+      <div class="container">
+        <p class="eyebrow" data-i18n="games.rankEyebrow">Monthly rankings</p>
+        <h2 id="rank-title" data-i18n="games.rankTitle">This month's top 10</h2>
+        <div class="search-box jq-search">
+          <label for="game-search" data-i18n="games.searchLabel">Search games, genres or platforms</label>
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input id="game-search" type="search" placeholder="Try Minecraft or FPS" data-i18n-ph="games.searchPh" autocomplete="off" role="combobox" aria-autocomplete="list" aria-controls="search-suggestions" aria-expanded="false">
+          <ul id="search-suggestions" aria-label="Suggestions" data-i18n-aria="games.suggestions" hidden></ul>
+        </div>
+        <p id="search-status" class="status-line" aria-live="polite"></p>
+        <div class="table-wrap" role="region" aria-labelledby="rank-title" tabindex="0">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col" data-i18n="games.colGame">Game</th>
+                <th scope="col" data-i18n="games.colGenre">Genre</th>
+                <th scope="col" data-i18n="games.colPlatform">Platform</th>
+                <th scope="col" data-i18n="games.colRating">Rating</th>
+              </tr>
+            </thead>
+            <tbody id="game-results">
+              <tr data-keywords="sandbox survival"><td class="rank">1</td><td>Minecraft</td><td data-i18n="genre.sandbox">Sandbox / Survival</td><td>PC · Console · Mobile</td><td class="score">9.8 / 10</td></tr>
+              <tr data-keywords="tactical fps shooter"><td class="rank">2</td><td>Counter-Strike 2</td><td data-i18n="genre.fps">Tactical FPS</td><td>PC</td><td class="score">9.5 / 10</td></tr>
+              <tr data-keywords="action rpg"><td class="rank">3</td><td>Elden Ring</td><td data-i18n="genre.rpg">Action RPG</td><td>PC · Console</td><td class="score">9.4 / 10</td></tr>
+              <tr data-keywords="arena hero shooter moba"><td class="rank">4</td><td>Brawl Stars</td><td data-i18n="genre.arena">Arena / Hero Shooter</td><td>Mobile</td><td class="score">9.2 / 10</td></tr>
+              <tr data-keywords="farming sim"><td class="rank">5</td><td>Stardew Valley</td><td data-i18n="genre.farming">Farming Sim</td><td>PC · Console · Mobile</td><td class="score">9.1 / 10</td></tr>
+              <tr data-keywords="2d sandbox adventure"><td class="rank">6</td><td>Terraria</td><td data-i18n="genre.adventure">2D Sandbox Adventure</td><td>PC · Console · Mobile</td><td class="score">9.0 / 10</td></tr>
+              <tr data-keywords="tactical fps shooter"><td class="rank">7</td><td>Valorant</td><td data-i18n="genre.fps">Tactical FPS</td><td>PC</td><td class="score">8.9 / 10</td></tr>
+              <tr data-keywords="moba"><td class="rank">8</td><td>Dota 2</td><td data-i18n="genre.moba">MOBA</td><td>PC</td><td class="score">8.8 / 10</td></tr>
+              <tr data-keywords="sports racing"><td class="rank">9</td><td>Rocket League</td><td data-i18n="genre.sports">Sports / Racing</td><td>PC · Console</td><td class="score">8.7 / 10</td></tr>
+              <tr data-keywords="battle royale shooter"><td class="rank">10</td><td>Fortnite</td><td data-i18n="genre.royale">Battle Royale</td><td>PC · Console · Mobile</td><td class="score">8.5 / 10</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </section>
-    <section class="jq-panel" aria-labelledby="suggest-title">
-      <h2 id="suggest-title">Suggest a game</h2>
-      <form id="game-suggestion-form">
-        <label for="suggested-game">Game name</label>
-        <input id="suggested-game" name="game" required maxlength="100">
-        <button type="submit">Submit</button>
-      </form>
+
+    <section class="section-tight" aria-labelledby="score-title">
+      <div class="container">
+        <h2 id="score-title" data-i18n="games.howTitle">How we score</h2>
+        <div class="grid grid-3">
+          <div class="card"><div class="card-icon" aria-hidden="true">🎮</div><h3 data-i18n="games.how1">Gameplay — 50%</h3><p class="muted" data-i18n="games.how1t">Controls, balance and how fun the core loop feels after ten hours.</p></div>
+          <div class="card"><div class="card-icon" aria-hidden="true">📖</div><h3 data-i18n="games.how2">World &amp; story — 25%</h3><p class="muted" data-i18n="games.how2t">Atmosphere, characters and the reasons to keep exploring.</p></div>
+          <div class="card"><div class="card-icon" aria-hidden="true">🔁</div><h3 data-i18n="games.how3">Replay value — 25%</h3><p class="muted" data-i18n="games.how3t">Updates, modes and whether we still play it with friends.</p></div>
+        </div>
+      </div>
     </section>
-    <section id="gallery" aria-labelledby="gallery-title"><p class="eyebrow">THE WORLDS / THE PLAYERS</p><h2 id="gallery-title">PixelForge Gallery</h2><p>Nine snapshots of the games and people behind our hub. Hover or focus a tile to read its story.</p><div class="image-gallery">
-      <figure class="gallery-item" tabindex="0"><img data-src="images/brawlstars.png" alt="Brawl Stars characters" width="600" height="400"><figcaption><strong>Brawl Stars</strong><span>Fast matches. Big teamwork.</span></figcaption></figure>
-      <figure class="gallery-item" tabindex="0"><img data-src="images/counterstrike2.png" alt="Counter-Strike 2 artwork" width="600" height="400"><figcaption><strong>Counter-Strike 2</strong><span>Every round is a fresh strategy.</span></figcaption></figure>
-      <figure class="gallery-item" tabindex="0"><img data-src="images/minecraft.png" alt="Minecraft landscape" width="600" height="400"><figcaption><strong>Minecraft</strong><span>Build a world of your own.</span></figcaption></figure>
-      <figure class="gallery-item" tabindex="0"><img data-src="images/topratedgameswallpaper.png" alt="Collage of video games" width="600" height="400"><figcaption><strong>Our game collection</strong><span>New worlds to explore.</span></figcaption></figure>
-      <figure class="gallery-item" tabindex="0"><img data-src="images/welcome.png" alt="PixelForge welcome artwork" width="600" height="400"><figcaption><strong>Welcome to PixelForge</strong><span>Your next adventure starts here.</span></figcaption></figure>
-      <figure class="gallery-item" tabindex="0"><img data-src="images/pixelforge.png" alt="PixelForge gaming artwork" width="600" height="400"><figcaption><strong>Our creative corner</strong><span>Where games meet web design.</span></figcaption></figure>
-      <figure class="gallery-item" tabindex="0"><img data-src="images/nurda.png" alt="Marat Nurdaulet" width="600" height="400"><figcaption><strong>Marat Nurdaulet</strong><span>Home and About creator.</span></figcaption></figure>
-      <figure class="gallery-item" tabindex="0"><img data-src="images/tlektes.png" alt="Kadyr Tlektes" width="600" height="400"><figcaption><strong>Kadyr Tlektes</strong><span>Top Games and Guides creator.</span></figcaption></figure>
-      <figure class="gallery-item" tabindex="0"><img data-src="images/Azamat.png" alt="Suinalin Azamat" width="600" height="400"><figcaption><strong>Suinalin Azamat</strong><span>Team and Contact creator.</span></figcaption></figure>
-    </div></section>
+
+    <section class="section" aria-labelledby="suggest-title">
+      <div class="container">
+        <div class="panel" style="max-width:640px">
+          <p class="eyebrow" data-i18n="games.sugEyebrow">Your turn</p>
+          <h2 id="suggest-title" data-i18n="games.sugTitle">Suggest a game for next month</h2>
+          <form id="game-suggestion-form" class="form" novalidate>
+            <div class="field">
+              <label for="suggested-game" data-i18n="games.sugLabel">Game name</label>
+              <input id="suggested-game" name="game" type="text" required maxlength="100" placeholder="e.g. Hollow Knight" aria-describedby="suggest-error">
+              <span id="suggest-error" class="error"></span>
+            </div>
+            <div><button type="submit" class="btn" data-i18n="games.sugBtn">Submit suggestion</button></div>
+          </form>
+        </div>
+      </div>
+    </section>
   </main>
 
-<footer id="site-footer">
-  <p>Marat Nurdaulet | Kadyr Tlektes | Suinalin Azamat</p>
-</footer>
-  <div id="notification" role="status" aria-live="polite" hidden></div>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>PixelForge</a>
+          <p class="muted small" style="margin-top:12px" data-i18n="footer.about">A student-built gaming hub with honest rankings, clear guides and a small interactive lab.</p>
+        </div>
+        <div>
+          <h3 data-i18n="footer.explore">Explore</h3>
+          <ul>
+            <li><a href="games.html" data-i18n="nav.games">Top Games</a></li>
+            <li><a href="guides.html" data-i18n="nav.guides">Guides</a></li>
+            <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+            <li><a href="play.html" data-i18n="nav.lab">Player Lab</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 data-i18n="footer.community">Community</h3>
+          <ul>
+            <li><a href="about.html#team" data-i18n="footer.team">Meet the team</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+            <li><a href="register.html" data-i18n="footer.register">Create an account</a></li>
+            <li><a href="part1.html" data-i18n="footer.responsive">Responsive design</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 data-i18n="footer.project">Project</h3>
+          <ul>
+            <li><a href="https://github.com/NURDA07/Web-assignment" target="_blank" rel="noopener" data-i18n="footer.github">Source on GitHub</a></li>
+            <li><button type="button" class="kbd-hint" data-shortcuts aria-haspopup="dialog"><span data-i18n="footer.shortcuts">Keyboard shortcuts</span> <kbd>?</kbd></button></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 PixelForge · SE-2501</span>
+        <span>Marat Nurdaulet · Kadyr Tlektes · Suinalin Azamat</span>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

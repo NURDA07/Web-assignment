@@ -18,7 +18,7 @@ Open http://localhost:8000/. jQuery 4.0.0 loads from the official CDN.
 
 | Page | What is on it |
 | --- | --- |
-| `index.html` — Home | Hero + carousel, greeting and live clock, animated counters, crew news (fetch + filter), newsletter pop-up |
+| `index.html` — Home | Hero + carousel, greeting and live clock, animated counters, top 3 of the month, crew news (fetch + filter), newsletter pop-up |
 | `games.html` — Top Games | Crew favourites with category filter, top-10 table with live search, autocomplete and highlight, "suggest a game" form |
 | `guides.html` — Guides | Guide cards and an accordion with step-by-step walkthroughs |
 | `gallery.html` — Gallery | Featured image switcher, lazy-loaded image wall, copy-link button |

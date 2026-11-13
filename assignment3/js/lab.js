@@ -117,7 +117,7 @@
   }
   function renderGreeting() {
     if (!greetState) { greetResult.textContent = ""; return; }
-    if (greetState.type === "time") greetResult.textContent = PF.t("lab.timeIs", { time: new Date().toLocaleTimeString(PF.locale()) });
+    if (greetState.type === "time") greetResult.textContent = PF.t("lab.timeIs", { time: new Date().toLocaleTimeString(PF.lang === "kk" ? "ru-RU" : PF.locale()) });
     else if (greetState.name) greetResult.textContent = PF.t(greetingKey(new Date().getHours())) + ", " + greetState.name + "!";
     else greetResult.textContent = PF.t("lab.enterName");
   }

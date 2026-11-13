@@ -56,6 +56,7 @@ html[data-theme="light"] {
 }
 
 *, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 16px); }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -251,7 +252,7 @@ td.score { font-weight: 700; color: var(--heading); white-space: nowrap; }
 /* ---------- Search with autocomplete (jQuery) ---------- */
 .search-box { position: relative; max-width: 520px; margin-bottom: 18px; }
 .search-box label { display: block; font-weight: 600; margin-bottom: 6px; }
-.search-box input { padding-left: 42px; }
+.search-box input[type="search"] { padding-left: 42px; }
 .search-box .search-icon { position: absolute; left: 14px; bottom: 11px; color: var(--muted); pointer-events: none; }
 #search-suggestions { position: absolute; z-index: 20; left: 0; right: 0; top: 100%; margin: 6px 0 0; padding: 6px; list-style: none; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm); box-shadow: var(--shadow); }
 #search-suggestions button { width: 100%; text-align: left; padding: 9px 12px; border: 0; border-radius: 7px; background: transparent; color: var(--text); font: inherit; cursor: pointer; }
@@ -322,6 +323,7 @@ input::placeholder, textarea::placeholder { color: var(--muted); opacity: .8; }
 /* ---------- Guides ---------- */
 .guide-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
 .steps-list { counter-reset: s; list-style: none; padding: 0; display: grid; gap: 14px; }
+.steps-list.panel { padding: 28px; }
 .steps-list li { counter-increment: s; display: flex; gap: 14px; align-items: flex-start; }
 .steps-list li::before { content: counter(s); flex: none; width: 32px; height: 32px; display: grid; place-items: center; border-radius: 50%; background: var(--surface-3); color: var(--heading); font-weight: 800; }
 
@@ -351,7 +353,7 @@ input::placeholder, textarea::placeholder { color: var(--muted); opacity: .8; }
 /* ---------- Game catalog (filter) ---------- */
 .catalog { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 20px; }
 .catalog-card .platform { font-size: .8rem; color: var(--muted); margin-bottom: 4px; }
-.catalog-card .score { display: inline-block; margin-top: 8px; padding: 4px 12px; border-radius: 999px; background: var(--surface-3); color: var(--heading); font-weight: 700; font-size: .85rem; }
+.catalog-card .score { align-self: flex-start; display: inline-block; margin-top: 8px; padding: 4px 12px; border-radius: 999px; background: var(--surface-3); color: var(--heading); font-weight: 700; font-size: .85rem; }
 .filter-row { display: flex; gap: 8px; flex-wrap: wrap; }
 .status-line { color: var(--muted); font-size: .9rem; margin: 14px 0 0; }
 
@@ -460,3 +462,24 @@ kbd { display: inline-block; min-width: 28px; padding: 3px 8px; border-radius: 6
 
 /* Sections focused by keyboard shortcuts (J / K) don't need a big outline. */
 [tabindex="-1"]:focus { outline: none; }
+
+/* Two-column feature panel (text + form) */
+.split-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
+.split-panel .form { width: 100%; }
+@media (max-width: 760px) { .split-panel { grid-template-columns: 1fr; } }
+
+/* Home: top 3 of the month */
+.top3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.top3 a { display: flex; gap: 16px; align-items: center; padding: 14px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--border); color: var(--text); text-decoration: none; transition: transform .2s, border-color .2s; }
+.top3 a:hover { transform: translateY(-3px); border-color: var(--primary); color: var(--text); }
+.top3 img { width: 92px; aspect-ratio: 1; object-fit: cover; border-radius: 10px; flex: none; }
+.top3 .place { font: 800 2rem var(--font-heading); color: var(--primary); min-width: 34px; }
+.top3 strong { display: block; color: var(--heading); font-size: 1.05rem; }
+.top3 .muted { font-size: .85rem; }
+.top3 .rating { display: inline-block; margin-top: 4px; font-weight: 700; color: var(--heading); }
+@media (max-width: 960px) { .top3 { grid-template-columns: 1fr; } }
+
+/* Registration aside picture */
+.aside-art { margin-top: 22px; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border); }
+.aside-art img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.cover-tile { width: 92px; aspect-ratio: 1; flex: none; display: grid; place-items: center; border-radius: 10px; font: 800 1.6rem var(--font-heading); letter-spacing: 2px; color: #f5d27a; background: radial-gradient(circle at 50% 35%, #6b5326, #1b1408 70%); border: 1px solid #5a4520; }

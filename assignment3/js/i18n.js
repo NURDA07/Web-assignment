@@ -135,6 +135,13 @@ window.PF_DICT = {
   },
 
   ru: {
+    "guides.min5": "5 мин",
+    "guides.min6": "6 мин",
+    "guides.min8": "8 мин",
+    "home.topEyebrow": "Рейтинг месяца",
+    "home.topTitle": "Топ-3 этого месяца",
+    "home.topMore": "Весь топ-10",
+    "games.sugText": "Каждый месяц команда проходит самую популярную игру из предложений и добавляет её в рейтинг.",
     "title.home": "PixelForge — игровой хаб",
     "title.games": "PixelForge — Лучшие игры",
     "title.guides": "PixelForge — Гайды",
@@ -589,6 +596,13 @@ window.PF_DICT = {
   },
 
   kk: {
+    "guides.min5": "5 мин",
+    "guides.min6": "6 мин",
+    "guides.min8": "8 мин",
+    "home.topEyebrow": "Ай рейтингі",
+    "home.topTitle": "Осы айдың үздік 3-і",
+    "home.topMore": "Толық үздік 10",
+    "games.sugText": "Команда ай сайын ең көп ұсынылған ойынды өтіп, оны рейтингке қосады.",
     "title.home": "PixelForge — ойын хабы",
     "title.games": "PixelForge — Үздік ойындар",
     "title.guides": "PixelForge — Нұсқаулықтар",

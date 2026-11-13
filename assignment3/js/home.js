@@ -62,7 +62,7 @@
     const now = new Date();
     const user = PF.getUser();
     const hello = PF.t(greetingKey(now.getHours())) + (user ? ", " + user.username : "") + "!";
-    const when = now.toLocaleString(PF.locale(), { weekday: "long", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit", second: "2-digit" });
+    const when = PF.formatDate(now, { weekday: true, time: true });
     greeting.textContent = hello + " · " + when;
   }
   tick();

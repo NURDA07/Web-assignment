@@ -255,7 +255,7 @@
       $("profile-name").textContent = PF.t("reg.hello", { name: user.username });
       $("profile-email").textContent = user.email;
       $("profile-platform").textContent = user.platform === "Mobile" ? PF.t("reg.mobile") : user.platform;
-      $("profile-joined").textContent = new Date(user.joined).toLocaleDateString(PF.locale(), { day: "numeric", month: "long", year: "numeric" });
+      $("profile-joined").textContent = PF.formatDate(new Date(user.joined), { year: true });
     }
     PF.onLang(showProfile);
 

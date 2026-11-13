@@ -343,7 +343,25 @@
     setUser: function (user) { if (user) write(STORE.user, JSON.stringify(user)); else remove(STORE.user); updateAccount(); },
     read: read,
     write: write,
-    locale: function () { return { en: "en-US", ru: "ru-RU", kk: "kk-KZ" }[lang]; }
+    locale: function () { return { en: "en-US", ru: "ru-RU", kk: "kk-KZ" }[lang]; },
+    // opts: { weekday, year, time }
+    formatDate: function (date, opts) {
+      opts = opts || {};
+      const pad = function (n) { return String(n).padStart(2, "0"); };
+      const time = pad(date.getHours()) + ":" + pad(date.getMinutes()) + ":" + pad(date.getSeconds());
+      if (lang === "kk") {
+        const months = ["қаңтар", "ақпан", "наурыз", "сәуір", "мамыр", "маусым", "шілде", "тамыз", "қыркүйек", "қазан", "қараша", "желтоқсан"];
+        const days = ["жексенбі", "дүйсенбі", "сейсенбі", "сәрсенбі", "бейсенбі", "жұма", "сенбі"];
+        let text = (opts.year ? date.getFullYear() + " ж. " : "") + date.getDate() + " " + months[date.getMonth()];
+        if (opts.weekday) text += ", " + days[date.getDay()];
+        return opts.time ? text + ", " + time : text;
+      }
+      const format = { day: "numeric", month: "long" };
+      if (opts.weekday) format.weekday = "long";
+      if (opts.year) format.year = "numeric";
+      if (opts.time) { format.hour = "2-digit"; format.minute = "2-digit"; format.second = "2-digit"; }
+      return date.toLocaleString(this.locale(), format);
+    }
   };
 
   document.addEventListener("DOMContentLoaded", function () {

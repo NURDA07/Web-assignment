@@ -50,7 +50,7 @@
   });
 
   // Step 1 — name
-  const nameLabel = el("label", { for: "profile-nickname" });
+  const nameLabel = el("label", { for: "profile-nickname", class: "sr-only" });
   const nickname = el("input", { type: "text", id: "profile-nickname", maxlength: "24", autocomplete: "off", spellcheck: "false", required: "", "aria-describedby": "profile-name-hint profile-name-error", placeholder: "PixelPilot" });
   const nameHint = el("p", { id: "profile-name-hint", class: "profile-hint" });
   const nameError = el("p", { id: "profile-name-error", class: "profile-error", "aria-live": "polite" });

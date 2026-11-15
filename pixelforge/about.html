@@ -9,13 +9,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/style.css">
   <!-- Shared: translations, theme, language, keyboard shortcuts -->
   <script src="js/i18n.js"></script>
   <script src="js/core.js"></script>
-  <!-- Assignment 6: jQuery from the CDN + external script.js -->
+  <!-- jQuery from the CDN + shared site script -->
   <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
-  <script src="script.js"></script>
+  <script src="js/script.js"></script>
 
 </head>
 <body>
@@ -45,7 +45,7 @@
           <option value="kk">KZ</option>
         </select>
         <button id="theme-toggle" class="icon-btn" type="button" aria-label="Switch to light theme" aria-pressed="false">☀</button>
-        <a id="account-link" class="btn btn-sm user-chip" href="register.html">Sign up</a>
+        <a id="account-link" class="btn btn-sm user-chip" href="login.html">Log in</a>
         <button id="nav-toggle" class="icon-btn nav-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Menu" data-i18n-aria="nav.menu">☰</button>
       </div>
     </div>
@@ -68,7 +68,7 @@
           <p data-i18n="about.story1">PixelForge started as a Front-End Basics assignment. We chose gaming because it is what we talk about between lectures anyway.</p>
           <p class="muted" data-i18n="about.story2">Every assignment added something new: Bootstrap layouts, JavaScript forms, an interactive lab, jQuery effects and now a complete multilingual website.</p>
         </div>
-        <img src="img/pixelforge.jpg" alt="PixelForge logo on a neon stage" width="1400" height="735" loading="lazy" style="border-radius:var(--radius);border:1px solid var(--border)">
+        <img src="images/pixelforge.jpg" alt="PixelForge logo on a neon stage" width="1400" height="735" loading="lazy" style="border-radius:var(--radius);border:1px solid var(--border)">
       </div>
     </section>
 
@@ -101,19 +101,19 @@
         <h2 id="team-title" data-i18n="team.title">Meet the team</h2>
         <div class="grid grid-3">
           <article class="card team-card">
-            <img src="img/nurda.jpg" alt="Portrait of Marat Nurdaulet" width="240" height="240" loading="lazy">
+            <img src="images/nurda.jpg" alt="Portrait of Marat Nurdaulet" width="240" height="240" loading="lazy">
             <h3>Marat Nurdaulet</h3>
             <p class="role" data-i18n="team.r1">Front-end · Home &amp; About</p>
             <p class="muted" data-i18n="team.d1">Builds layouts and keeps every page consistent. Favourite genre: RPG.</p>
           </article>
           <article class="card team-card">
-            <img src="img/tlektes.jpg" alt="Portrait of Kadyr Tlektes" width="240" height="240" loading="lazy">
+            <img src="images/tlektes.jpg" alt="Portrait of Kadyr Tlektes" width="240" height="240" loading="lazy">
             <h3>Kadyr Tlektes</h3>
             <p class="role" data-i18n="team.r2">Content · Games &amp; Guides</p>
             <p class="muted" data-i18n="team.d2">Plays every game before ranking it. Favourite genre: FPS.</p>
           </article>
           <article class="card team-card">
-            <img src="img/azamat.jpg" alt="Portrait of Suinalin Azamat" width="240" height="240" loading="lazy">
+            <img src="images/azamat.jpg" alt="Portrait of Suinalin Azamat" width="240" height="240" loading="lazy">
             <h3>Suinalin Azamat</h3>
             <p class="role" data-i18n="team.r3">Design · Team &amp; Contact</p>
             <p class="muted" data-i18n="team.d3">Designs forms and interactions. Favourite genres: indie and strategy.</p>
@@ -137,7 +137,7 @@
           </div>
           <div class="acc-item">
             <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq3" data-i18n="faq.q3">Does the website store my data?</button></h3>
-            <div class="acc-panel" id="faq3"><p data-i18n="faq.a3">Only in your own browser: your theme, language and account name are saved in localStorage. Passwords are never saved.</p></div>
+            <div class="acc-panel" id="faq3"><p data-i18n="faq.a3b">Only in your own browser: your theme, language, last search and demo account are saved in localStorage. Nothing is sent to a server.</p></div>
           </div>
           <div class="acc-item">
             <h3 style="margin:0"><button class="acc-btn" type="button" aria-expanded="false" aria-controls="faq4" data-i18n="faq.q4">Can I use the site with only a keyboard?</button></h3>
@@ -170,7 +170,7 @@
             <li><a href="about.html#team" data-i18n="footer.team">Meet the team</a></li>
             <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
             <li><a href="register.html" data-i18n="footer.register">Create an account</a></li>
-            <li><a href="part1.html" data-i18n="footer.responsive">Responsive design</a></li>
+            <li><a href="responsive.html" data-i18n="footer.responsive">Responsive design</a></li>
           </ul>
         </div>
         <div>

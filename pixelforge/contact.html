@@ -9,13 +9,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/style.css">
   <!-- Shared: translations, theme, language, keyboard shortcuts -->
   <script src="js/i18n.js"></script>
   <script src="js/core.js"></script>
-  <!-- Assignment 6: jQuery from the CDN + external script.js -->
+  <!-- jQuery from the CDN + shared site script -->
   <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
-  <script src="script.js"></script>
+  <script src="js/script.js"></script>
   <script src="js/forms.js" defer></script>
 </head>
 <body>
@@ -45,7 +45,7 @@
           <option value="kk">KZ</option>
         </select>
         <button id="theme-toggle" class="icon-btn" type="button" aria-label="Switch to light theme" aria-pressed="false">☀</button>
-        <a id="account-link" class="btn btn-sm user-chip" href="register.html">Sign up</a>
+        <a id="account-link" class="btn btn-sm user-chip" href="login.html">Log in</a>
         <button id="nav-toggle" class="icon-btn nav-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Menu" data-i18n-aria="nav.menu">☰</button>
       </div>
     </div>
@@ -78,19 +78,19 @@
             <div class="form-row">
               <div class="field">
                 <label for="c-name" data-i18n="form.name">Full name</label>
-                <input type="text" id="c-name" name="name" autocomplete="name" maxlength="80" aria-describedby="c-name-error" required>
+                <input type="text" id="c-name" name="name" autocomplete="name" aria-describedby="c-name-error">
                 <span id="c-name-error" class="error"></span>
               </div>
               <div class="field">
                 <label for="c-email" data-i18n="form.email">Email address</label>
-                <input type="email" id="c-email" name="email" autocomplete="email" maxlength="254" placeholder="name@example.com" aria-describedby="c-email-error" required>
+                <input type="text" inputmode="email" id="c-email" name="email" autocomplete="email" placeholder="name@example.com" aria-describedby="c-email-error">
                 <span id="c-email-error" class="error"></span>
               </div>
             </div>
 
             <div class="field">
               <label for="c-topic" data-i18n="contact.topic">Topic</label>
-              <select id="c-topic" name="topic" aria-describedby="c-topic-error" required>
+              <select id="c-topic" name="topic" aria-describedby="c-topic-error">
                 <option value="" data-i18n="contact.topic0">Choose a topic</option>
                 <option value="question" data-i18n="contact.topic1">General question</option>
                 <option value="game" data-i18n="contact.topic2">Suggest a game or guide</option>
@@ -110,13 +110,13 @@
 
             <div class="field" id="phone-field" hidden>
               <label for="c-phone" data-i18n="form.phone">Phone number</label>
-              <input type="tel" id="c-phone" name="phone" autocomplete="tel" maxlength="20" placeholder="+7 700 123 4567" aria-describedby="c-phone-error" disabled>
+              <input type="tel" id="c-phone" name="phone" autocomplete="tel" placeholder="+7 700 123 4567" aria-describedby="c-phone-error" disabled>
               <span id="c-phone-error" class="error"></span>
             </div>
 
             <div class="field">
               <label for="c-message"><span data-i18n="form.message">Message</span> <span id="c-counter" class="counter">0 / 1000</span></label>
-              <textarea id="c-message" name="message" maxlength="1000" aria-describedby="c-message-error" required></textarea>
+              <textarea id="c-message" name="message" aria-describedby="c-message-error"></textarea>
               <span id="c-message-error" class="error"></span>
             </div>
 
@@ -153,7 +153,7 @@
             <li><a href="about.html#team" data-i18n="footer.team">Meet the team</a></li>
             <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
             <li><a href="register.html" data-i18n="footer.register">Create an account</a></li>
-            <li><a href="part1.html" data-i18n="footer.responsive">Responsive design</a></li>
+            <li><a href="responsive.html" data-i18n="footer.responsive">Responsive design</a></li>
           </ul>
         </div>
         <div>

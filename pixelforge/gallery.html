@@ -9,13 +9,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/style.css">
   <!-- Shared: translations, theme, language, keyboard shortcuts -->
   <script src="js/i18n.js"></script>
   <script src="js/core.js"></script>
-  <!-- Assignment 6: jQuery from the CDN + external script.js -->
+  <!-- jQuery from the CDN + shared site script -->
   <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
-  <script src="script.js"></script>
+  <script src="js/script.js"></script>
   <script src="js/gallery.js" defer></script>
 </head>
 <body>
@@ -45,7 +45,7 @@
           <option value="kk">KZ</option>
         </select>
         <button id="theme-toggle" class="icon-btn" type="button" aria-label="Switch to light theme" aria-pressed="false">☀</button>
-        <a id="account-link" class="btn btn-sm user-chip" href="register.html">Sign up</a>
+        <a id="account-link" class="btn btn-sm user-chip" href="login.html">Log in</a>
         <button id="nav-toggle" class="icon-btn nav-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Menu" data-i18n-aria="nav.menu">☰</button>
       </div>
     </div>
@@ -66,15 +66,15 @@
         <h2 id="featured-title" data-i18n="gallery.featTitle">Pick your world</h2>
         <div class="featured">
           <figure class="featured-scene">
-            <img id="featured-image" src="img/minecraft.jpg" alt="Minecraft landscape with block-built terrain" width="1280" height="720">
+            <img id="featured-image" src="images/minecraft.jpg" alt="Minecraft landscape with block-built terrain" width="1280" height="720">
             <figcaption><strong id="featured-title-text">Minecraft</strong><span id="featured-caption" class="muted"></span></figcaption>
           </figure>
           <div>
             <p class="muted" data-i18n="gallery.featHint">Select a thumbnail to change the featured scene.</p>
             <div id="gallery-thumbnails" class="thumbs" role="group" aria-label="Choose a featured image" data-i18n-aria="gallery.thumbsLabel">
-              <button type="button" class="thumb" data-image="0" aria-pressed="true"><img src="img/minecraft.jpg" alt="" width="96" height="54">Minecraft</button>
-              <button type="button" class="thumb" data-image="1" aria-pressed="false"><img src="img/counterstrike2.jpg" alt="" width="96" height="54">Counter-Strike 2</button>
-              <button type="button" class="thumb" data-image="2" aria-pressed="false"><img src="img/brawlstars.jpg" alt="" width="96" height="54">Brawl Stars</button>
+              <button type="button" class="thumb" data-image="0" aria-pressed="true"><img src="images/minecraft.jpg" alt="" width="96" height="54">Minecraft</button>
+              <button type="button" class="thumb" data-image="1" aria-pressed="false"><img src="images/counterstrike2.jpg" alt="" width="96" height="54">Counter-Strike 2</button>
+              <button type="button" class="thumb" data-image="2" aria-pressed="false"><img src="images/brawlstars.jpg" alt="" width="96" height="54">Brawl Stars</button>
             </div>
             <p id="gallery-status" class="sr-only" role="status" aria-live="polite"></p>
           </div>
@@ -88,15 +88,15 @@
         <h2 id="grid-title" data-i18n="gallery.gridTitle">Community wall</h2>
         <p class="muted" data-i18n="gallery.gridLead">Images load only when they scroll into view, so the page stays fast.</p>
         <div class="image-gallery">
-          <figure class="gallery-item" tabindex="0"><img data-src="img/brawlstars.jpg" alt="Brawl Stars characters" width="600" height="450"><figcaption><strong>Brawl Stars</strong><span data-i18n="gallery.c1">Fast matches. Big teamwork.</span></figcaption></figure>
-          <figure class="gallery-item" tabindex="0"><img data-src="img/counterstrike2.jpg" alt="Counter-Strike 2 artwork" width="600" height="450"><figcaption><strong>Counter-Strike 2</strong><span data-i18n="gallery.c2">Every round is a fresh strategy.</span></figcaption></figure>
-          <figure class="gallery-item" tabindex="0"><img data-src="img/minecraft.jpg" alt="Minecraft landscape" width="600" height="450"><figcaption><strong>Minecraft</strong><span data-i18n="gallery.c3">Build a world of your own.</span></figcaption></figure>
-          <figure class="gallery-item" tabindex="0"><img data-src="img/topratedgameswallpaper.jpg" alt="Chart of the top rated games of the decade" width="600" height="450"><figcaption><strong data-i18n="gallery.c4t">Top rated of the decade</strong><span data-i18n="gallery.c4">The bar we measure against.</span></figcaption></figure>
-          <figure class="gallery-item" tabindex="0"><img data-src="img/welcome.png" alt="PixelForge logo" width="600" height="450"><figcaption><strong data-i18n="gallery.c5t">Welcome to PixelForge</strong><span data-i18n="gallery.c5">Your next adventure starts here.</span></figcaption></figure>
-          <figure class="gallery-item" tabindex="0"><img data-src="img/pixelforge.jpg" alt="PixelForge logo on a neon stage" width="600" height="450"><figcaption><strong data-i18n="gallery.c6t">Our creative corner</strong><span data-i18n="gallery.c6">Where games meet web design.</span></figcaption></figure>
-          <figure class="gallery-item" tabindex="0"><img data-src="img/nurda.jpg" alt="Marat Nurdaulet" width="600" height="450"><figcaption><strong>Marat Nurdaulet</strong><span data-i18n="team.r1">Front-end · Home &amp; About</span></figcaption></figure>
-          <figure class="gallery-item" tabindex="0"><img data-src="img/tlektes.jpg" alt="Kadyr Tlektes" width="600" height="450"><figcaption><strong>Kadyr Tlektes</strong><span data-i18n="team.r2">Content · Games &amp; Guides</span></figcaption></figure>
-          <figure class="gallery-item" tabindex="0"><img data-src="img/azamat.jpg" alt="Suinalin Azamat" width="600" height="450"><figcaption><strong>Suinalin Azamat</strong><span data-i18n="team.r3">Design · Team &amp; Contact</span></figcaption></figure>
+          <figure class="gallery-item" tabindex="0"><img data-src="images/brawlstars.jpg" alt="Brawl Stars characters" width="600" height="450"><figcaption><strong>Brawl Stars</strong><span data-i18n="gallery.c1">Fast matches. Big teamwork.</span></figcaption></figure>
+          <figure class="gallery-item" tabindex="0"><img data-src="images/counterstrike2.jpg" alt="Counter-Strike 2 artwork" width="600" height="450"><figcaption><strong>Counter-Strike 2</strong><span data-i18n="gallery.c2">Every round is a fresh strategy.</span></figcaption></figure>
+          <figure class="gallery-item" tabindex="0"><img data-src="images/minecraft.jpg" alt="Minecraft landscape" width="600" height="450"><figcaption><strong>Minecraft</strong><span data-i18n="gallery.c3">Build a world of your own.</span></figcaption></figure>
+          <figure class="gallery-item" tabindex="0"><img data-src="images/topratedgameswallpaper.jpg" alt="Chart of the top rated games of the decade" width="600" height="450"><figcaption><strong data-i18n="gallery.c4t">Top rated of the decade</strong><span data-i18n="gallery.c4">The bar we measure against.</span></figcaption></figure>
+          <figure class="gallery-item" tabindex="0"><img data-src="images/welcome.png" alt="PixelForge logo" width="600" height="450"><figcaption><strong data-i18n="gallery.c5t">Welcome to PixelForge</strong><span data-i18n="gallery.c5">Your next adventure starts here.</span></figcaption></figure>
+          <figure class="gallery-item" tabindex="0"><img data-src="images/pixelforge.jpg" alt="PixelForge logo on a neon stage" width="600" height="450"><figcaption><strong data-i18n="gallery.c6t">Our creative corner</strong><span data-i18n="gallery.c6">Where games meet web design.</span></figcaption></figure>
+          <figure class="gallery-item" tabindex="0"><img data-src="images/nurda.jpg" alt="Marat Nurdaulet" width="600" height="450"><figcaption><strong>Marat Nurdaulet</strong><span data-i18n="team.r1">Front-end · Home &amp; About</span></figcaption></figure>
+          <figure class="gallery-item" tabindex="0"><img data-src="images/tlektes.jpg" alt="Kadyr Tlektes" width="600" height="450"><figcaption><strong>Kadyr Tlektes</strong><span data-i18n="team.r2">Content · Games &amp; Guides</span></figcaption></figure>
+          <figure class="gallery-item" tabindex="0"><img data-src="images/azamat.jpg" alt="Suinalin Azamat" width="600" height="450"><figcaption><strong>Suinalin Azamat</strong><span data-i18n="team.r3">Design · Team &amp; Contact</span></figcaption></figure>
         </div>
       </div>
     </section>
@@ -138,7 +138,7 @@
             <li><a href="about.html#team" data-i18n="footer.team">Meet the team</a></li>
             <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
             <li><a href="register.html" data-i18n="footer.register">Create an account</a></li>
-            <li><a href="part1.html" data-i18n="footer.responsive">Responsive design</a></li>
+            <li><a href="responsive.html" data-i18n="footer.responsive">Responsive design</a></li>
           </ul>
         </div>
         <div>

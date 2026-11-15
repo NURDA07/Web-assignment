@@ -9,13 +9,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/style.css">
   <!-- Shared: translations, theme, language, keyboard shortcuts -->
   <script src="js/i18n.js"></script>
   <script src="js/core.js"></script>
-  <!-- Assignment 6: jQuery from the CDN + external script.js -->
+  <!-- jQuery from the CDN + shared site script -->
   <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
-  <script src="script.js"></script>
+  <script src="js/script.js"></script>
   <script src="js/forms.js" defer></script>
   <script src="js/home.js" defer></script>
 </head>
@@ -46,7 +46,7 @@
           <option value="kk">KZ</option>
         </select>
         <button id="theme-toggle" class="icon-btn" type="button" aria-label="Switch to light theme" aria-pressed="false">☀</button>
-        <a id="account-link" class="btn btn-sm user-chip" href="register.html">Sign up</a>
+        <a id="account-link" class="btn btn-sm user-chip" href="login.html">Log in</a>
         <button id="nav-toggle" class="icon-btn nav-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Menu" data-i18n-aria="nav.menu">☰</button>
       </div>
     </div>
@@ -69,19 +69,19 @@
         <div class="carousel" id="hero-carousel" role="region" aria-roledescription="carousel" aria-label="Featured games" data-i18n-aria="home.carousel">
           <div class="carousel-track">
             <div class="carousel-slide" role="group" aria-roledescription="slide">
-              <img src="img/counterstrike2.jpg" alt="Counter-Strike 2 artwork" width="1400" height="788">
+              <img src="images/counterstrike2.jpg" alt="Counter-Strike 2 artwork" width="1400" height="788">
               <div class="carousel-caption"><strong>Counter-Strike 2</strong><span data-i18n="home.slide1">Every round is a fresh strategy.</span></div>
             </div>
             <div class="carousel-slide" role="group" aria-roledescription="slide">
-              <img src="img/minecraft.jpg" alt="Minecraft landscape" width="1280" height="720" loading="lazy">
+              <img src="images/minecraft.jpg" alt="Minecraft landscape" width="1280" height="720" loading="lazy">
               <div class="carousel-caption"><strong>Minecraft</strong><span data-i18n="home.slide2">One block. Endless possibilities.</span></div>
             </div>
             <div class="carousel-slide" role="group" aria-roledescription="slide">
-              <img src="img/brawlstars.jpg" alt="Brawl Stars characters" width="1400" height="607" loading="lazy">
+              <img src="images/brawlstars.jpg" alt="Brawl Stars characters" width="1400" height="607" loading="lazy">
               <div class="carousel-caption"><strong>Brawl Stars</strong><span data-i18n="home.slide3">Fast matches. Big teamwork.</span></div>
             </div>
             <div class="carousel-slide" role="group" aria-roledescription="slide">
-              <img src="img/pixelforge.jpg" alt="PixelForge logo on a neon stage" width="1400" height="735" loading="lazy">
+              <img src="images/pixelforge.jpg" alt="PixelForge logo on a neon stage" width="1400" height="735" loading="lazy">
               <div class="carousel-caption"><strong>PixelForge</strong><span data-i18n="home.slide4">Three players. One shared passion.</span></div>
             </div>
           </div>
@@ -115,7 +115,7 @@
         </div>
         <div class="grid grid-3">
           <article class="card card-media">
-            <img src="img/counterstrike2.jpg" alt="" width="1400" height="788" loading="lazy">
+            <img src="images/counterstrike2.jpg" alt="" width="1400" height="788" loading="lazy">
             <div class="card-body">
               <h3 data-i18n="home.f1Title">Honest rankings</h3>
               <p class="muted" data-i18n="home.f1Text">We score games on gameplay, story and replay value — never on sponsorships.</p>
@@ -123,7 +123,7 @@
             </div>
           </article>
           <article class="card card-media">
-            <img src="img/minecraft.jpg" alt="" width="1280" height="720" loading="lazy">
+            <img src="images/minecraft.jpg" alt="" width="1280" height="720" loading="lazy">
             <div class="card-body">
               <h3 data-i18n="home.f2Title">Clear guides</h3>
               <p class="muted" data-i18n="home.f2Text">Short numbered steps that a first-time player can actually follow.</p>
@@ -131,7 +131,7 @@
             </div>
           </article>
           <article class="card card-media">
-            <img src="img/brawlstars.jpg" alt="" width="1400" height="607" loading="lazy">
+            <img src="images/brawlstars.jpg" alt="" width="1400" height="607" loading="lazy">
             <div class="card-body">
               <h3 data-i18n="home.f3Title">Player Lab</h3>
               <p class="muted" data-i18n="home.f3Text">Build a player card, rate the hub, launch a quest and play a victory sound.</p>
@@ -152,8 +152,8 @@
           <a class="btn btn-ghost" href="games.html" data-i18n="home.topMore">Full top 10</a>
         </div>
         <div class="top3">
-          <a href="games.html"><span class="place">1</span><img src="img/minecraft.jpg" alt="" width="92" height="92" loading="lazy"><span><strong>Minecraft</strong><span class="muted" data-i18n="genre.sandbox">Sandbox / Survival</span><br><span class="rating">★ 9.8</span></span></a>
-          <a href="games.html"><span class="place">2</span><img src="img/counterstrike2.jpg" alt="" width="92" height="92" loading="lazy"><span><strong>Counter-Strike 2</strong><span class="muted" data-i18n="genre.fps">Tactical FPS</span><br><span class="rating">★ 9.5</span></span></a>
+          <a href="games.html"><span class="place">1</span><img src="images/minecraft.jpg" alt="" width="92" height="92" loading="lazy"><span><strong>Minecraft</strong><span class="muted" data-i18n="genre.sandbox">Sandbox / Survival</span><br><span class="rating">★ 9.8</span></span></a>
+          <a href="games.html"><span class="place">2</span><img src="images/counterstrike2.jpg" alt="" width="92" height="92" loading="lazy"><span><strong>Counter-Strike 2</strong><span class="muted" data-i18n="genre.fps">Tactical FPS</span><br><span class="rating">★ 9.5</span></span></a>
           <a href="games.html"><span class="place">3</span><span class="cover-tile" aria-hidden="true">ER</span><span><strong>Elden Ring</strong><span class="muted" data-i18n="genre.rpg">Action RPG</span><br><span class="rating">★ 9.4</span></span></a>
         </div>
       </div>
@@ -204,7 +204,7 @@
         <form id="newsletter-form" class="form" novalidate>
           <div class="field">
             <label for="nl-email" data-i18n="form.email">Email address</label>
-            <input type="email" id="nl-email" name="email" autocomplete="email" maxlength="254" placeholder="name@example.com" aria-describedby="nl-email-error" required>
+            <input type="text" inputmode="email" id="nl-email" name="email" autocomplete="email" placeholder="name@example.com" aria-describedby="nl-email-error">
             <span id="nl-email-error" class="error"></span>
           </div>
           <button type="submit" class="btn btn-block" data-i18n="home.subscribe">Subscribe</button>
@@ -237,7 +237,7 @@
             <li><a href="about.html#team" data-i18n="footer.team">Meet the team</a></li>
             <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
             <li><a href="register.html" data-i18n="footer.register">Create an account</a></li>
-            <li><a href="part1.html" data-i18n="footer.responsive">Responsive design</a></li>
+            <li><a href="responsive.html" data-i18n="footer.responsive">Responsive design</a></li>
           </ul>
         </div>
         <div>

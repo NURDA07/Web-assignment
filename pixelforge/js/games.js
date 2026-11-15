@@ -5,13 +5,13 @@
 
   // Objects keep each game's data together; the method formats the rating.
   const games = [
-    { title: "Counter-Strike 2", category: "fps", platform: "PC", rating: 9.5, image: "img/counterstrike2.jpg",
+    { title: "Counter-Strike 2", category: "fps", platform: "PC", rating: 9.5, image: "images/counterstrike2.jpg",
       alt: "Counter-Strike 2 tactical shooter artwork", text: "games.cs2",
       getRating: function () { return this.rating.toFixed(1) + " / 10"; } },
-    { title: "Minecraft", category: "sandbox", platform: "PC · Console · Mobile", rating: 9.8, image: "img/minecraft.jpg",
+    { title: "Minecraft", category: "sandbox", platform: "PC · Console · Mobile", rating: 9.8, image: "images/minecraft.jpg",
       alt: "Minecraft landscape with block-built terrain", text: "games.mc",
       getRating: function () { return this.rating.toFixed(1) + " / 10"; } },
-    { title: "Brawl Stars", category: "arena", platform: "Mobile", rating: 9.2, image: "img/brawlstars.jpg",
+    { title: "Brawl Stars", category: "arena", platform: "Mobile", rating: 9.2, image: "images/brawlstars.jpg",
       alt: "Colourful Brawl Stars characters", text: "games.bs",
       getRating: function () { return this.rating.toFixed(1) + " / 10"; } }
   ];
@@ -19,7 +19,9 @@
   const catalog = document.getElementById("game-catalog");
   const status = document.getElementById("catalog-status");
   const buttons = document.querySelectorAll("#game-filters [data-category]");
-  let current = "all";
+  // The last chosen category is saved in localStorage and restored on the next visit.
+  const FILTER_KEY = "pixelforge-games-filter";
+  let current = PF.read(FILTER_KEY) || "all";
 
   function render(category) {
     let labelKey;
@@ -30,6 +32,7 @@
       default: category = "all"; labelKey = "games.fAll";
     }
     current = category;
+    PF.write(FILTER_KEY, category);
     const visible = games.filter(function (game) { return category === "all" || game.category === category; });
     catalog.replaceChildren();
     visible.forEach(function (game) {
@@ -58,5 +61,5 @@
 
   buttons.forEach(function (button) { button.addEventListener("click", function () { render(button.dataset.category); }); });
   PF.onLang(function () { render(current); });
-  render("all");
+  render(current);
 })();

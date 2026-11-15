@@ -9,14 +9,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/style.css">
   <!-- Shared: translations, theme, language, keyboard shortcuts -->
   <script src="js/i18n.js"></script>
   <script src="js/core.js"></script>
-  <!-- Assignment 6: jQuery from the CDN + external script.js -->
+  <!-- jQuery from the CDN + shared site script -->
   <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
-  <script src="script.js"></script>
+  <script src="js/script.js"></script>
   <script src="js/games.js" defer></script>
+  <script src="js/api.js" defer></script>
 </head>
 <body>
   <div id="scroll-progress" role="progressbar" aria-label="Reading progress" data-i18n-aria="common.progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
@@ -45,7 +46,7 @@
           <option value="kk">KZ</option>
         </select>
         <button id="theme-toggle" class="icon-btn" type="button" aria-label="Switch to light theme" aria-pressed="false">☀</button>
-        <a id="account-link" class="btn btn-sm user-chip" href="register.html">Sign up</a>
+        <a id="account-link" class="btn btn-sm user-chip" href="login.html">Log in</a>
         <button id="nav-toggle" class="icon-btn nav-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Menu" data-i18n-aria="nav.menu">☰</button>
       </div>
     </div>
@@ -76,6 +77,30 @@
         </div>
         <div id="game-catalog" class="catalog"></div>
         <p id="catalog-status" class="status-line" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="f2p-title">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow" data-i18n="api.eyebrow">Live from FreeToGame API</p>
+            <h2 id="f2p-title" data-i18n="api.title">Free-to-play games right now</h2>
+          </div>
+          <div id="f2p-filters" class="filter-row" role="group" aria-label="Filter free games by genre" data-i18n-aria="api.filterLabel">
+            <button type="button" class="chip" data-genre="shooter" aria-pressed="true" data-i18n="api.gShooter">Shooter</button>
+            <button type="button" class="chip" data-genre="mmorpg" aria-pressed="false">MMORPG</button>
+            <button type="button" class="chip" data-genre="moba" aria-pressed="false">MOBA</button>
+            <button type="button" class="chip" data-genre="strategy" aria-pressed="false" data-i18n="api.gStrategy">Strategy</button>
+            <button type="button" class="chip" data-genre="racing" aria-pressed="false" data-i18n="api.gRacing">Racing</button>
+          </div>
+        </div>
+        <p id="f2p-status" class="status-line" role="status" aria-live="polite"></p>
+        <div id="f2p-error" class="api-error" hidden>
+          <p class="form-status error" data-i18n="api.error">Could not load games from FreeToGame. Check your connection and try again.</p>
+          <button id="f2p-retry" type="button" class="btn btn-sm" data-i18n="api.retry">Try again</button>
+        </div>
+        <div id="f2p-list" class="catalog" aria-busy="false"></div>
       </div>
     </section>
 
@@ -140,7 +165,7 @@
           <form id="game-suggestion-form" class="form" novalidate>
             <div class="field">
               <label for="suggested-game" data-i18n="games.sugLabel">Game name</label>
-              <input id="suggested-game" name="game" type="text" required maxlength="100" placeholder="e.g. Hollow Knight" aria-describedby="suggest-error">
+              <input id="suggested-game" name="game" type="text" placeholder="e.g. Hollow Knight" aria-describedby="suggest-error">
               <span id="suggest-error" class="error"></span>
             </div>
             <div><button type="submit" class="btn" data-i18n="games.sugBtn">Submit suggestion</button></div>
@@ -172,7 +197,7 @@
             <li><a href="about.html#team" data-i18n="footer.team">Meet the team</a></li>
             <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
             <li><a href="register.html" data-i18n="footer.register">Create an account</a></li>
-            <li><a href="part1.html" data-i18n="footer.responsive">Responsive design</a></li>
+            <li><a href="responsive.html" data-i18n="footer.responsive">Responsive design</a></li>
           </ul>
         </div>
         <div>

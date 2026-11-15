@@ -1,18 +1,18 @@
 /* =========================================================
-   Assignment 6 — jQuery. Loaded from the CDN in <head> on every
-   page; each task runs only on the page that has its elements:
-     • Tasks 1–3  search, autocomplete, highlight ... games.html
-     • Task 4     scroll progress bar ............. every page
-     • Task 5     animated counters ............... index.html
-     • Task 6–7   spinner submit + notification ... games.html
-     • Task 8     copy to clipboard ............... gallery.html
-     • Task 9     lazy-loaded images .............. gallery.html
+   Shared jQuery script, loaded on every page. Each block runs
+   only on the page that has its elements:
+     • live search, autocomplete, highlight ...... games.html
+     • scroll progress bar ....................... every page
+     • animated counters ......................... index.html
+     • spinner submit + notification ............. games.html
+     • copy to clipboard ......................... gallery.html
+     • lazy-loaded images ........................ gallery.html
    ========================================================= */
 $(document).ready(function () {
   console.log("jQuery is ready!");
   const t = function (key, vars) { return window.PF ? PF.t(key, vars) : key; };
 
-  // ---------- Tasks 1–3: live search, autocomplete, highlight ----------
+  // ---------- live search, autocomplete, highlight ----------
   const $search = $("#game-search");
   if ($search.length) {
     const $rows = $("#game-results tr");
@@ -59,6 +59,8 @@ $(document).ready(function () {
     }
     function runSearch() {
       const query = $search.val().trim().toLowerCase();
+      // Remember the last search so it is restored on the next visit.
+      if (window.PF) PF.write("pixelforge-games-search", $search.val());
       clearHighlights();
       let count = 0;
       $rows.each(function () {
@@ -110,10 +112,11 @@ $(document).ready(function () {
     });
     // Re-run after a language switch so status text and highlights match.
     if (window.PF) PF.onLang(function () { setTimeout(runSearch, 0); });
+    if (window.PF && PF.read("pixelforge-games-search")) $search.val(PF.read("pixelforge-games-search"));
     runSearch();
   }
 
-  // ---------- Tasks 4, 5, 9: scroll progress, counters, lazy images ----------
+  // ---------- scroll progress, counters, lazy images ----------
   const counted = new Set();
   function formatNumber(value) { return Math.floor(value).toLocaleString(window.PF ? PF.locale() : "en-US"); }
   function updateViewport() {
@@ -147,7 +150,7 @@ $(document).ready(function () {
   $(window).on("scroll resize", updateViewport);
   updateViewport();
 
-  // ---------- Tasks 6–7: disabled button + spinner, fading notification ----------
+  // ---------- disabled button + spinner, fading notification ----------
   let toastTimer;
   function notify(message) {
     let $box = $("#notification");
@@ -164,7 +167,7 @@ $(document).ready(function () {
     const $input = $("#suggested-game");
     const $button = $(this).find("button[type=submit]");
     const name = $input.val().trim();
-    if (name.length < 2) {
+    if (name.length < 2 || name.length > 100) {
       $("#suggest-error").text(t("games.sugError"));
       $input.attr("aria-invalid", "true").trigger("focus");
       return;
@@ -181,7 +184,7 @@ $(document).ready(function () {
     }, 1600);
   });
 
-  // ---------- Task 8: copy to clipboard with checkmark + tooltip ----------
+  // ---------- copy to clipboard with checkmark + tooltip ----------
   $("#copy-link").on("click", async function () {
     const $button = $(this);
     try {

@@ -24,6 +24,23 @@
     return "";
   }
 
+  // Phone: digits, spaces, (), - and an optional leading +; 10–15 digits in total.
+  function phoneKey(value) {
+    value = value.trim();
+    if (!value) return "err.phoneEmpty";
+    const digits = value.replace(/\D/g, "");
+    return /^\+?[\d\s()-]+$/.test(value) && digits.length >= 10 && digits.length <= 15 ? "" : "err.phone";
+  }
+
+  // Password: 8+ characters, no spaces, upper + lower case letters and a digit.
+  function passwordKey(value) {
+    if (!value) return "err.passEmpty";
+    if (/\s/.test(value)) return "err.passSpace";
+    if (value.length < 8) return "err.passShort";
+    if (!/\p{Lu}/u.test(value) || !/\p{Ll}/u.test(value) || !/\d/.test(value)) return "err.passMix2";
+    return "";
+  }
+
   // Generic form controller: fields = [{ input, error, check(input) -> key }]
   function controller(form, fields, status) {
     let attempted = false;
@@ -113,7 +130,6 @@
       const byPhone = contactForm.querySelector("[name=method]:checked").value === "phone";
       phoneField.hidden = !byPhone;
       phone.disabled = !byPhone;
-      phone.required = byPhone;
       if (!byPhone) { phone.removeAttribute("aria-invalid"); $("c-phone-error").textContent = ""; }
     }
     methods.forEach(function (radio) { radio.addEventListener("change", updateMethod); });
@@ -135,13 +151,11 @@
       }),
       field("c-email", function (input) { return emailKey(input.value); }),
       field("c-topic", function (input) { return input.value ? "" : "err.topic"; }),
-      field("c-phone", function (input) {
-        const digits = input.value.replace(/\D/g, "");
-        return /^\+?[\d\s()-]+$/.test(input.value.trim()) && digits.length >= 10 && digits.length <= 15 ? "" : "err.phone";
-      }),
+      field("c-phone", function (input) { return phoneKey(input.value); }),
       field("c-message", function (input) {
         const length = input.value.trim().length;
         if (!length) return "err.messageEmpty";
+        if (length > 1000) return "err.messageLong";
         return length >= 10 ? "" : "err.messageShort";
       })
     ], $("contact-status"));
@@ -180,34 +194,33 @@
 
     // Pre-fill name and email for signed-in players.
     const user = PF.getUser();
-    if (user) { $("c-name").value = user.username; $("c-email").value = user.email; }
+    if (user) { $("c-name").value = user.name; $("c-email").value = user.email; }
   }
 
-  /* ===================== Registration page ===================== */
+  /* ===================== Show / hide password buttons ===================== */
+  document.querySelectorAll(".toggle-pass").forEach(function (button) {
+    const input = $(button.dataset.target);
+    function label() { button.textContent = PF.t(input.type === "password" ? "reg.show" : "reg.hide"); }
+    button.addEventListener("click", function () {
+      input.type = input.type === "password" ? "text" : "password";
+      button.setAttribute("aria-pressed", String(input.type === "text"));
+      label();
+    });
+    PF.onLang(label);
+  });
+
+  /* ===================== Sign up page ===================== */
   const regForm = $("registration-form");
   if (regForm) {
     const password = $("r-password");
-    const confirm = $("r-confirm");
     const bar = $("strength-bar");
     const strengthLabel = $("strength-label");
-
-    // Show / hide password buttons
-    regForm.querySelectorAll(".toggle-pass").forEach(function (button) {
-      const input = $(button.dataset.target);
-      function label() { button.textContent = PF.t(input.type === "password" ? "reg.show" : "reg.hide"); }
-      button.addEventListener("click", function () {
-        input.type = input.type === "password" ? "text" : "password";
-        button.setAttribute("aria-pressed", String(input.type === "text"));
-        label();
-      });
-      PF.onLang(label);
-    });
 
     function strength(value) {
       let score = 0;
       if (value.length >= 8) score++;
       if (value.length >= 12) score++;
-      if (/[a-zа-яё]/.test(value) && /[A-ZА-ЯЁ]/.test(value)) score++;
+      if (/\p{Ll}/u.test(value) && /\p{Lu}/u.test(value)) score++;
       if (/\d/.test(value)) score++;
       if (/[^\p{L}\d\s]/u.test(value)) score++;
       return Math.min(4, score);
@@ -229,15 +242,13 @@
         if (!value) return "err.usernameEmpty";
         return /^[A-Za-z0-9_]{3,20}$/.test(value) ? "" : "err.username";
       }),
-      field("r-email", function (input) { return emailKey(input.value); }),
-      field("r-password", function (input) {
-        const value = input.value;
-        if (!value) return "err.passEmpty";
-        if (/\s/.test(value)) return "err.passSpace";
-        if (value.length < 8) return "err.passShort";
-        if (!/\p{L}/u.test(value) || !/\d/.test(value)) return "err.passMix";
-        return "";
+      field("r-email", function (input) {
+        const key = emailKey(input.value);
+        if (key) return key;
+        return PF.findUser(input.value) ? "err.emailTaken" : "";
       }),
+      field("r-phone", function (input) { return phoneKey(input.value); }),
+      field("r-password", function (input) { return passwordKey(input.value); }),
       field("r-confirm", function (input) {
         if (!input.value) return "err.confirmEmpty";
         return input.value === password.value ? "" : "err.confirm";
@@ -246,50 +257,92 @@
       field("r-terms", function (input) { return input.checked ? "" : "err.terms"; })
     ], $("registration-status"));
 
-    function showProfile() {
-      const user = PF.getUser();
-      $("profile-view").hidden = !user;
-      $("register-view").hidden = Boolean(user);
-      if (!user) return;
-      $("profile-avatar").textContent = user.username.charAt(0).toUpperCase();
-      $("profile-name").textContent = PF.t("reg.hello", { name: user.username });
-      $("profile-email").textContent = user.email;
-      $("profile-platform").textContent = user.platform === "Mobile" ? PF.t("reg.mobile") : user.platform;
-      $("profile-joined").textContent = PF.formatDate(new Date(user.joined), { year: true });
-    }
-    PF.onLang(showProfile);
-
     regForm.addEventListener("submit", function (event) {
       event.preventDefault();
       if (!reg.submit()) return;
       const button = regForm.querySelector("button[type=submit]");
+      const email = $("r-email").value.trim();
       busy(button, true);
-      setTimeout(function () {
-        // Only public profile data is stored. The password is never saved.
-        PF.setUser({
-          username: $("r-username").value.trim(),
-          email: $("r-email").value.trim(),
-          platform: $("r-platform").value,
-          joined: new Date().toISOString()
-        });
-        busy(button, false);
-        regForm.reset();
-        reg.clear();
-        updateStrength();
-        showProfile();
-        PF.notify(PF.t("reg.created"));
-        $("profile-name").setAttribute("tabindex", "-1");
-        $("profile-name").focus();
-      }, 900);
+      // Simulated sign up: the account (including the password) is stored in
+      // localStorage only, because the site has no backend.
+      PF.addUser({
+        name: $("r-username").value.trim(),
+        email: email,
+        phone: $("r-phone").value.trim(),
+        password: password.value,
+        platform: $("r-platform").value,
+        joined: new Date().toISOString()
+      });
+      reg.status("success", "reg.createdLogin");
+      // Pass the email to the login page so the user only types the password.
+      try { sessionStorage.setItem("pixelforge-new-email", email); } catch (e) { /* storage blocked */ }
+      setTimeout(function () { window.location.href = "login.html"; }, 1200);
     });
+  }
 
-    $("sign-out").addEventListener("click", function () {
-      PF.setUser(null);
-      showProfile();
-      PF.notify(PF.t("reg.signedOut"));
-      $("r-username").focus();
+  /* ===================== Log in page ===================== */
+  const loginForm = $("login-form");
+  if (loginForm) {
+    // Already signed in → go straight to the profile.
+    if (PF.getUser()) window.location.replace("profile.html");
+
+    const login = controller(loginForm, [
+      field("l-email", function (input) { return emailKey(input.value); }),
+      field("l-password", function (input) {
+        if (!input.value) return "err.passEnter";
+        return input.value.length >= 8 ? "" : "err.passShort";
+      })
+    ], $("login-status"));
+
+    try {
+      const newEmail = sessionStorage.getItem("pixelforge-new-email");
+      if (newEmail) {
+        sessionStorage.removeItem("pixelforge-new-email");
+        $("l-email").value = newEmail;
+        login.status("success", "login.registered");
+      }
+    } catch (e) { /* storage blocked */ }
+
+    loginForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      if (!login.submit()) return;
+      const user = PF.checkLogin($("l-email").value, $("l-password").value);
+      if (!user) {
+        login.status("error", "login.wrong");
+        $("l-password").value = "";
+        $("l-password").focus();
+        return;
+      }
+      PF.login(user);
+      login.status("success", "login.ok", { name: user.name });
+      window.location.href = "profile.html";
     });
+  }
 
-    showProfile();
+  /* ===================== Profile page ===================== */
+  const profile = $("profile-view");
+  if (profile) {
+    const user = PF.getUser();
+    // Profile is private: guests are sent to the login page.
+    if (!user) {
+      window.location.replace("login.html");
+    } else {
+      const render = function () {
+        $("profile-avatar").textContent = user.name.charAt(0).toUpperCase();
+        $("profile-name").textContent = PF.t("reg.hello", { name: user.name });
+        $("profile-username").textContent = user.name;
+        $("profile-email").textContent = user.email;
+        $("profile-phone").textContent = user.phone || "—";
+        $("profile-platform").textContent = user.platform === "Mobile" ? PF.t("reg.mobile") : user.platform;
+        $("profile-joined").textContent = PF.formatDate(new Date(user.joined), { year: true });
+      };
+      render();
+      PF.onLang(render);
+      profile.hidden = false;
+      $("sign-out").addEventListener("click", function () {
+        PF.logout();
+        window.location.href = "login.html";
+      });
+    }
   }
 })();

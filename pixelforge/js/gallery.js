@@ -3,9 +3,9 @@
   "use strict";
   const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const scenes = [
-    { title: "Minecraft", image: "img/minecraft.jpg", alt: "Minecraft landscape with block-built terrain", caption: "gallery.s1" },
-    { title: "Counter-Strike 2", image: "img/counterstrike2.jpg", alt: "Counter-Strike 2 tactical shooter artwork", caption: "gallery.s2" },
-    { title: "Brawl Stars", image: "img/brawlstars.jpg", alt: "Colourful Brawl Stars characters", caption: "gallery.s3" }
+    { title: "Minecraft", image: "images/minecraft.jpg", alt: "Minecraft landscape with block-built terrain", caption: "gallery.s1" },
+    { title: "Counter-Strike 2", image: "images/counterstrike2.jpg", alt: "Counter-Strike 2 tactical shooter artwork", caption: "gallery.s2" },
+    { title: "Brawl Stars", image: "images/brawlstars.jpg", alt: "Colourful Brawl Stars characters", caption: "gallery.s3" }
   ];
   const image = document.getElementById("featured-image");
   const title = document.getElementById("featured-title-text");

@@ -1,4 +1,4 @@
-/* Assignment 5: a callback-driven, three-step player card builder.
+/* Player Lab: a callback-driven, three-step player card builder.
    All labels come from PF.t() so the form follows the site language. */
 (function () {
   "use strict";
@@ -51,14 +51,14 @@
 
   // Step 1 — name
   const nameLabel = el("label", { for: "profile-nickname", class: "sr-only" });
-  const nickname = el("input", { type: "text", id: "profile-nickname", maxlength: "24", autocomplete: "off", spellcheck: "false", required: "", "aria-describedby": "profile-name-hint profile-name-error", placeholder: "PixelPilot" });
+  const nickname = el("input", { type: "text", id: "profile-nickname", autocomplete: "off", spellcheck: "false", "aria-describedby": "profile-name-hint profile-name-error", placeholder: "PixelPilot" });
   const nameHint = el("p", { id: "profile-name-hint", class: "profile-hint" });
   const nameError = el("p", { id: "profile-name-error", class: "profile-error", "aria-live": "polite" });
   panels[0].append(nameLabel, nickname, nameHint, nameError);
 
   // Step 2 — platform + genres
   const platformLabel = el("label", { for: "profile-platform" });
-  const platform = el("select", { id: "profile-platform", required: "", "aria-describedby": "profile-platform-error" });
+  const platform = el("select", { id: "profile-platform", "aria-describedby": "profile-platform-error" });
   const platformPlaceholder = el("option", { value: "" });
   platform.append(platformPlaceholder);
   const platformOptions = platformNames.map(function (name) { const o = el("option", { value: name }, name); platform.append(o); return o; });

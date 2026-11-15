@@ -28,7 +28,7 @@ These notes explain the implementation for practice. They do not assign individu
 | Text and attributes | `textContent` writes plain text. The gallery changes `src` to show another image and `alt` to describe it. |
 | Classes and styles | CSS contains appearance rules. `selectRating(value)` directly changes `star.style.color` and toggles `is-filled` after the user chooses a rating. |
 | Event listener | `addEventListener` connects a click, change, submit, or keydown event to a function. |
-| Callback | `changeStep(nextIndex, callback)` updates the current step, then calls the supplied `onStepChange` function to render the panel. See `assignment3/js/player-profile.js`. |
+| Callback | `changeStep(nextIndex, callback)` updates the current step, then calls the supplied `onStepChange` function to render the panel. See `pixelforge/js/player-profile.js`. |
 | State | Current category, rating, gallery selection, and profile step are values used to render the current interface. Form inputs keep their values when their step is hidden. |
 | `switch` | `renderGames(category)` chooses a category label, with a default branch for the full catalog. The keyboard handlers also use `switch` to choose the next focused item. |
 | Objects | Game objects provide `getRating()` methods. `profileState` stores current profile values and provides `reset()` and `summary()` methods. |
@@ -62,7 +62,7 @@ The length check removes whitespace with `replace(/\s/g, "")` before counting. S
 No. It is a temporary demonstration in the current page. Reloading or resetting clears it. The form does not send data to a service.
 
 **How is the site deployed?**  
-The workflow in `.github/workflows/pages.yml` publishes `assignment3/` after changes are pushed to `main`. The published URL is https://nurda07.github.io/Web-assignment/.
+The workflow in `.github/workflows/pages.yml` publishes `pixelforge/` after changes are pushed to `main`. The published URL is https://nurda07.github.io/Web-assignment/.
 
 **What implementation challenges can you discuss?**  
 Use examples you can demonstrate: validating only the active form step, preserving inputs when moving back, preventing overlapping sound playback, keeping keyboard focus predictable, or separating legacy inline styles into external files. Describe the actual code and your own understanding; do not claim work or tests you did not perform.

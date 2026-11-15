@@ -9,7 +9,7 @@ Repository: https://github.com/NURDA07/Web-assignment
 ## Run locally
 
 ```sh
-python3 -m http.server 8000 --directory assignment3
+python3 -m http.server 8000 --directory pixelforge
 ```
 
 Open http://localhost:8000/. jQuery 4.0.0 loads from the official CDN.
@@ -19,14 +19,29 @@ Open http://localhost:8000/. jQuery 4.0.0 loads from the official CDN.
 | Page | What is on it |
 | --- | --- |
 | `index.html` — Home | Hero + carousel, greeting and live clock, animated counters, top 3 of the month, crew news (fetch + filter), newsletter pop-up |
-| `games.html` — Top Games | Crew favourites with category filter, top-10 table with live search, autocomplete and highlight, "suggest a game" form |
+| `games.html` — Top Games | Crew favourites with category filter, **live free-to-play games from the FreeToGame API**, top-10 table with live search, autocomplete and highlight, "suggest a game" form |
 | `guides.html` — Guides | Guide cards and an accordion with step-by-step walkthroughs |
 | `gallery.html` — Gallery | Featured image switcher, lazy-loaded image wall, copy-link button |
 | `play.html` — Player Lab | 3-step player card form, star rating, quest animation, Web Audio sound, greeting, random fact, background colour |
 | `about.html` — About & Team | Story, timeline, values, team cards, FAQ accordion |
 | `contact.html` — Contact us | Validated contact form (topic, reply by email/phone, message counter), sent with `fetch` to JSONPlaceholder |
-| `register.html` — Sign up | Validated registration (username, email, password strength + show/hide, confirm, platform, rules) |
-| `part1.html` — Responsive design | Media-query breakpoints demo |
+| `register.html` — Sign up | Validated registration (player name, email, phone, password strength + show/hide, confirm, platform, rules) |
+| `login.html` — Log in | Checks email + password against the accounts saved in `localStorage`, then redirects to the profile |
+| `profile.html` — Profile | Shows the signed-in user's stored details, sign out (guests are redirected to Log in) |
+| `responsive.html` — Responsive design | Media-query breakpoints demo |
+
+## Final project requirements — where each one lives
+
+| Requirement | Implementation |
+| --- | --- |
+| Responsiveness | CSS Grid + Flexbox with breakpoints at 1100 / 960 / 640 / 520 px (`css/style.css`) |
+| Hosting | GitHub Pages workflow `.github/workflows/pages.yml` deploys `pixelforge/` |
+| Light / dark mode | ☀/☾ button in the header, saved in `localStorage` (`js/core.js`) |
+| Authentication simulation | Sign up stores name, email, phone and password in `localStorage` → Log in checks credentials → Profile page (`js/core.js`, `js/forms.js`) |
+| Form validation | All forms use `novalidate` and JavaScript checks: required fields, email format, password length + upper/lower case + digit, phone pattern (10–15 digits). Errors appear under each field. No HTML validation attributes. |
+| Search / filtering | Games category filter, live table search, FreeToGame genre filter, news filter. The last filter, search and genre are saved in `localStorage`. |
+| Animations | Hover transitions on buttons and cards, spinners, carousel, counters, quest animation |
+| External API | FreeToGame API (`js/api.js`) with `async/await`, loading state, error message and "Try again" button |
 
 ## Site-wide features
 
@@ -37,36 +52,26 @@ Open http://localhost:8000/. jQuery 4.0.0 loads from the official CDN.
 - **Keyboard** — arrow keys / Space / PgDn scroll normally; `J`/`K` next/previous section, `T`/`B` top/bottom,
   `1`–`7` open menu pages, `/` search, `L` theme, `?` help dialog, `Esc` closes dialogs. Shortcuts use physical keys,
   so they also work on a Russian or Kazakh keyboard layout. Arrow keys move between menu links.
-- **Account** — after registration the player name appears in the header on every page. Only name, email and
-  platform are kept in `localStorage`; the password is validated but never saved.
-
-## Assignment 6 (jQuery) — where each task lives
-
-`script.js` is loaded in `<head>` right after the jQuery CDN on every page and runs inside `$(document).ready()`.
-
-0. CDN, external `script.js`, `document.ready`, console message — every page.
-1–3. Real-time search, autocomplete, highlight — `games.html`.
-4. Scroll progress bar — every page.
-5. Animated counters — `index.html`.
-6–7. Disabled submit + spinner, fading notification — `games.html` (suggest a game).
-8. Copy to clipboard with checkmark and tooltip — `gallery.html`.
-9. Lazy-loaded images — `gallery.html`.
+- **Account** — after logging in, the player name appears in the header on every page and links to the profile.
+  This is a front-end simulation: accounts (including the password) are stored only in this browser's `localStorage`.
 
 ## Files
 
 ```
-assignment3/
+pixelforge/
   *.html            pages (shared header, footer and theme on all of them)
-  script.js         jQuery tasks
-  css/site.css      the only stylesheet
+  css/style.css     the only stylesheet
+  js/script.js      shared jQuery script (search, progress bar, counters, notifications)
+  js/core.js        theme, language, menu, keyboard shortcuts, auth helpers
   js/i18n.js        EN / RU / KZ translations
-  js/core.js        theme, language, menu, keyboard shortcuts, helpers
-  js/home.js  js/games.js  js/gallery.js  js/lab.js  js/player-profile.js  js/forms.js
+  js/forms.js       validation + contact, sign up, log in, profile
+  js/api.js         FreeToGame API
+  js/home.js  js/games.js  js/gallery.js  js/lab.js  js/player-profile.js
   data/*.json       news and facts (with translations)
-  img/              compressed images
+  images/           compressed images
 ```
 
 ## Report and deployment
 
 Reports: `reports/Assignment-5-Report.pdf`, `reports/Assignment-6-Report.pdf`.
-The GitHub Pages workflow deploys `assignment3/` on every push to `main`.
+The GitHub Pages workflow deploys `pixelforge/` on every push to `main`.

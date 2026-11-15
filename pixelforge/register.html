@@ -9,13 +9,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/style.css">
   <!-- Shared: translations, theme, language, keyboard shortcuts -->
   <script src="js/i18n.js"></script>
   <script src="js/core.js"></script>
-  <!-- Assignment 6: jQuery from the CDN + external script.js -->
+  <!-- jQuery from the CDN + shared site script -->
   <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
-  <script src="script.js"></script>
+  <script src="js/script.js"></script>
   <script src="js/forms.js" defer></script>
 </head>
 <body>
@@ -45,7 +45,7 @@
           <option value="kk">KZ</option>
         </select>
         <button id="theme-toggle" class="icon-btn" type="button" aria-label="Switch to light theme" aria-pressed="false">☀</button>
-        <a id="account-link" class="btn btn-sm user-chip" href="register.html" aria-current="page">Sign up</a>
+        <a id="account-link" class="btn btn-sm user-chip" href="login.html">Log in</a>
         <button id="nav-toggle" class="icon-btn nav-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Menu" data-i18n-aria="nav.menu">☰</button>
       </div>
     </div>
@@ -71,56 +71,48 @@
             <li data-i18n="reg.p3">Early access to new guides</li>
             <li data-i18n="reg.p4">Free, no ads, no spam</li>
           </ul>
-          <div class="aside-art"><img src="img/welcome.png" alt="PixelForge logo" width="800" height="600" loading="lazy"></div>
+          <div class="aside-art"><img src="images/welcome.png" alt="PixelForge logo" width="800" height="600" loading="lazy"></div>
         </aside>
 
         <div>
-          <div id="profile-view" class="panel profile-card" hidden>
-            <div id="profile-avatar" class="avatar" aria-hidden="true"></div>
-            <h2 id="profile-name"></h2>
-            <p class="muted" data-i18n="reg.signedIn">You are signed in on this device.</p>
-            <dl>
-              <dt data-i18n="form.email">Email address</dt><dd id="profile-email"></dd>
-              <dt data-i18n="reg.platform">Main platform</dt><dd id="profile-platform"></dd>
-              <dt data-i18n="reg.joined">Joined</dt><dd id="profile-joined"></dd>
-            </dl>
-            <div class="btn-row" style="justify-content:center">
-              <a class="btn" href="play.html" data-i18n="reg.toLab">Go to Player Lab</a>
-              <button id="sign-out" class="btn btn-ghost" type="button" data-i18n="reg.signOut">Sign out</button>
-            </div>
-          </div>
-
           <div id="register-view" class="panel">
             <h2 id="reg-form-title" data-i18n="reg.formTitle">Sign up</h2>
             <form id="registration-form" class="form" novalidate>
               <div class="field">
                 <label for="r-username" data-i18n="reg.username">Player name</label>
-                <input type="text" id="r-username" name="username" autocomplete="username" maxlength="20" aria-describedby="r-username-hint r-username-error" required>
+                <input type="text" id="r-username" name="username" autocomplete="username" aria-describedby="r-username-hint r-username-error">
                 <p id="r-username-hint" class="hint" data-i18n="reg.usernameHint">3–20 characters: letters, numbers or _</p>
                 <span id="r-username-error" class="error"></span>
               </div>
 
               <div class="field">
                 <label for="r-email" data-i18n="form.email">Email address</label>
-                <input type="email" id="r-email" name="email" autocomplete="email" maxlength="254" placeholder="name@example.com" aria-describedby="r-email-error" required>
+                <input type="text" inputmode="email" id="r-email" name="email" autocomplete="email" placeholder="name@example.com" aria-describedby="r-email-error">
                 <span id="r-email-error" class="error"></span>
+              </div>
+
+              <div class="field">
+                <label for="r-phone" data-i18n="form.phone">Phone number</label>
+                <input type="tel" id="r-phone" name="phone" autocomplete="tel" placeholder="+7 700 123 4567" aria-describedby="r-phone-hint r-phone-error">
+                <p id="r-phone-hint" class="hint" data-i18n="reg.phoneHint">10–15 digits, e.g. +7 700 123 4567</p>
+                <span id="r-phone-error" class="error"></span>
               </div>
 
               <div class="form-row">
                 <div class="field">
                   <label for="r-password" data-i18n="reg.password">Password</label>
                   <div class="password-wrap">
-                    <input type="password" id="r-password" name="password" autocomplete="new-password" aria-describedby="r-password-hint r-password-error" required>
+                    <input type="password" id="r-password" name="password" autocomplete="new-password" aria-describedby="r-password-hint r-password-error">
                     <button type="button" class="btn btn-sm btn-soft toggle-pass" data-target="r-password" aria-pressed="false" data-i18n="reg.show">Show</button>
                   </div>
                   <div class="strength" aria-hidden="true"><i id="strength-bar"></i></div>
-                  <p id="r-password-hint" class="hint"><span data-i18n="reg.passHint">8+ characters with a letter and a number.</span> <strong id="strength-label"></strong></p>
+                  <p id="r-password-hint" class="hint"><span data-i18n="reg.passHint2">8+ characters with an uppercase letter, a lowercase letter and a number.</span> <strong id="strength-label"></strong></p>
                   <span id="r-password-error" class="error"></span>
                 </div>
                 <div class="field">
                   <label for="r-confirm" data-i18n="reg.confirm">Confirm password</label>
                   <div class="password-wrap">
-                    <input type="password" id="r-confirm" name="confirm" autocomplete="new-password" aria-describedby="r-confirm-error" required>
+                    <input type="password" id="r-confirm" name="confirm" autocomplete="new-password" aria-describedby="r-confirm-error">
                     <button type="button" class="btn btn-sm btn-soft toggle-pass" data-target="r-confirm" aria-pressed="false" data-i18n="reg.show">Show</button>
                   </div>
                   <span id="r-confirm-error" class="error"></span>
@@ -129,7 +121,7 @@
 
               <div class="field">
                 <label for="r-platform" data-i18n="reg.platform">Main platform</label>
-                <select id="r-platform" name="platform" aria-describedby="r-platform-error" required>
+                <select id="r-platform" name="platform" aria-describedby="r-platform-error">
                   <option value="" data-i18n="reg.platform0">Choose a platform</option>
                   <option value="PC">PC</option>
                   <option value="PlayStation">PlayStation</option>
@@ -141,13 +133,14 @@
               </div>
 
               <div class="field">
-                <label class="check"><input type="checkbox" id="r-terms" name="terms" aria-describedby="r-terms-error" required> <span data-i18n="reg.terms">I agree to play fair and respect other players</span></label>
+                <label class="check"><input type="checkbox" id="r-terms" name="terms" aria-describedby="r-terms-error"> <span data-i18n="reg.terms">I agree to play fair and respect other players</span></label>
                 <span id="r-terms-error" class="error"></span>
               </div>
 
               <button type="submit" class="btn btn-lg btn-block" data-i18n="reg.submit">Create account</button>
               <p id="registration-status" class="form-status" role="status" aria-live="polite"></p>
-              <p class="form-note" data-i18n="reg.note">Your name, email and platform are saved only in this browser. Your password is checked but never saved.</p>
+              <p class="form-note"><span data-i18n="reg.haveAccount">Already have an account?</span> <a href="login.html" data-i18n="login.submit">Log in</a></p>
+              <p class="form-note" data-i18n="reg.note">This is a demo: your account is saved only in this browser (localStorage).</p>
             </form>
           </div>
         </div>
@@ -177,7 +170,7 @@
             <li><a href="about.html#team" data-i18n="footer.team">Meet the team</a></li>
             <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
             <li><a href="register.html" data-i18n="footer.register">Create an account</a></li>
-            <li><a href="part1.html" data-i18n="footer.responsive">Responsive design</a></li>
+            <li><a href="responsive.html" data-i18n="footer.responsive">Responsive design</a></li>
           </ul>
         </div>
         <div>

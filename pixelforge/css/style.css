@@ -483,3 +483,9 @@ kbd { display: inline-block; min-width: 28px; padding: 3px 8px; border-radius: 6
 .aside-art { margin-top: 22px; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--border); }
 .aside-art img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
 .cover-tile { width: 92px; aspect-ratio: 1; flex: none; display: grid; place-items: center; border-radius: 10px; font: 800 1.6rem var(--font-heading); letter-spacing: 2px; color: #f5d27a; background: radial-gradient(circle at 50% 35%, #6b5326, #1b1408 70%); border: 1px solid #5a4520; }
+
+/* ---------- Log in / profile / live API section ---------- */
+.profile-layout { max-width: 560px; }
+.btn-row-center { justify-content: center; }
+.api-error { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 14px; }
+.api-error .form-status { flex: 1 1 260px; }

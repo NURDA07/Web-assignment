@@ -9,7 +9,7 @@
 (function () {
   "use strict";
 
-  const STORE = { theme: "pixelforge-theme", lang: "pixelforge-lang", user: "pixelforge-user" };
+  const STORE = { theme: "pixelforge-theme", lang: "pixelforge-lang", users: "pixelforge-users", session: "pixelforge-session" };
   const LANGS = ["en", "ru", "kk"];
   const root = document.documentElement;
 
@@ -87,15 +87,41 @@
     updateThemeButton();
   }
 
-  /* ---------- Account chip in the header ---------- */
-  function getUser() {
-    try { return JSON.parse(read(STORE.user) || "null"); } catch (e) { return null; }
+  /* ---------- Authentication simulation (no backend) ----------
+     All registered accounts live in localStorage as an array under
+     STORE.users. STORE.session holds the email of the signed-in user. */
+  function getUsers() {
+    try {
+      const list = JSON.parse(read(STORE.users) || "[]");
+      return Array.isArray(list) ? list : [];
+    } catch (e) { return []; }
   }
+  function findUser(email) {
+    const wanted = String(email || "").trim().toLowerCase();
+    return getUsers().find(function (user) { return user.email.toLowerCase() === wanted; }) || null;
+  }
+  function addUser(user) {
+    const list = getUsers();
+    list.push(user);
+    write(STORE.users, JSON.stringify(list));
+  }
+  // Returns the signed-in user's record, or null.
+  function getUser() { return findUser(read(STORE.session)); }
+  // Returns the matching user when email + password are correct, otherwise null.
+  function checkLogin(email, password) {
+    const user = findUser(email);
+    return user && user.password === password ? user : null;
+  }
+  function login(user) { write(STORE.session, user.email); updateAccount(); }
+  function logout() { remove(STORE.session); updateAccount(); }
+
+  /* ---------- Account chip in the header ---------- */
   function updateAccount() {
     const link = document.getElementById("account-link");
     if (!link) return;
     const user = getUser();
-    link.textContent = user ? "👤 " + user.username : t("nav.signup");
+    link.textContent = user ? "👤 " + user.name : t("nav.login");
+    link.href = user ? "profile.html" : "login.html";
     link.title = user ? t("nav.account") : "";
   }
 
@@ -340,7 +366,11 @@
     notify: notify,
     modal: modal,
     getUser: getUser,
-    setUser: function (user) { if (user) write(STORE.user, JSON.stringify(user)); else remove(STORE.user); updateAccount(); },
+    findUser: findUser,
+    addUser: addUser,
+    checkLogin: checkLogin,
+    login: login,
+    logout: logout,
     read: read,
     write: write,
     locale: function () { return { en: "en-US", ru: "ru-RU", kk: "kk-KZ" }[lang]; },

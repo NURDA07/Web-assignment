@@ -128,7 +128,7 @@
   });
   $("show-time").addEventListener("click", function () { greetState = { type: "time" }; renderGreeting(); });
   const user = PF.getUser();
-  if (user) $("greeting-name").value = user.username;
+  if (user) $("greeting-name").value = user.name;
 
   /* ---------- Random fact from data/facts.json ---------- */
   const factButton = $("fetch-fact");
@@ -157,7 +157,7 @@
     }
   });
 
-  /* ---------- Background colour (Assignment 4) ---------- */
+  /* ---------- Background colour ---------- */
   const palettes = {
     dark: [["lab.cMidnight", ""], ["lab.cPurple", "#1b1030"], ["lab.cNavy", "#0c1830"], ["lab.cForest", "#0b2019"]],
     light: [["lab.cMidnight", ""], ["lab.cLavender", "#f1eafc"], ["lab.cSky", "#e7f3fc"], ["lab.cMint", "#e8f7ef"]]

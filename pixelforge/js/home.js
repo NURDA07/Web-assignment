@@ -61,7 +61,7 @@
     if (!greeting) return;
     const now = new Date();
     const user = PF.getUser();
-    const hello = PF.t(greetingKey(now.getHours())) + (user ? ", " + user.username : "") + "!";
+    const hello = PF.t(greetingKey(now.getHours())) + (user ? ", " + user.name : "") + "!";
     const when = PF.formatDate(now, { weekday: true, time: true });
     greeting.textContent = hello + " · " + when;
   }

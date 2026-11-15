@@ -123,6 +123,12 @@
     link.textContent = user ? "👤 " + user.name : t("nav.login");
     link.href = user ? "profile.html" : "login.html";
     link.title = user ? t("nav.account") : "";
+    // The menu item is the only account link on phones (the chip is hidden there).
+    const menuLink = document.querySelector(".nav-account a");
+    if (menuLink) {
+      menuLink.textContent = user ? "👤 " + user.name : t("footer.register");
+      menuLink.href = user ? "profile.html" : "register.html";
+    }
   }
 
   /* ---------- Toast + modal helpers ---------- */
